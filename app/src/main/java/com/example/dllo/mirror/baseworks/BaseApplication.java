@@ -11,6 +11,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import com.nostra13.universalimageloader.utils.StorageUtils;
+import com.zhy.autolayout.config.AutoLayoutConifg;
 
 import java.io.File;
 
@@ -26,6 +27,7 @@ public class BaseApplication extends Application {
         super.onCreate();
         context = this;
         initImageLoader(this);
+        AutoLayoutConifg.getInstance().useDeviceSize();
     }
 
     /*

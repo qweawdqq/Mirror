@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.animationworks.MirrorScaleAtion;
@@ -20,6 +21,7 @@ import com.example.dllo.mirror.receiveworks.MyAllReceive;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private boolean whatFragment = true;
     private ImageView mirror;
+    private TextView land;
     private MirrorScaleAtion ation;
     private MyAllReceive receive;
 
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mirror = (ImageView) findViewById(R.id.main_iv_mirror);
+        land = (TextView) findViewById(R.id.main_iv_land);
         initData();
     }
 
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getMyBroadReceive();
         ation = new MirrorScaleAtion(this, null);
         mirror.setOnClickListener(this);
+        land.setOnClickListener(this);
     }
 
     @Override
@@ -71,8 +75,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //mirror 缩放动画
     @Override
     public void onClick(View v) {
-        ation.setView(mirror);
-        ation.setMirrorScaleLinister();
+        switch (v.getId()){
+            case R.id.main_iv_mirror:
+                ation.setView(mirror);
+                ation.setMirrorScaleLinister();
+                break;
+            case R.id.main_iv_land:
+                Intent intent = new Intent(this,LandingActivity.class);
+                startActivity(intent);
+                break;
+        }
+
     }
 
     //    得到广播的方法

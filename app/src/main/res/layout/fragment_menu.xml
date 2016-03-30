@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/background"
@@ -26,18 +26,30 @@
                 android:textColor="#fff"
                 android:textSize="14sp" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="12px"
-                android:layout_marginTop="12px"
-                android:background="@mipmap/iv_line_of_title_bottom"
-                android:visibility="invisible" />
+
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView style="@style/img_title_line_up" />
+
+            <ImageView style="@style/img_title_line_down" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="12px"
+            android:layout_marginTop="12px"
+            android:background="@mipmap/iv_line_of_title_bottom"
+            android:visibility="invisible" />
 
         <LinearLayout
             android:id="@+id/fragment_menu_plain_glass_line"
             android:layout_width="match_parent"
-            android:layout_height="72px"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
@@ -172,4 +184,4 @@
                 android:visibility="invisible" />
         </LinearLayout>
     </LinearLayout>
-</com.zhy.autolayout.AutoLinearLayout>
+</LinearLayout>

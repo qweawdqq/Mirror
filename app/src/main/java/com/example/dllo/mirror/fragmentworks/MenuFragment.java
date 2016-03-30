@@ -44,8 +44,8 @@ public class MenuFragment extends BaseFragment implements View.OnClickListener {
 
     //    设置动画
     private void setAnimation(View tv) {
-        ObjectAnimator.ofFloat(tv, "translationX", 0F, 80F).setDuration(500).start();
-        ObjectAnimator.ofFloat(tv, "translationY", 0F, 60F).setDuration(500).start();
+        ObjectAnimator.ofFloat(tv, "translationX", 0F, 60F).setDuration(400).start();
+        ObjectAnimator.ofFloat(tv, "translationY", 0F, 40F).setDuration(400).start();
     }
 
     //    设置广播
