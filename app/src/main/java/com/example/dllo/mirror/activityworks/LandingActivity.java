@@ -38,7 +38,7 @@ public class LandingActivity extends BaseActivity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.landing_btn_back:
-             
+
                 this.finish();
                 break;
             case R.id.landing_btn_create:
