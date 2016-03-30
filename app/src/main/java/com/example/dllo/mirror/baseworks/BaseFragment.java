@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.dllo.mirror.R;
+
 
 /**
  * Created by jialiang on 16/3/28.
@@ -18,7 +18,7 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(initLayout(), null);
+        return inflater.inflate(initLayout(),null);
     }
 
     @Override
