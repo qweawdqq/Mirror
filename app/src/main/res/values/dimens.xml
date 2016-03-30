@@ -2,4 +2,12 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="landing_phonenum_top">40px</dimen>
+    <dimen name="landing_text_phonenum_size">12sp</dimen>
+    <dimen name="landing_text_land_size">17sp</dimen>
+    <dimen name="landing_mar_top_phone">20px</dimen>
+    <dimen name="login_mar_top_login">24px</dimen>
+    <dimen name="landing_mar_top_image">30px</dimen>
+    <dimen name="landing_mar_top_land">40px</dimen>
+    <dimen name="landing_mar_top_user">50px</dimen>
 </resources>

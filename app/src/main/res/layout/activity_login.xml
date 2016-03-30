@@ -2,54 +2,54 @@
 <com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f1f1f1"
+    android:background="@color/landing_layout_hui"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="30px"
-        android:layout_marginRight="30px"
+        android:layout_marginLeft="@dimen/landing_mar_top_image"
+        android:layout_marginRight="@dimen/landing_mar_top_image"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30px"
-            android:text="创建账号"
-            android:textSize="34px" />
+            android:layout_marginTop="@dimen/landing_mar_top_image"
+            android:text="@string/login_create"
+            android:textSize="@dimen/landing_text_land_size" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20px"
+            android:layout_marginTop="@dimen/landing_mar_top_phone"
             android:background="@mipmap/iv_login_line" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40px"
-            android:text="手机号"
-            android:textSize="24px" />
+            android:layout_marginTop="@dimen/landing_mar_top_land"
+            android:text="@string/login_phonenum"
+            android:textSize="@dimen/landing_text_phonenum_size" />
 
         <EditText
             android:id="@+id/login_et_phoneNum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20px"
+            android:layout_marginTop="@dimen/landing_mar_top_phone"
             android:background="@mipmap/img_phone_num" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30px"
-            android:text="验证码"
-            android:textSize="24px" />
+            android:layout_marginTop="@dimen/landing_mar_top_image"
+            android:text="@string/login_get_code"
+            android:textSize="@dimen/landing_text_phonenum_size" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20px"
+            android:layout_marginTop="@dimen/landing_mar_top_phone"
             android:orientation="horizontal">
 
             <EditText
@@ -65,34 +65,34 @@
                 android:layout_weight="1"
                 android:background="@mipmap/iv_creat_num"
                 android:gravity="center"
-                android:text="发送验证码"
+                android:text="@string/login_send_code"
                 android:textColor="@android:color/white"
-                android:textSize="13sp" />
+                android:textSize="@dimen/landing_text_phonenum_size" />
         </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30px"
-            android:text="设置密码"
-            android:textSize="24px" />
+            android:layout_marginTop="@dimen/landing_mar_top_image"
+            android:text="@string/login_set_proess"
+            android:textSize="@dimen/landing_text_phonenum_size" />
 
         <EditText
             android:id="@+id/login_et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20px"
+            android:layout_marginTop="@dimen/landing_mar_top_phone"
             android:background="@mipmap/img_phone_num" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="@dimen/landing_mar_top_user"
             android:background="@mipmap/iv_creat_num"
             android:gravity="center"
-            android:text="创建账号"
+            android:text="@string/login_create_user"
             android:textColor="@android:color/white"
-            android:textSize="17sp" />
+            android:textSize="@dimen/landing_text_land_size" />
     </LinearLayout>
 
 

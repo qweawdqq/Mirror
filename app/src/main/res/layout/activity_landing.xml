@@ -2,89 +2,121 @@
 <com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f1f1f1">
+    android:background="@color/landing_layout_hui">
+
 
     <LinearLayout
-        style="@style/auto_view_match"
-        android:layout_marginLeft="30px"
-        android:layout_marginRight="30px"
-        android:orientation="vertical">
+        style="@style/landing_view_margin_lr">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
 
-        <TextView
-            style="@style/auto_view_width"
-            android:layout_marginTop="30px"
-            android:text="创建账号"
-            android:textSize="17sp" />
+    >
+    <TextView
+        android:id="@+id/land_creat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/landing_text_creat"
+        android:textColor="@android:color/black"
+        style="@style/landing_view_textsize_creat" />
+    <ImageButton
+        android:id="@+id/landing_btn_back"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@+id/land_creat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/close"
+        />
+</RelativeLayout>
+
 
         <ImageView
             style="@style/auto_view_width"
-            android:layout_marginTop="20px"
+            android:layout_marginTop="@dimen/landing_phonenum_top"
             android:background="@mipmap/iv_login_line" />
 
         <TextView
             style="@style/auto_view_width"
-            android:layout_marginTop="40px"
-            android:text="手机号"
-            android:textSize="12sp" />
+            android:layout_marginTop="@dimen/landing_phonenum_top"
+            android:text="@string/landing_phonenum"
+            android:textSize="@dimen/landing_text_phonenum_size"
+            android:textColor="@android:color/black"
+            />
 
         <EditText
             android:id="@+id/landing_et_phoneNum"
             style="@style/phone_num_white_bgd"
-            android:layout_marginTop="20px" />
+            android:layout_marginTop="@dimen/landing_mar_top_image" />
 
         <TextView
             style="@style/auto_view_width"
-            android:layout_marginTop="20px"
-            android:text="密码" />
+            android:layout_marginTop="@dimen/landing_phonenum_top"
+            android:textSize="@dimen/landing_text_phonenum_size"
+            android:text="@string/landing_proess"
+            android:textColor="@android:color/black"
+            />
 
         <EditText
             android:id="@+id/landing_et_prossed"
             style="@style/phone_num_white_bgd"
-            android:layout_marginTop="20px" />
+            android:layout_marginTop="@dimen/landing_mar_top_image" />
 
         <Button
             android:id="@+id/landing_btn_land"
             style="@style/auto_view_width"
             android:background="@mipmap/img_btn_land"
-            android:layout_marginTop="40px"
-            android:text="登录" />
+            android:layout_marginTop="@dimen/landing_mar_top_land"
+            android:textSize="@dimen/landing_text_land_size"
+            android:text="@string/landing_landing" />
 
         <Button
             android:id="@+id/landing_btn_create"
             style="@style/phone_num_red_bgd"
-            android:layout_marginTop="40px"
-            android:text="创建账号"
+            android:layout_marginTop="@dimen/landing_mar_top_land"
+            android:textSize="@dimen/landing_text_land_size"
+            android:text="@string/landing_create"
             android:textColor="@android:color/white" />
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="120dp"></FrameLayout>
 
-        <TextView
-            style="@style/auto_view_width"
-            android:gravity="center"
-            android:text="使用社交账号" />
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50px"
-            android:gravity="center"
-            android:orientation="horizontal">
+    >
+    <TextView
+        style="@style/auto_view_width"
+        android:gravity="center"
+        android:text="@string/landing_user"
+        android:textSize="@dimen/landing_text_phonenum_size"
+        android:textColor="@android:color/black"
+        android:layout_above="@+id/land_layout"
+        android:layout_marginBottom="@dimen/landing_mar_top_user"
+        />
 
-            <ImageButton
-                android:id="@+id/landing_img_weibo"
-                style="@style/auto_view_wrap"
-                android:layout_marginRight="15dp"
-                android:background="#00000000"
-                android:src="@mipmap/img_weibo" />
+    <LinearLayout
+        android:id="@+id/land_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+       android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/landing_mar_top_user"
+        android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/landing_img_weixin"
-                style="@style/auto_view_wrap"
-                android:layout_marginLeft="15dp"
-                android:background="#00000000"
-                android:src="@mipmap/img_weixin" />
-        </LinearLayout>
+        <ImageButton
+            android:id="@+id/landing_img_weibo"
+            style="@style/auto_view_wrap"
+            android:layout_marginRight="@dimen/landing_mar_top_image"
+            android:background="@color/nothing"
+            android:src="@mipmap/img_weibo" />
+
+        <ImageButton
+            android:id="@+id/landing_img_weixin"
+            style="@style/auto_view_wrap"
+            android:layout_marginLeft="@dimen/landing_mar_top_image"
+            android:background="@color/nothing"
+            android:src="@mipmap/img_weixin" />
+    </LinearLayout>
+</RelativeLayout>
+
     </LinearLayout>
 </com.zhy.autolayout.AutoLinearLayout>

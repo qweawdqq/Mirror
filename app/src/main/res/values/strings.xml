@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Mirror</string>
+    <string name="landing_text_creat">创建账号</string>
+    <string name="landing_phonenum">手机号</string>
+    <string name="landing_landing">登录</string>
+    <string name="landing_create">创建账号</string>
+    <string name="landing_user">使用社交账号</string>
+    <string name="landing_proess">密码</string>
+    <string name="login_create_user">创建账号</string>
+    <string name="login_set_proess">设置密码</string>
+    <string name="login_send_code">发送验证码</string>
+    <string name="login_get_code">验证码</string>
+    <string name="login_phonenum">手机号</string>
+    <string name="login_create">创建账号</string>
 </resources>

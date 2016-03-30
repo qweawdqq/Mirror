@@ -42,4 +42,18 @@
         <item name="android:layout_width">wrap_content</item>
     </style>
 
+    <style name="landing_view_margin_lr" parent="auto_view_match">
+        <item name="android:layout_marginLeft">30px</item>
+        <item name="android:layout_marginRight">30px</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="landing_view_mar_top_creat">
+        <item name="android:layout_marginTop">30px</item>
+    </style>
+
+    <style name="landing_view_textsize_creat" parent="landing_view_mar_top_creat">
+        <item name="android:textSize">@dimen/landing_text_land_size</item>
+    </style>
+
 </resources>

@@ -29,16 +29,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageView style="@style/img_title_line_up" />
-
-            <ImageView style="@style/img_title_line_down" />
-        </LinearLayout>
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="12px"
