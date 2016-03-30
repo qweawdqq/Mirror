@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by dllo on 16/3/30.
  */
-public class HomeFragmentAdapter extends FragmentPagerAdapter {
+public class  HomeFragmentAdapter extends FragmentPagerAdapter {
     private List<Fragment> mFragments;
 
     public HomeFragmentAdapter(FragmentManager fm,List<Fragment> fragments) {

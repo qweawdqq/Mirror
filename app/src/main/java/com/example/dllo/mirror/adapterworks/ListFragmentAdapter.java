@@ -13,7 +13,7 @@ import java.util.ArrayList;
 /**
  * Created by dllo on 16/3/30.
  */
-public class ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapter.ListViewHolder> {
+public class  ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapter.ListViewHolder> {
 
     private ArrayList<String> data;
 
