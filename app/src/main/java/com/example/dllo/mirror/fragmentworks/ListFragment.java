@@ -22,7 +22,7 @@ public class ListFragment extends BaseFragment {
     protected int initLayout() {
         return R.layout.fragment_list;
     }
-
+ 
     @Override
     protected void initView() {
         recyclerView = (RecyclerView) getView().findViewById(R.id.fragment_list_recyclerview);
