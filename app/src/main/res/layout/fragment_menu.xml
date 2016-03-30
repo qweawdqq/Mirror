@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/background"
@@ -14,22 +14,22 @@
         <LinearLayout
             android:id="@+id/fragment_menu_all_line"
             android:layout_width="match_parent"
-            android:layout_height="107.5dp"
+            android:layout_height="215px"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:alpha="0.25"
-                android:paddingTop="74dp"
+                android:paddingTop="148px"
                 android:text="全部分類"
                 android:textColor="#fff"
                 android:textSize="14sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="6dp"
-                android:layout_marginTop="6dp"
+                android:layout_height="12px"
+                android:layout_marginTop="12px"
                 android:background="@mipmap/iv_line_of_title_bottom"
                 android:visibility="invisible" />
         </LinearLayout>
@@ -37,22 +37,22 @@
         <LinearLayout
             android:id="@+id/fragment_menu_plain_glass_line"
             android:layout_width="match_parent"
-            android:layout_height="36dp"
+            android:layout_height="72px"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:alpha="0.25"
-                android:paddingTop="19.5dp"
+                android:paddingTop="39px"
                 android:text="瀏覽平光鏡"
                 android:textColor="#fff"
                 android:textSize="14sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="6dp"
-                android:layout_marginTop="6dp"
+                android:layout_height="12px"
+                android:layout_marginTop="12px"
                 android:background="@mipmap/iv_line_of_title_bottom"
                 android:visibility="invisible" />
         </LinearLayout>
@@ -67,15 +67,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:alpha="0.25"
-                android:paddingTop="19.5dp"
+                android:paddingTop="39px"
                 android:text="瀏覽太陽鏡"
                 android:textColor="#fff"
                 android:textSize="14sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="6dp"
-                android:layout_marginTop="6dp"
+                android:layout_height="12px"
+                android:layout_marginTop="12px"
                 android:background="@mipmap/iv_line_of_title_bottom"
                 android:visibility="invisible" />
         </LinearLayout>
@@ -90,15 +90,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:alpha="0.25"
-                android:paddingTop="19.5dp"
+                android:paddingTop="39px"
                 android:text="專題分享"
                 android:textColor="#fff"
                 android:textSize="14sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="6dp"
-                android:layout_marginTop="6dp"
+                android:layout_height="12px"
+                android:layout_marginTop="12px"
                 android:background="@mipmap/iv_line_of_title_bottom"
                 android:visibility="invisible" />
         </LinearLayout>
@@ -113,15 +113,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:alpha="0.25"
-                android:paddingTop="19.5dp"
+                android:paddingTop="39px"
                 android:text="我的購物車"
                 android:textColor="#fff"
                 android:textSize="14sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="6dp"
-                android:layout_marginTop="6dp"
+                android:layout_height="12px"
+                android:layout_marginTop="12px"
                 android:background="@mipmap/iv_line_of_title_bottom"
                 android:visibility="invisible" />
         </LinearLayout>
@@ -136,15 +136,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:alpha="0.25"
-                android:paddingTop="19.5dp"
+                android:paddingTop="39px"
                 android:text="返回首页"
                 android:textColor="#fff"
                 android:textSize="14sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="6dp"
-                android:layout_marginTop="6dp"
+                android:layout_height="12px"
+                android:layout_marginTop="12px"
                 android:background="@mipmap/iv_line_of_title_bottom"
                 android:visibility="invisible" />
         </LinearLayout>
@@ -159,17 +159,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:alpha="0.25"
-                android:paddingTop="19.5dp"
+                android:paddingTop="39px"
                 android:text="退出"
                 android:textColor="#fff"
                 android:textSize="14sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="6dp"
-                android:layout_marginTop="6dp"
+                android:layout_height="12px"
+                android:layout_marginTop="12px"
                 android:background="@mipmap/iv_line_of_title_bottom"
                 android:visibility="invisible" />
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>
