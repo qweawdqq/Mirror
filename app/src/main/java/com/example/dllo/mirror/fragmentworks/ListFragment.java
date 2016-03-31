@@ -35,10 +35,12 @@ public class ListFragment extends BaseFragment {
 //        gm.setOrientation(LinearLayoutManager.HORIZONTAL);
 //        recyclerView.setLayoutManager(gm);
 
+        // recyclerView管理者   横向
         LinearLayoutManager lm = new LinearLayoutManager(getActivity());
         lm.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(lm);
 
+        // TODO 假数据
         ArrayList<String> data = new ArrayList<>();
         data.add("aaa");
         data.add("sss");
@@ -48,6 +50,7 @@ public class ListFragment extends BaseFragment {
 
         adapter = new ListFragmentAdapter();
 
+        // 添加数据的方法  输入的是一个集合
         adapter.addData(data);
 
         recyclerView.setAdapter(adapter);

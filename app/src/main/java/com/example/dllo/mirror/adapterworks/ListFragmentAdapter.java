@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 /**
  * Created by dllo on 16/3/30.
+ *  ListFragment  recyclerview的适配器
  */
 public class  ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapter.ListViewHolder> {
 
@@ -31,6 +32,7 @@ public class  ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapt
         notifyDataSetChanged();  // 通知适配器  数据是实时更新的
     }
 
+
     // 缓存类
     class ListViewHolder extends RecyclerView.ViewHolder  {
 
@@ -42,8 +44,6 @@ public class  ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapt
         //  缓存类 构造方法
         public ListViewHolder(View itemView) {
             super(itemView);
-            //  直接在这里  绑定组件
-
             iv = (ImageView) itemView.findViewById(R.id.fragment_list_item_iv);
 
         }

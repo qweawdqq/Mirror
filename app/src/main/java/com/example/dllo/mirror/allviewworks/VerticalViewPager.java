@@ -8,6 +8,7 @@ import android.view.View;
 
 /**
  * Created by dllo on 16/3/30.
+ *   封装的自定义 ViewPager
  */
 public class VerticalViewPager extends ViewPager {
 

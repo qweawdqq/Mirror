@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/3/30.
+ *   viewpager的适配器
  */
 public class  HomeFragmentAdapter extends FragmentPagerAdapter {
     private List<Fragment> mFragments;
