@@ -1,11 +1,17 @@
 package com.example.dllo.mirror.fragmentworks;
 
 import android.content.Intent;
-import android.view.View;
-import android.widget.Button;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager;
 
 import com.example.dllo.mirror.R;
+import com.example.dllo.mirror.adapterworks.HomeFragmentAdapter;
+import com.example.dllo.mirror.allviewworks.VerticalViewPager;
 import com.example.dllo.mirror.baseworks.BaseFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by JIALIANG on 16/3/29.
@@ -21,7 +27,7 @@ public class HomeFragment extends BaseFragment  {
 
     @Override
     protected int initLayout() {
-        return R.layout.fragment_home;
+        return R.layout.fragment_home_viewpager;
     }
 
     @Override
