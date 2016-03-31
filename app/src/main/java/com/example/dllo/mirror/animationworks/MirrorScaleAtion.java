@@ -33,7 +33,9 @@ public class MirrorScaleAtion extends ScaleAnimation implements MirrorScaleLinis
     }
 
 
-
+    /**
+     * 设置动画的方法
+     */
     private void setAtion() {
         ation.setFillAfter(false);
         ation.setDuration(300);

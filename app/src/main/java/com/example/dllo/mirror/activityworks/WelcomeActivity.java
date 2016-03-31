@@ -8,7 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import com.example.dllo.mirror.R;
 
 /**
- * Created by dllo on 16/3/30.
+ * Created by jialiang on 16/3/30.
+ * 欢迎页面
  */
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -22,6 +23,7 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
 
         // 使用handler的postDelayed实现延时跳转
+        
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {

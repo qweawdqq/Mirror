@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/landing_layout_hui">
+
+    <LinearLayout style="@style/landing_view_margin_lr">
+
+        <RelativeLayout style="@style/auto_view_width">
+
+            <TextView
+                android:id="@+id/address_creat"
+                style="@style/landing_view_textsize_creat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我所有的地址"
+                android:textColor="@android:color/black" />
+
+            <ImageButton
+                android:id="@+id/address_btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/land_creat"
+                android:layout_alignParentRight="true"
+                android:background="@mipmap/close" />
+        </RelativeLayout>
+        <ImageView
+            style="@style/auto_view_width"
+            android:layout_marginTop="@dimen/landing_mar_top_user"
+            android:background="@mipmap/iv_login_line" />
+        <ImageView style="@style/auto_view_width" />
+        <EditText
+            android:id="@+id/address_et_address"
+            android:layout_width="match_parent"
+            android:layout_height="160px"
+            android:layout_marginTop="@dimen/landing_mar_top_user"
+            android:background="@mipmap/img_address"
+            android:gravity="center"
+            android:hint="添加地址"
+            android:paddingLeft="@dimen/landing_mar_top_phone"
+            android:paddingTop="@dimen/landing_mar_top_phone"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textSize="@dimen/landing_text_order_fifteen" />
+    </LinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

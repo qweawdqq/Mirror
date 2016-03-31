@@ -51,7 +51,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onDestroy();
     }
 
-    //    fragmentmanger  管理与替换视图
+
+    /**
+     * 管理视图的方法
+     */
     private void setLayout() {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction tx = fm.beginTransaction();
@@ -81,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ation.setMirrorScaleLinister();
                 break;
             case R.id.main_iv_land:
-                Intent intent = new Intent(this,LandingActivity.class);
+                Intent intent = new Intent(this,LoginActivity.class);
                 startActivity(intent);
                 break;
         }
