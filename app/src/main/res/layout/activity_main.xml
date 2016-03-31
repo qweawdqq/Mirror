@@ -31,3 +31,6 @@
         android:text="登录"
         android:textColor="@android:color/white" />
 </com.zhy.autolayout.AutoRelativeLayout>
+
+
+
