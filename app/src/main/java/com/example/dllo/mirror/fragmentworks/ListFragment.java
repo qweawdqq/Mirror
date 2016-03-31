@@ -1,5 +1,6 @@
 package com.example.dllo.mirror.fragmentworks;
 
+import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -62,7 +63,9 @@ public class ListFragment extends BaseFragment {
         clickLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO 点击事件
+                Intent intent = new Intent();
+                intent.setAction("activityworks");
+                getActivity().sendBroadcast(intent);
             }
         });
     }
