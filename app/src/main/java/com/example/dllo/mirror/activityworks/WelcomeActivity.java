@@ -1,11 +1,11 @@
-package com.example.dllo.mirror;
+package com.example.dllo.mirror.activityworks;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.dllo.mirror.activityworks.MainActivity;
+import com.example.dllo.mirror.R;
 
 /**
  * Created by dllo on 16/3/30.

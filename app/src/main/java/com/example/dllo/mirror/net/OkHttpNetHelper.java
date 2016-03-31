@@ -16,7 +16,8 @@ public class OkHttpNetHelper {
     // 对于加载网络数据,比如获取网页的内容
     // 请求网络数据的方法
 
-    // post请求,参数是包含在请求体中的,通常这里通过FormEncodingBuilder,添加多个键值对,既然添加多个键值对，就要在用的时候再调用builder往里面add,然后去构造RequestBody,最后完成Request的构造
+    // post请求,参数是包含在请求体中的,通常这里通过FormEncodingBuilder,添加多个键值对,既然添加多个键值对，
+    // 就要在用的时候再调用builder往里面add,然后去构造RequestBody,最后完成Request的构造
     // URL, 指拼接完成后的网址, 已经在常量类里面提出，可以直接用静态常量
     public void getPostDataFromNet(FormEncodingBuilder builder, String URL, final NetListener netListener) {
 

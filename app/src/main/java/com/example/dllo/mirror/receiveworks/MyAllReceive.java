@@ -18,7 +18,6 @@ public class MyAllReceive {
             receive = new MenuBroadReceive();
             return receive;
         } else {
-
             return receive;
         }
     }
