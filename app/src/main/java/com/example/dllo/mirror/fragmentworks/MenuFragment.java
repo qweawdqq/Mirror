@@ -21,6 +21,7 @@ import com.squareup.okhttp.FormEncodingBuilder;
 public class MenuFragment extends BaseFragment implements StaticEntityInterface{
 
     ListView listView;
+    
 //    LinearLayout layout;
     LinearLayout fragment_menu_line;
 
