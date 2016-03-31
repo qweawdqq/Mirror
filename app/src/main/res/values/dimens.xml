@@ -4,10 +4,15 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="landing_phonenum_top">40px</dimen>
     <dimen name="landing_text_phonenum_size">12sp</dimen>
+    <dimen name="landing_text_order_size">13sp</dimen>
+    <dimen name="landing_text_order_min">5sp</dimen>
+    <dimen name="landing_text_order_fifteen">13sp</dimen>
     <dimen name="landing_text_land_size">17sp</dimen>
     <dimen name="landing_mar_top_phone">20px</dimen>
     <dimen name="login_mar_top_login">24px</dimen>
     <dimen name="landing_mar_top_image">30px</dimen>
     <dimen name="landing_mar_top_land">40px</dimen>
     <dimen name="landing_mar_top_user">50px</dimen>
+    <dimen name="landing_mar_order_et">80px</dimen>
+    <dimen name="order_max">228px</dimen>
 </resources>

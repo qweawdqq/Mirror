@@ -1,23 +1,27 @@
 package com.example.dllo.mirror.activityworks;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.baseworks.BaseActivity;
+import com.example.dllo.mirror.intentworks.ToNextActivity;
+import com.example.dllo.mirror.intentworks.ToNextListener;
 
 /**
- * Created by dllo on 16/3/30.
+ * Created by jialiang on 16/3/30.
+ * 登录的界面
  */
-public class LandingActivity extends BaseActivity implements View.OnClickListener {
+public class LoginActivity extends BaseActivity implements View.OnClickListener,ToNextListener {
     private ImageButton back;
     private Button create, land;
 
     @Override
     protected int initLayout() {
-        return R.layout.activity_landing;
+        return R.layout.activity_login;
     }
 
     @Override
@@ -42,7 +46,7 @@ public class LandingActivity extends BaseActivity implements View.OnClickListene
                 this.finish();
                 break;
             case R.id.landing_btn_create:
-
+                ToNextActivity.toNextActivity(TO_SIGN_ACTIVITY,LoginActivity.this,false,null);
                 break;
             case R.id.landing_btn_land:
 

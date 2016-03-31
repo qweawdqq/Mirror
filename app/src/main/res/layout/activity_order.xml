@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/landing_layout_hui">
+
+    <LinearLayout style="@style/landing_view_margin_lr">
+
+        <RelativeLayout style="@style/auto_view_width">
+
+            <TextView
+                android:id="@+id/order_detail"
+                style="@style/landing_view_textsize_creat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order_order"
+                android:textColor="@android:color/black" />
+
+            <ImageButton
+                android:id="@+id/order_btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/order_detail"
+                android:layout_alignParentRight="true"
+                android:background="@mipmap/close" />
+        </RelativeLayout>
+
+
+        <ImageView
+            style="@style/auto_view_width"
+            android:layout_marginTop="@dimen/landing_phonenum_top"
+            android:background="@mipmap/iv_login_line" />
+
+        <ImageView style="@style/auto_view_width" />
+
+        <EditText
+            android:id="@+id/order_et_addressee"
+            style="@style/auto_view_width"
+            android:layout_marginTop="@dimen/landing_mar_top_land"
+            android:background="@mipmap/img_address"
+            android:gravity="top"
+            android:hint="@string/order_someone"
+            android:paddingLeft="@dimen/landing_mar_top_phone"
+            android:paddingTop="@dimen/landing_mar_top_phone"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textSize="@dimen/landing_text_order_fifteen" />
+
+        <EditText
+            android:id="@+id/order_et_address"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/landing_mar_order_et"
+            android:background="@mipmap/img_phone_num"
+            android:gravity="center"
+            android:hint="@string/order_assend"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textSize="@dimen/landing_text_order_size" />
+
+        <LinearLayout
+            style="@style/auto_view_width"
+            android:layout_marginTop="@dimen/landing_mar_top_land"
+            android:background="@mipmap/img_address"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/order_max"
+
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                style="@style/auto_view_width"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/auto_view_width"
+                    android:layout_marginTop="@dimen/landing_mar_top_land"
+                    android:paddingLeft="5dp"
+                    android:text="sadfasd"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/landing_text_order_fifteen" />
+
+                <TextView
+                    style="@style/auto_view_width"
+                    android:layout_marginTop="@dimen/landing_mar_top_image"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:padding="@dimen/landing_text_order_min"
+                    android:text="sadfasdfdsafsdfgsdfgsdgsdgsdgsdgfasfdasfsdfsdfsdfsdfssadfasdfdsafsdfgsdfgsdgsdgsdgsdgfasfdasfsdfsdfsdfsdfssadfasdfdsafsdfgsdfgsdgsdgsdgsdgfasfdasfsdfsdfsdfsdfs"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/landing_text_order_size" />
+
+                <LinearLayout
+                    style="@style/auto_view_width_two"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/landing_mar_top_image"
+                        android:text="￥"
+                        android:textColor="@color/my_pink"
+                        android:textSize="@dimen/landing_text_phonenum_size" />
+
+                    <TextView
+                        style="@style/auto_view_width_two"
+                        android:textColor="@color/my_pink"
+                        android:textSize="@dimen/landing_text_phonenum_size" />
+                </LinearLayout>
+
+                <FrameLayout
+                    style="@style/auto_view_width_two"
+                    android:layout_marginTop="@dimen/landing_mar_top_image"
+                    android:layout_width="wrap_content"></FrameLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/order_btn_order"
+            style="@style/phone_num_red_bgd"
+            android:layout_marginTop="@dimen/landing_mar_top_user"
+            android:text="@string/order_confirm"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/landing_text_land_size" />
+
+
+    </LinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

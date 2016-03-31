@@ -26,7 +26,8 @@ import okhttp3.Call;
 import okhttp3.Response;
 
 /**
- * Created by dllo on 16/3/30.
+ * Created by jialiang on 16/3/30.
+ * 欢迎页面
  */
 public class WelcomeActivity extends BaseActivity implements StaticEntityInterface{
 
@@ -75,6 +76,7 @@ public class WelcomeActivity extends BaseActivity implements StaticEntityInterfa
     protected void initData() {
 
         // 使用handler的postDelayed实现延时跳转
+        
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {

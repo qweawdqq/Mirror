@@ -18,7 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activityworks.MainActivity"></activity>
-        <activity android:name=".activityworks.LandingActivity"></activity>
+        <activity android:name=".activityworks.LoginActivity"></activity>
+        <activity android:name=".activityworks.SignActivity"></activity>
         <meta-data android:name="design_width" android:value="768">
         </meta-data>
         <meta-data android:name="design_height" android:value="1280">
