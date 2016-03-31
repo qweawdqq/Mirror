@@ -11,52 +11,57 @@
         android:src="@mipmap/test" />
 
     <RelativeLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="25dp">
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal">
 
         <!-- TODO 测试文字 -->
         <TextView
-           android:layout_alignParentLeft="true"
-            android:text="SEE CONCEPT"
-            android:textSize="15sp"
-            android:textColor="#000"
             android:id="@+id/fragment_list_item_brand"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="16dp"
-            android:text="$1000"
-            android:textSize="15sp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="@string/test_fragment_list_item_brand"
             android:textColor="#000"
-            android:layout_marginTop="8dp"
+            android:textSize="15sp" />
+
+        <TextView
             android:id="@+id/fragment_list_item_price"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/test_fragment_list_item_price"
+            android:textColor="#000"
+            android:textSize="15sp" />
     </RelativeLayout>
+
     <TextView
         android:id="@+id/fragment_list_item_city"
         android:layout_width="wrap_content"
-        android:text="法国巴黎"
-        android:textSize="12dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:text="@string/test_fragment_list_item_city"
         android:textColor="#333"
-        android:layout_marginLeft="16dp"
-        android:layout_height="wrap_content" />
+        android:textSize="12dp" />
+
     <ImageView
-        android:layout_marginTop="8dp"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:src="@mipmap/iv_black_line"
-        android:layout_height="wrap_content" />
+        android:layout_marginTop="8dp"
+        android:src="@mipmap/iv_black_line" />
+
     <TextView
+        android:id="@+id/fragment_list_item_glasses_name"
         android:layout_width="wrap_content"
-        android:textSize="15sp"
-        android:textColor="#000"
-        android:text="草莓红色圆框阅读镜"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
-        android:layout_height="wrap_content" />
+        android:text="@string/test_fragment_list_item_glasses_name"
+        android:textColor="#000"
+        android:textSize="15sp" />
 </LinearLayout>
