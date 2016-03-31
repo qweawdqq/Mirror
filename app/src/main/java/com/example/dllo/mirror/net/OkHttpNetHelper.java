@@ -35,7 +35,9 @@ public class OkHttpNetHelper {
             @Override
             public void onResponse(Response response) throws IOException {
                 String htmlData = response.body().string();
+                // 回调, 返回给Activity
                 netListener.getSuccess(htmlData);
+
             }
         });
     }
@@ -44,6 +46,8 @@ public class OkHttpNetHelper {
 //    OkHttpNetHelper okHttpNetHelper = new OkHttpNetHelper();
 //    FormEncodingBuilder builder = new FormEncodingBuilder();
 //    builder.add("K","V");
+
+    // 在请求出来数据的时候, 复写runOnUIThread 方法, 在主线程中刷新UI
 
 
 }
