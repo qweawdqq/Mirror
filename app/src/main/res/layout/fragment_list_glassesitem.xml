@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="270dp"
+    android:layout_width="281dp"
     android:layout_height="417dp"
-    android:layout_marginLeft="11dp"
     android:orientation="vertical"
-    android:background="#ffffff">
-
+    android:background="@mipmap/bg">
+<LinearLayout
+    android:orientation="vertical"
+    android:background="#ffffff"
+    android:layout_width="270dp"
+    android:layout_height="match_parent">
     <ImageView
         android:id="@+id/fragment_list_item_iv"
         android:layout_width="270dp"
@@ -66,4 +69,5 @@
         android:text="@string/test_fragment_list_item_glasses_name"
         android:textColor="#000"
         android:textSize="15sp" />
+</LinearLayout>
 </LinearLayout>
