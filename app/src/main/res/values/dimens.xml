@@ -12,7 +12,9 @@
     <dimen name="fragment_list_titleNest_textSize">12sp</dimen>
     <dimen name="fragment_list_recyclerview_height">417dp</dimen>
     <dimen name="fragment_list_recyclerview_marginLeft">11dp</dimen>
-    <dimen name="fragment_list_recyclerview_marginTop">47dp</dimen>
+
+    <!--  -->
+    <dimen name="fragment_list_recyclerview_marginTop">27dp</dimen>
 
 
 </resources>
