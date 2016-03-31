@@ -34,6 +34,7 @@ public class MenuFragment extends BaseFragment implements StaticEntityInterface{
         fragment_menu_line = bindView(R.id.fragment_menu_line);
         listView = bindView(R.id.fragment_menu_listview);
 //        layout = bindView(R.id.fragment_menu_all_line);
+        
     }
 
     @Override
