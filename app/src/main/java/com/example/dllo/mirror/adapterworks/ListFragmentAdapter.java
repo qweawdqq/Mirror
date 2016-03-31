@@ -54,7 +54,7 @@ public class  ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapt
     @Override
     public ListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).
-                inflate(R.layout.fragment_list_glassesitem, null);
+                inflate(R.layout.fragment_list_glassesitem, parent,false);
         return new ListViewHolder(v);
     }
 
