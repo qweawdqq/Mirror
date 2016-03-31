@@ -9,13 +9,14 @@
         android:supportsRtl="true"
         android:name=".baseworks.BaseApplication"
         android:theme="@style/AppTheme">
-        <activity android:name=".activityworks.MainActivity">
+        <activity android:name=".WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activityworks.MainActivity"></activity>
         <activity android:name=".activityworks.LandingActivity"></activity>
         <meta-data android:name="design_width" android:value="768">
         </meta-data>
