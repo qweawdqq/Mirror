@@ -43,10 +43,10 @@ public class HomeFragment extends BaseFragment implements StaticEntityInterface 
     protected void initView() {
 
         viewPager = bindView(R.id.fragment_home_viewpager);
-//        fragments = new ArrayList<>();
-//        fragments.add(new ListFragment());
-//        fragments.add(new ListFragment());
-//        fragments.add(new ListFragment());
+        fragments = new ArrayList<>();
+        fragments.add(new ListFragment());
+        fragments.add(new ListFragment());
+        fragments.add(new ListFragment());
 
     }
 

@@ -28,6 +28,6 @@ public class  HomeFragmentAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         // TODO Auto-generated method stub
-        return mFragments.size();
+        return  mFragments.size()>0?mFragments.size():0;
     }
 }

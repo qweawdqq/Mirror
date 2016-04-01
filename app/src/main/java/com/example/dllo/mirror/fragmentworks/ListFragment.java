@@ -17,14 +17,13 @@ import java.util.ArrayList;
 /**
  * Created by dllo on 16/3/30.
  */
-public class ListFragment extends BaseFragment implements View.OnClickListener {
-private LinearLayout layout;
+public class ListFragment extends BaseFragment {
+    private LinearLayout layout;
     private RecyclerView recyclerView;
     private ListFragmentAdapter adapter;
 
     private LinearLayout clickLayout;
     GoodsListBean bean;
-
 
 
     @Override
@@ -36,10 +35,10 @@ private LinearLayout layout;
     protected void initView() {
 
         recyclerView = bindView(R.id.fragment_list_recyclerview);
-        clickLayout=bindView(R.id.fragment_list_click);
+        clickLayout = bindView(R.id.fragment_list_click);
 
         recyclerView = (RecyclerView) getView().findViewById(R.id.fragment_list_recyclerview);
-        layout = bindView(R.id.layout_layout);
+
 
     }
 
@@ -63,7 +62,7 @@ private LinearLayout layout;
         data.add("fff");
         data.add("ggg");
 
-        
+
         adapter = new ListFragmentAdapter();
 
         // 添加数据的方法  输入的是一个集合
@@ -81,7 +80,7 @@ private LinearLayout layout;
             }
         });
 
-        layout.setOnClickListener(this);
+
     }
 
     public void setBroadReveice() {
@@ -90,9 +89,5 @@ private LinearLayout layout;
         getActivity().sendBroadcast(intent);
     }
 
-    @Override
-    public void onClick(View v) {
-        setBroadReveice();
 
-    }
 }
