@@ -8,10 +8,12 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.baseworks.BaseActivity;
 import com.example.dllo.mirror.bean.WelcomeBean;
+import com.example.dllo.mirror.net.NetConnectionStatus;
 import com.example.dllo.mirror.net.NetListener;
 import com.example.dllo.mirror.net.OkHttpNetHelper;
 import com.example.dllo.mirror.normalstatic.StaticEntityInterface;
@@ -29,20 +31,23 @@ import okhttp3.Response;
  * Created by jialiang on 16/3/30.
  * 欢迎页面
  */
-public class WelcomeActivity extends BaseActivity implements StaticEntityInterface{
+public class WelcomeActivity extends BaseActivity implements StaticEntityInterface {
 
     private ImageView iv;
     private final long SPLASH_LENGTH = 2000;
     Handler handler = new Handler();
+    private boolean netConnection;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        netConnection = NetConnectionStatus.getNetContectStatus(this);
 
         handler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                WelcomeBean bean = new Gson().fromJson(msg.obj.toString(),WelcomeBean.class);
-                Log.i("====",bean.getImg());
+                WelcomeBean bean = new Gson().fromJson(msg.obj.toString(), WelcomeBean.class);
+                Log.i("====", bean.getImg());
                 //显示图片的配置
                 DisplayImageOptions options = new DisplayImageOptions.Builder()
                         .showImageOnLoading(R.mipmap.ic_launcher)   //加载过程中的图片
@@ -51,9 +56,13 @@ public class WelcomeActivity extends BaseActivity implements StaticEntityInterfa
                         .cacheOnDisk(true)//是否放到硬盘缓存中
                         .bitmapConfig(Bitmap.Config.RGB_565)//图片的类型
                         .build();//创建
-
-                ImageLoader.getInstance().displayImage(bean.getImg(), iv, options);//参数1  是图片网址 ,参数2 是图片窗口 imgview,参数3 是上面创建的配置
-
+                if (netConnection) {
+                    ImageLoader.getInstance().displayImage(bean.getImg(), iv, options);
+                    //参数1  是图片网址 ,参数2 是图片窗口 imgview,参数3 是上面创建的配置
+                } else {
+                    ImageLoader.getInstance().getDiskCache().
+                            get("http://pic1.zhimg.com/e1cc747cbf2076a378d2fe0f8c3b2e20.jpg_1080x1701");
+                }
 
 
                 return false;
@@ -76,7 +85,7 @@ public class WelcomeActivity extends BaseActivity implements StaticEntityInterfa
     protected void initData() {
 
         // 使用handler的postDelayed实现延时跳转
-        
+
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -90,7 +99,7 @@ public class WelcomeActivity extends BaseActivity implements StaticEntityInterfa
             @Override
             public Object parseNetworkResponse(Response response) throws Exception {
                 String body = response.body().string();
-                Log.d("----",body);
+                Log.d("----", body);
                 Message message = new Message();
                 message.obj = body;
                 handler.sendMessage(message);
@@ -110,8 +119,6 @@ public class WelcomeActivity extends BaseActivity implements StaticEntityInterfa
         });
 
     }
-
-
 
 
 }

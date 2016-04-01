@@ -44,7 +44,7 @@
             />
 
         <EditText
-            android:id="@+id/landing_et_phoneNum"
+            android:id="@+id/login_et_phoneNum"
             style="@style/phone_num_white_bgd"
             android:layout_marginTop="@dimen/landing_mar_top_image" />
 
@@ -57,7 +57,7 @@
             />
 
         <EditText
-            android:id="@+id/landing_et_prossed"
+            android:id="@+id/login_et_prossed"
             style="@style/phone_num_white_bgd"
             android:layout_marginTop="@dimen/landing_mar_top_image" />
 
@@ -103,14 +103,14 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/landing_img_weibo"
+            android:id="@+id/login_img_weibo"
             style="@style/auto_view_wrap"
             android:layout_marginRight="@dimen/landing_mar_top_image"
             android:background="@color/nothing"
             android:src="@mipmap/img_weibo" />
 
         <ImageButton
-            android:id="@+id/landing_img_weixin"
+            android:id="@+id/login_img_weixin"
             style="@style/auto_view_wrap"
             android:layout_marginLeft="@dimen/landing_mar_top_image"
             android:background="@color/nothing"

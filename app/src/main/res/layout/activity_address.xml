@@ -20,7 +20,7 @@
                 android:id="@+id/address_btn_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/land_creat"
+                android:layout_alignBottom="@+id/address_creat"
                 android:layout_alignParentRight="true"
                 android:background="@mipmap/close" />
         </RelativeLayout>
