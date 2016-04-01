@@ -16,5 +16,23 @@
     <!--  -->
     <dimen name="fragment_list_recyclerview_marginTop">27dp</dimen>
 
+    <dimen name="fragment_list_glassesitem_width">281dp</dimen>
+    <dimen name="fragment_list_glassesitem_height">417dp</dimen>
+    <dimen name="fragment_list_glassesitem_linearlayout_width">270dp</dimen>
+    <dimen name="fragment_list_glassesitem_iv_width">270dp</dimen>
+    <dimen name="fragment_list_glassesitem_iv_height">297dp</dimen>
+    <dimen name="fragment_list_glassesitem_relativeLayout_marginLeft">16dp</dimen>
+    <dimen name="fragment_list_glassesitem_relativeLayout_marginTop">25dp</dimen>
+    <dimen name="fragment_list_glassesitem_brand_textSize">15sp</dimen>
+<dimen name="fragment_list_glassesitem_price_textSize">15sp</dimen>
+    <dimen name="fragment_list_glassesitem_price_marginRight">16dp</dimen>fragment_list_glassesitem_city
+    <dimen name="fragment_list_glassesitem_city_marginLeft">16dp</dimen>
+    <dimen name="fragment_list_glassesitem_city_marginTop">8dp</dimen>
+    <dimen name="fragment_list_glassesitem_city_textSize">12dp</dimen>
+    <dimen name="fragment_list_glassesitem_line_marginLeft">16dp</dimen>
+    <dimen name="fragment_list_glassesitem_line_marginTop">8dp</dimen>
+    <dimen name="fragment_list_item_glasses_name_marginLeft">16dp</dimen>
+    <dimen name="fragment_list_item_glasses_name_marginTop">8dp</dimen>
+    <dimen name="fragment_list_item_glasses_name_textSize">15sp</dimen>
 
 </resources>
