@@ -55,6 +55,7 @@ private LinearLayout layout;
         data.add("fff");
         data.add("ggg");
 
+        
         adapter = new ListFragmentAdapter();
 
         // 添加数据的方法  输入的是一个集合
