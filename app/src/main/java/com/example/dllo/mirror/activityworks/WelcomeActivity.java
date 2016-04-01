@@ -56,10 +56,10 @@ public class WelcomeActivity extends BaseActivity implements StaticEntityInterfa
                         .cacheOnDisk(true)//是否放到硬盘缓存中
                         .bitmapConfig(Bitmap.Config.RGB_565)//图片的类型
                         .build();//创建
-               
+                if (netConnection) {
                     ImageLoader.getInstance().displayImage(bean.getImg(), iv, options);
                     //参数1  是图片网址 ,参数2 是图片窗口 imgview,参数3 是上面创建的配置
-
+                }
 
 
                 return false;
