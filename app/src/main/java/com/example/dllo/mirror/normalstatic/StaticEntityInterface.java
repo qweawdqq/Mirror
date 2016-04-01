@@ -8,6 +8,15 @@ public interface StaticEntityInterface {
     // 总接口 拼接网址头  START
     String NET_START = "http://api101.test.mirroreye.cn/";
 
+
+    /**
+     * 菜单接口 : 此接口 接口文档没给,从官方软件抓包得到
+     * 输入参数  < 用户凭证 token; 用户id  uid; 设备类型  device_type; 请求条数 page; 最后一条数据插入时间 last_time  >
+     */
+
+    String MENU_LIST = NET_START + "index.php/index/menu_list";
+
+
     /**
      * 故事列表
      * 输入参数  < 用户凭证 token; 用户id  uid; 设备类型  device_type; 请求条数 page; 最后一条数据插入时间 last_time  >

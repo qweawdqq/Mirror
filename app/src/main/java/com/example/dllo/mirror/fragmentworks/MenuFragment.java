@@ -8,27 +8,32 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.dllo.mirror.R;
+import com.example.dllo.mirror.activityworks.MainActivity;
+import com.example.dllo.mirror.adapterworks.MenuFragmentAdapter;
 import com.example.dllo.mirror.baseworks.BaseFragment;
+import com.example.dllo.mirror.bean.MenuFragmentBean;
 import com.example.dllo.mirror.net.NetListener;
 import com.example.dllo.mirror.net.OkHttpNetHelper;
 import com.example.dllo.mirror.normalstatic.StaticEntityInterface;
+import com.google.gson.Gson;
 import com.squareup.okhttp.FormEncodingBuilder;
 
 
 /**
  * Created by dllo on 16/3/29.
  */
-public class MenuFragment extends BaseFragment implements StaticEntityInterface{
+public class MenuFragment extends BaseFragment implements StaticEntityInterface {
 
-    ListView listView;
-    
+    private ListView listView;
+    private MenuFragmentAdapter adapter;
+    MenuFragmentBean bean;
 
-//    LinearLayout layout;
+    //    LinearLayout layout;
     LinearLayout fragment_menu_line;
 
     @Override
     protected int initLayout() {
-        return R.layout.fragment;
+        return R.layout.fragment_menu;
     }
 
     @Override
@@ -43,16 +48,32 @@ public class MenuFragment extends BaseFragment implements StaticEntityInterface{
     protected void initData() {
 //        layout.setOnClickListener(this);
 
+        // ******* 请求网络数据并解析 ******* //
         OkHttpNetHelper httpNetHelper = new OkHttpNetHelper();
         FormEncodingBuilder builder = new FormEncodingBuilder();
-        builder.add(TOKEN,"");
-        builder.add(DEVICE_TYPE,"2");
-        builder.add(PAGE,"");
-        builder.add(LAST_TIME,"");
-        httpNetHelper.getPostDataFromNet(builder, MRTJ, new NetListener() {
+        builder.add(TOKEN, "");
+//        builder.add(UID,"");
+        builder.add(DEVICE_TYPE, "2");
+//        builder.add(PAGE,"");
+//        builder.add(LAST_TIME,"");
+//        builder.add(GOODS_LIST_CATEGORY_ID,"");
+//        builder.add(GOODS_LIST_VERSION,"");
+
+        httpNetHelper.getPostDataFromNet(builder, MENU_LIST, new NetListener() {
             @Override
-            public void getSuccess(String s) {
-                Log.d("数据",s);
+            public void getSuccess(final String s) {
+                Log.d("数据", s);
+
+                // 指出Fragment 的寄主activity, 更新UI需要主线程来更新,所以复写Activity 的这个方法更新,
+                // 另一个方法是用Handler的对象,用handleMessage回调函数调用更新界面显示的函数
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        bean = new Gson().fromJson(s.toString(), MenuFragmentBean.class);
+                        adapter = new MenuFragmentAdapter(bean);
+                        listView.setAdapter(adapter);
+                    }
+                });
 
             }
 
@@ -62,15 +83,13 @@ public class MenuFragment extends BaseFragment implements StaticEntityInterface{
             }
         });
     }
-
+    // ********************************//
 
 //    @Override
 //    public void onResume() {
 //       setAnimation(fragment_menu_line);
 //        super.onResume();
 //    }
-
-
 
 
     //    设置动画

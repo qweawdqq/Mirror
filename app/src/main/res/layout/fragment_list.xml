@@ -6,8 +6,12 @@
 
     <!-- 上方点击标签 -->
     <LinearLayout
+
         android:id="@+id/fragment_list_click"
         android:layout_width="wrap_content"
+
+   
+
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/fragment_list_click_marginLeft"
         android:layout_marginTop="@dimen/fragment_list_click_marginTop"

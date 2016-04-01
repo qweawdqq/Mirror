@@ -4,11 +4,18 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.adapterworks.HomeFragmentAdapter;
 import com.example.dllo.mirror.allviewworks.VerticalViewPager;
 import com.example.dllo.mirror.baseworks.BaseFragment;
+import com.example.dllo.mirror.bean.GoodsListBean;
+import com.example.dllo.mirror.net.NetListener;
+import com.example.dllo.mirror.net.OkHttpNetHelper;
+import com.example.dllo.mirror.normalstatic.StaticEntityInterface;
+import com.google.gson.Gson;
+import com.squareup.okhttp.FormEncodingBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,13 +24,15 @@ import java.util.List;
  * Created by JIALIANG on 16/3/29.
  * 主页的fragment
  */
-public class HomeFragment extends BaseFragment  {
+public class HomeFragment extends BaseFragment implements StaticEntityInterface {
     //    private Button btn_home;
     private VerticalViewPager viewPager;
     private HomeFragmentAdapter adapter;
     private List<Fragment> fragments;
     private float startY;
     private int viewpagerPosition;
+
+    GoodsListBean data;
 
     @Override
     protected int initLayout() {
@@ -34,15 +43,17 @@ public class HomeFragment extends BaseFragment  {
     protected void initView() {
 
         viewPager = bindView(R.id.fragment_home_viewpager);
-        fragments = new ArrayList<>();
-        fragments.add(new ListFragment());
-        fragments.add(new ListFragment());
-        fragments.add(new ListFragment());
+//        fragments = new ArrayList<>();
+//        fragments.add(new ListFragment());
+//        fragments.add(new ListFragment());
+//        fragments.add(new ListFragment());
 
     }
 
     @Override
     protected void initData() {
+
+        getData();
 
         FragmentManager fm = getActivity().getSupportFragmentManager();
         adapter = new HomeFragmentAdapter(fm, fragments);
@@ -71,6 +82,7 @@ public class HomeFragment extends BaseFragment  {
             }
         });
 
+
     }
 
 
@@ -80,6 +92,39 @@ public class HomeFragment extends BaseFragment  {
         getActivity().sendBroadcast(intent);
     }
 
+    public void getData(){
+        // 获取网络数据
+        OkHttpNetHelper helper = new OkHttpNetHelper();
+        FormEncodingBuilder builder = new FormEncodingBuilder();
+        builder.add(DEVICE_TYPE, "2");
+        builder.add(PAGE,"");
+        builder.add(LAST_TIME,"");
+        builder.add(GOODS_LIST_CATEGORY_ID,"");
+        builder.add(GOODS_LIST_VERSION,"");
+        helper.getPostDataFromNet(builder, GOODS_LIST, new NetListener() {
+            @Override
+            public void getSuccess(final String s) {
+
+                Log.i("+++",s);
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        data = new Gson().fromJson(s.toString(),GoodsListBean.class);
+                        fragments = new ArrayList<Fragment>();
+                        for (int i = 0; i < data.getData().getList().size();i++){
+                            fragments.add(new ListFragment());
+                        }
+
+                    }
+                });
+            }
+
+            @Override
+            public void getFail(String s) {
+
+            }
+        });
+    }
 
 
 }
