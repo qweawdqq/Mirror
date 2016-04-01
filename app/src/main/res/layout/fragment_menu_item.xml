@@ -7,21 +7,25 @@
 
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
-        android:layout_height="106px"
-        android:orientation="vertical">
+        android:layout_height="@dimen/fragment_menu_item_autolinearlayout_height"
+        android:orientation="vertical"
+        >
 
         <TextView
             android:id="@+id/fragment_menu_item_tv_tab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="39px"
-            android:text="text"
-            android:textSize="28px" />
+            android:layout_marginTop="@dimen/fragment_menu_item_tv_margintop"
+            android:textSize="@dimen/fragment_menu_item_tv_size"
+            android:textColor="@color/fragment_menu_textcolor"
+            android:alpha="0.25"/>
 
         <ImageView
             android:id="@+id/fragment_menu_iv"
             android:layout_width="wrap_content"
-            android:layout_height="12px"
-            android:layout_marginTop="22px" />
+            android:layout_height="@dimen/fragment_menu_item_iv_height"
+            android:layout_marginTop="@dimen/fragment_menu_item_iv_margin_top"
+            android:background="@mipmap/iv_line_of_title_bottom"
+            android:visibility="invisible"/>
     </com.zhy.autolayout.AutoLinearLayout>
 </com.zhy.autolayout.AutoLinearLayout>

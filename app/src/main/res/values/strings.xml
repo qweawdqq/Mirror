@@ -17,4 +17,6 @@
     <string name="order_assend">填写地址</string>
     <string name="order_someone">请填写收件人信息</string>
     <string name="order_confirm">确认下单</string>
+    <string name="fragment_menu_autolinearlayoutnext_tv_text">返回首頁</string>
+    <string name="fragment_menu_autolinearlayoutthird_tv_text">退出</string>
 </resources>

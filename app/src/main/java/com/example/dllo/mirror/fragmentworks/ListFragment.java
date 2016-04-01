@@ -1,22 +1,28 @@
 package com.example.dllo.mirror.fragmentworks;
 
+import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.adapterworks.ListFragmentAdapter;
 import com.example.dllo.mirror.baseworks.BaseFragment;
+import com.example.dllo.mirror.bean.GoodsListBean;
 
 import java.util.ArrayList;
 
 /**
  * Created by dllo on 16/3/30.
  */
-public class ListFragment extends BaseFragment {
-
+public class ListFragment extends BaseFragment implements View.OnClickListener {
+private LinearLayout layout;
     private RecyclerView recyclerView;
     private ListFragmentAdapter adapter;
+    GoodsListBean bean;
+
 
     @Override
     protected int initLayout() {
@@ -26,6 +32,7 @@ public class ListFragment extends BaseFragment {
     @Override
     protected void initView() {
         recyclerView = (RecyclerView) getView().findViewById(R.id.fragment_list_recyclerview);
+        layout = bindView(R.id.layout_layout);
     }
 
     @Override
@@ -54,5 +61,17 @@ public class ListFragment extends BaseFragment {
         adapter.addData(data);
 
         recyclerView.setAdapter(adapter);
+        layout.setOnClickListener(this);
+    }
+
+    public void setBroadReveice() {
+        Intent intent = new Intent();
+        intent.setAction("activityworks");
+        getActivity().sendBroadcast(intent);
+    }
+
+    @Override
+    public void onClick(View v) {
+        setBroadReveice();
     }
 }

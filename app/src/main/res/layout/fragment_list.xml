@@ -6,6 +6,7 @@
 
     <!-- 上方点击标签 -->
     <LinearLayout
+        android:id="@+id/layout_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
