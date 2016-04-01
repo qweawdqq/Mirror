@@ -1,8 +1,11 @@
 package com.example.dllo.mirror.fragmentworks;
 
+import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.adapterworks.ListFragmentAdapter;
@@ -17,6 +20,7 @@ public class ListFragment extends BaseFragment {
 
     private RecyclerView recyclerView;
     private ListFragmentAdapter adapter;
+    private LinearLayout clickLayout;
 
     @Override
     protected int initLayout() {
@@ -25,7 +29,8 @@ public class ListFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-        recyclerView = (RecyclerView) getView().findViewById(R.id.fragment_list_recyclerview);
+        recyclerView = bindView(R.id.fragment_list_recyclerview);
+        clickLayout=bindView(R.id.fragment_list_click);
     }
 
     @Override
@@ -54,5 +59,14 @@ public class ListFragment extends BaseFragment {
         adapter.addData(data);
 
         recyclerView.setAdapter(adapter);
+
+        clickLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction("activityworks");
+                getActivity().sendBroadcast(intent);
+            }
+        });
     }
 }

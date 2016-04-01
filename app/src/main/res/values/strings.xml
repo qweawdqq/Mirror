@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Mirror</string>
+
     <string name="landing_text_creat">创建账号</string>
     <string name="landing_phonenum">手机号</string>
     <string name="landing_landing">登录</string>
@@ -17,4 +18,12 @@
     <string name="order_assend">填写地址</string>
     <string name="order_someone">请填写收件人信息</string>
     <string name="order_confirm">确认下单</string>
+
+    <string name="test_fragment_list_title">浏览平光眼镜</string>
+    <string name="test_fragment_list_titleNest">显示排列为 最新推荐</string>
+    <string name="test_fragment_list_item_brand">SEE CONCEPT</string>
+    <string name="test_fragment_list_item_city">法国巴黎</string>
+    <string name="test_fragment_list_item_price">$1000</string>
+    <string name="test_fragment_list_item_glasses_name">草莓红色圆框阅读镜</string>
+
 </resources>
