@@ -91,7 +91,7 @@
                     android:textSize="@dimen/landing_text_order_size" />
 
                 <LinearLayout
-                    style="@style/auto-view_width_two"
+                    style="@style/auto_view_width_two"
                     android:orientation="horizontal"
                     android:layout_width="wrap_content">
 
@@ -104,13 +104,13 @@
                         android:textSize="@dimen/landing_text_phonenum_size" />
 
                     <TextView
-                        style="@style/auto-view_width_two"
+                        style="@style/auto_view_width_two"
                         android:textColor="@color/my_pink"
                         android:textSize="@dimen/landing_text_phonenum_size" />
                 </LinearLayout>
 
                 <FrameLayout
-                    style="@style/auto-view_width_two"
+                    style="@style/auto_view_width_two"
                     android:layout_marginTop="@dimen/landing_mar_top_image"
                     android:layout_width="wrap_content"></FrameLayout>
             </LinearLayout>

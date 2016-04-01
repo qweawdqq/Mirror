@@ -4,9 +4,8 @@
     android:layout_height="match_parent">
 
 
-    <TextView
-        android:text="WELCOME TO MIRROR"
+    <ImageView
+        android:id="@+id/activity_welcome_iv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"/>
+        android:layout_height="match_parent" />
 </LinearLayout>
