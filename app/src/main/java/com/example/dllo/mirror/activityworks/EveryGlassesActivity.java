@@ -53,7 +53,7 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
 //        buttonLayout.setAnimation(animation);
 
         // 属性动画  刚进入页面时就隐藏到屏幕左边
-        ObjectAnimator.ofFloat(buttonLayout, "translationX", 0, -800).setDuration(100).start();
+        ObjectAnimator.ofFloat(buttonLayout, "translationX", 0, -2000).setDuration(100).start();
 
         // 两层滑动的 scrollView
         scrollViewFront = bindView(R.id.everyglasses_scrollView_front);
@@ -131,19 +131,19 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
 
 
             // 滑动按钮飞入.飞出
-            if (y > 2700) {
+            if (y > 2900) {
                 if (chanceY > 0) {
                     if (btnBL == false) {
-                        ObjectAnimator.ofFloat(buttonLayout, "translationX", -800, 0).setDuration(1000).start();
+                        ObjectAnimator.ofFloat(buttonLayout, "translationX", -2000, 0).setDuration(1000).start();
                         btnBL = true;
                     }
                 }
 
             }
-            if (y < 2650) {
+            if (y < 2850) {
                 if (chanceY < 0) {
                     if (btnBL == true) {
-                        ObjectAnimator.ofFloat(buttonLayout, "translationX", 0, -800).setDuration(1000).start();
+                        ObjectAnimator.ofFloat(buttonLayout, "translationX", 0, -2000).setDuration(1000).start();
                         btnBL = false;
                     }
                 }
