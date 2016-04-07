@@ -47,7 +47,7 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
         buttonLayout = bindView(R.id.everyglasses_button_layout);
         ivBack = bindView(R.id.everyglasses_button_back);
         ivBuy = bindView(R.id.everyglasses_button_buy);
-        tvToPic = bindView(R.id.everyglasses_button_pic);
+        tvToPic = bindView(R.id.everyglasses_button_topic);
 
 //        Animation animation = AnimationUtils.loadAnimation(this, R.anim.translate_create);
 //        buttonLayout.setAnimation(animation);
@@ -167,7 +167,7 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
                 // TODO 跳转
                 Toast.makeText(EveryGlassesActivity.this, "点击了返回按钮", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.everyglasses_button_pic:
+            case R.id.everyglasses_button_topic:
                 Toast.makeText(EveryGlassesActivity.this, "点击了佩戴图集按钮", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.everyglasses_button_buy:
