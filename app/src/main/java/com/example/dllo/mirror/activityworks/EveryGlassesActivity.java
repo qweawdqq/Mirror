@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.dllo.mirror.FullyGridLayoutManager;
 import com.example.dllo.mirror.ObservableScrollView;
+import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.ScrollViewListener;
 import com.example.dllo.mirror.adapterworks.EveryGlassesBackRecyclerViewAdapter;
 import com.example.dllo.mirror.adapterworks.EveryGlassesFrontRecyclerViewAdapter;
