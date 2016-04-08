@@ -7,7 +7,7 @@
     tools:context=".EveryGlassesActivity">
 
     <!-- 背景布局 -->
-    <com.lanou.dllo.show.ObservableScrollView
+    <com.example.dllo.mirror.ObservableScrollView
         android:id="@+id/everyglasses_scrollView_back"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -37,14 +37,15 @@
                 <RelativeLayout
                     android:id="@+id/everyglasses_top_layout"
                     android:layout_width="@dimen/activity_everyglasses_layout_top_width"
-                    android:layout_height="@dimen/activity_everyglasses_layout_top_height"
+                    android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_marginTop="@dimen/activity_everyglasses_layout_top_marginTop"
                     android:background="@mipmap/iv_share_frame">
 
                     <TextView
                         android:id="@+id/everyglasses_englishTitle"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:gravity="center"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="@dimen/activity_everyglasses_englishTitle_marginTop"
@@ -97,6 +98,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/everyglasses_glassesContent"
                         android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="@dimen/activity_everyglasses_layout_price_marginBottom"
                         android:layout_marginTop="@dimen/activity_everyglasses_layout_price_marginTop"
                         android:orientation="horizontal">
 
@@ -196,11 +198,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-    </com.lanou.dllo.show.ObservableScrollView>
+    </com.example.dllo.mirror.ObservableScrollView>
 
 
     <!-- 前景布局 -->
-    <com.lanou.dllo.show.ObservableScrollView
+    <com.example.dllo.mirror.ObservableScrollView
         android:id="@+id/everyglasses_scrollView_front"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -224,10 +226,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/activity_everyglasses_front_bottom_layout_height" />
         </LinearLayout>
-    </com.lanou.dllo.show.ObservableScrollView>
+    </com.example.dllo.mirror.ObservableScrollView>
 
 
-    <!-- TODO 按钮飞入-->
+
     <!-- 按钮 -->
     <RelativeLayout
         android:id="@+id/everyglasses_button_layout"

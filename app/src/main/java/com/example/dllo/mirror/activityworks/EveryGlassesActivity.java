@@ -1,7 +1,10 @@
 package com.example.dllo.mirror.activityworks;
 
 import android.animation.ObjectAnimator;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -9,17 +12,25 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dllo.mirror.Bean;
 import com.example.dllo.mirror.FullyGridLayoutManager;
+import com.example.dllo.mirror.NetListener;
 import com.example.dllo.mirror.ObservableScrollView;
+import com.example.dllo.mirror.OkHttpNetHelper;
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.ScrollViewListener;
+import com.example.dllo.mirror.StaticEntityInterface;
 import com.example.dllo.mirror.adapterworks.EveryGlassesBackRecyclerViewAdapter;
 import com.example.dllo.mirror.adapterworks.EveryGlassesFrontRecyclerViewAdapter;
 import com.example.dllo.mirror.baseworks.BaseActivity;
+import com.google.gson.Gson;
+import com.squareup.okhttp.FormEncodingBuilder;
 
 import java.util.ArrayList;
 
-public class EveryGlassesActivity extends BaseActivity implements ScrollViewListener, View.OnClickListener {
+
+public class EveryGlassesActivity extends BaseActivity implements ScrollViewListener,
+        View.OnClickListener, StaticEntityInterface {
 
     private ObservableScrollView scrollViewFront = null;
     private ObservableScrollView scrollViewBack = null;
@@ -37,6 +48,14 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
     private RelativeLayout buttonLayout;
     private boolean btnBL = false;
 
+    private TextView tvEnglishTitle, tvName, tvContent, tvPrice, tvNameBeforerecyclerview;
+
+    // 用于接收recyclerview子布局的位置 的id   跳转到哪个二级页面
+    private int id;
+    private Bean bean;// 单个页面的数据类
+
+    private Handler handler;
+
 
     @Override
     protected int initLayout() {
@@ -49,6 +68,12 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
         ivBack = bindView(R.id.everyglasses_button_back);
         ivBuy = bindView(R.id.everyglasses_button_buy);
         tvToPic = bindView(R.id.everyglasses_button_topic);
+        tvEnglishTitle = bindView(R.id.everyglasses_englishTitle);
+        tvName = bindView(R.id.everyglasses_name);
+        tvContent = bindView(R.id.everyglasses_glassesContent);
+        tvPrice = bindView(R.id.everyglasses_price);
+        tvNameBeforerecyclerview = bindView(R.id.everyglasses_name_beforerecyclerview);
+
 
 //        Animation animation = AnimationUtils.loadAnimation(this, R.anim.translate_create);
 //        buttonLayout.setAnimation(animation);
@@ -68,12 +93,18 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
         // 透明度渐变的地方
         colorChanceRelativeLayout = bindView(R.id.everyglasses_color_chance_relativeLayout);
         colorChanceLinearLayout = bindView(R.id.everyglasses_color_chance_linearLayout);
+        // 启动时就隐藏到屏幕外
+        colorChanceRelativeLayout.setAlpha((float) 0.8);
+        colorChanceLinearLayout.setAlpha((float) 0.8);
 
-
+        ivBack.setOnClickListener(this);
+        tvToPic.setOnClickListener(this);
+        ivBuy.setOnClickListener(this);
     }
 
     @Override
     protected void initData() {
+
         backAdapter = new EveryGlassesBackRecyclerViewAdapter();
         frontAdapter = new EveryGlassesFrontRecyclerViewAdapter();
 
@@ -82,26 +113,71 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
         FullyGridLayoutManager frontManager = new FullyGridLayoutManager(this, 1);
         recyclerViewFront.setLayoutManager(frontManager);
 
-        // TODO 假数据
-        ArrayList<String> data = new ArrayList<>();
-        data.add("aaa");
-        data.add("sss");
-        data.add("ddd");
-        data.add("fff");
-        data.add("ggg");
-        // 添加数据的方法  输入的是一个集合
-        backAdapter.addData(data);
-        frontAdapter.addData(data);
 
-        recyclerViewBack.setAdapter(backAdapter);
-        recyclerViewFront.setAdapter(frontAdapter);
+        String id = getIntent().getStringExtra("id");
+        Log.i("8888888888888888", "id    "+id);
 
-        colorChanceRelativeLayout.setAlpha((float) 0.8);
-        colorChanceLinearLayout.setAlpha((float) 0.8);
+        OkHttpNetHelper httpNetHelper = new OkHttpNetHelper();
 
-        ivBack.setOnClickListener(this);
-        tvToPic.setOnClickListener(this);
-        ivBuy.setOnClickListener(this);
+        FormEncodingBuilder builder = new FormEncodingBuilder();
+        // 解析数据
+        builder.add("token", "");
+        builder.add("device_type", "3");
+        builder.add("goods_id", id);
+
+
+
+        httpNetHelper.getPostDataFromNet(builder, GOODS_INFO, new NetListener() {
+            @Override
+            public void getSuccess(String s) {
+
+//                Log.i("8888888888888888", "解析成功");
+
+
+                Gson gson = new Gson();
+                bean = gson.fromJson(s.toString(), Bean.class);
+
+                Log.i("8888888888888888", s);
+                Log.i("8888888888888888", bean.getData().getGoods_name());
+
+                Message msg=Message.obtain();
+                msg.obj=bean;
+                handler.sendMessage(msg);
+
+
+
+            }
+
+            @Override
+            public void getFail(String s) {
+//                Log.i("8888888888888888", "解析失败");
+            }
+        });
+
+
+        handler=new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(Message msg) {
+
+                Bean newBean= (Bean) msg.obj;
+                tvEnglishTitle.setText(bean.getData().getGoods_name());
+                tvName.setText(bean.getData().getBrand());
+                tvContent.setText(bean.getData().getInfo_des());
+                tvPrice.setText(bean.getData().getGoods_price());
+                tvNameBeforerecyclerview.setText(bean.getData().getBrand());
+
+
+                // 添加数据的方法  输入的是一个集合
+                backAdapter.addData(bean);
+                frontAdapter.addData(bean);
+
+                recyclerViewBack.setAdapter(backAdapter);
+                recyclerViewFront.setAdapter(frontAdapter);
+
+                return false;
+            }
+        });
+
     }
 
 
@@ -163,7 +239,7 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.everyglasses_button_back:
                 // TODO 跳转
                 Toast.makeText(EveryGlassesActivity.this, "点击了返回按钮", Toast.LENGTH_SHORT).show();
@@ -176,4 +252,6 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
                 break;
         }
     }
+
+
 }

@@ -36,6 +36,8 @@
     <dimen name="fragment_list_item_glasses_name_marginTop">8dp</dimen>
     <dimen name="fragment_list_item_glasses_name_textSize">15sp</dimen>
 
+
+
     <dimen name="activity_everyglasses_button_share_width">20dp</dimen>
     <dimen name="activity_everyglasses_button_share_height">20dp</dimen>
     <dimen name="activity_everyglasses_button_share_marginRight">45dp</dimen>
@@ -56,7 +58,8 @@
     <dimen name="activity_everyglasses_glassesContent_width">255dp</dimen>
     <dimen name="activity_everyglasses_glassesContent_marginTop">25dp</dimen>
     <dimen name="activity_everyglasses_glassesContent_textSize">12sp</dimen>
-    <dimen name="activity_everyglasses_layout_price_marginTop">30dp</dimen>
+    <dimen name="activity_everyglasses_layout_price_marginTop">25dp</dimen>
+    <dimen name="activity_everyglasses_layout_price_marginBottom">20dp</dimen>
     <dimen name="activity_everyglasses_price_marginLeft">6dp</dimen>
     <dimen name="activity_everyglasses_price_textSize">15sp</dimen>
     <dimen name="activity_everyglasses_next_textSize">11sp</dimen>
