@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.dllo.mirror.Bean;
 import com.example.dllo.mirror.R;
 
 import java.util.ArrayList;
@@ -16,20 +17,15 @@ import java.util.ArrayList;
  */
 public class EveryGlassesFrontRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private ArrayList<String> data;
+    private Bean bean;
 
-//    private MyItemListener listener;
-
-//    public void setMyItemListener(MyItemListener listener) {
-//        this.listener = listener;
-
-//    }
 
     /**
      * 自定义 添加数据方法
      */
-    public void addData(ArrayList<String> data) {
-        this.data = data;
+    public void addData(Bean bean) {
+        this.bean = bean;
+
         notifyDataSetChanged();  // 通知适配器  数据是实时更新的
     }
 
@@ -60,13 +56,13 @@ public class EveryGlassesFrontRecyclerViewAdapter extends RecyclerView.Adapter<R
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof FirstViewHolder) {
-//    ((FirstViewHolder) holder).tvCity.setText();
-//    ((FirstViewHolder) holder).tvFrom.setText();
-//    ((FirstViewHolder) holder).tvEnglishFrom.setText();
-//    ((FirstViewHolder) holder).tvContent.setText();
+    ((FirstViewHolder) holder).tvCity.setText(bean.getData().getGoods_data().get(position).getCountry());
+    ((FirstViewHolder) holder).tvFrom.setText(bean.getData().getGoods_data().get(position).getLocation());
+    ((FirstViewHolder) holder).tvEnglishFrom.setText(bean.getData().getGoods_data().get(position).getEnglish());
+    ((FirstViewHolder) holder).tvContent.setText(bean.getData().getGoods_data().get(position).getIntroContent());
         } else if (holder instanceof OtherViewHolder) {
-//            ((OtherViewHolder) holder).tvTitle.setText();
-//            ((OtherViewHolder) holder).tvContent.setText();
+            ((OtherViewHolder) holder).tvTitle.setText(bean.getData().getGoods_data().get(position).getName());
+            ((OtherViewHolder) holder).tvContent.setText(bean.getData().getGoods_data().get(position).getIntroContent());
         }
     }
 
@@ -75,8 +71,8 @@ public class EveryGlassesFrontRecyclerViewAdapter extends RecyclerView.Adapter<R
      */
     @Override
     public int getItemCount() {
-       // TODO
-        return 4;
+
+        return bean.getData().getGoods_data().size();
     }
 
 

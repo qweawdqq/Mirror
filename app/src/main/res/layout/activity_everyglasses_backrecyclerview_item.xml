@@ -9,7 +9,7 @@
         android:id="@+id/everyglasses_backrecyclerview_item_iv"
         android:layout_width="match_parent"
         android:layout_height="550dp"
-        android:src="@mipmap/glasses"/>
+        />
 
     <!--<LinearLayout-->
         <!--android:layout_width="match_parent"-->

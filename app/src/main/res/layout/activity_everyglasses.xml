@@ -3,9 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/everyback"
     tools:context=".EveryGlassesActivity">
 
+    <ImageView
+        android:id="@+id/everyglasses_background_iv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
     <!-- 背景布局 -->
     <com.example.dllo.mirror.ObservableScrollView
         android:id="@+id/everyglasses_scrollView_back"
@@ -49,7 +52,6 @@
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="@dimen/activity_everyglasses_englishTitle_marginTop"
-                        android:text="FINLAYC0"
                         android:textColor="#ffffff"
                         android:textSize="@dimen/activity_everyglasses_englishTitle_textSize" />
 
@@ -69,7 +71,6 @@
                         android:layout_below="@id/everyglasses_whiteLine"
                         android:layout_centerHorizontal="true"
                         android:gravity="center"
-                        android:text="水蓝色晶透板材太阳镜"
                         android:textColor="#ffffff"
                         android:textSize="@dimen/activity_everyglasses_everyglasses_name_textSize" />
 
@@ -88,7 +89,6 @@
                         android:layout_below="@id/everyglasses_whiteUnderLine"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="@dimen/activity_everyglasses_glassesContent_marginTop"
-                        android:text="思念那么长，愿意为你撑伞走过所有雨天。你送我的see concept的玳瑁圆框阅读镜，斑驳之间弥漫着无法言语的轻柔，耳边的轻巧是雨天咖啡屋的喃喃细语。我戴着它，从雨季来临，到一人看过曾经一起注目的风景。"
                         android:textColor="#ffffff"
                         android:textSize="@dimen/activity_everyglasses_glassesContent_textSize" />
 
@@ -112,7 +112,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/activity_everyglasses_price_marginLeft"
-                            android:text="2150"
                             android:textColor="#ffffff"
                             android:textSize="@dimen/activity_everyglasses_price_textSize" />
                     </LinearLayout>
@@ -180,7 +179,6 @@
                         android:id="@+id/everyglasses_name_beforerecyclerview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="水蓝色晶透板材太阳镜"
                         android:textColor="#333"
                         android:textSize="16sp" />
 

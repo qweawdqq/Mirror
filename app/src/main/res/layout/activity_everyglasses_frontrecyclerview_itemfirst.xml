@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="right"
-                android:text="巴黎"
+
                 android:textColor="#fff"
                 android:textSize="32sp" />
             <LinearLayout
@@ -52,10 +52,9 @@
                     android:textColor="#fff"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="来自时尚之都英国" />
+                     />
                 <TextView
                     android:id="@+id/everyglasses_frontrecyclerview_itemfirst_englisrfrom"
-                    android:text="The frame comes from UK"
                     android:textSize="12sp"
                     android:textColor="#fff"
                     android:layout_marginTop="5dp"
@@ -81,8 +80,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginTop="14dp"
-            android:text="这款眼镜来自现在正热的韩国大势眼镜品牌Gentle Monster，专注复古，眼镜均为纯手工打造。这款飞行员金属太阳镜，镜圈采用黑色金属框，散发前卫与帅气相融合的气息，银色镜片时髦又新颖。"
-            android:textColor="#fff"
+             android:textColor="#fff"
             android:textSize="13sp" />
 
         <LinearLayout
