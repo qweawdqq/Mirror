@@ -27,7 +27,7 @@ import org.json.JSONObject;
  * 创建账号的界面
  */
 public class SignActivity extends BaseActivity implements ToNextListener, StaticEntityInterface, View.OnClickListener {
-    private TextView sendMessage;
+    private Button sendMessage;
     private EditText phoneNum, getCode, password;
     private Button creatId;
 
@@ -57,6 +57,7 @@ public class SignActivity extends BaseActivity implements ToNextListener, Static
     private void getPhoneNum() {
         if (phoneNum != null && phoneNum.getText().length() == 11) {
             String getPhoneNum = phoneNum.getText().toString();
+            Log.e("zou ","dadasd");
             sendMessageToNet(getPhoneNum);
         } else {
             Toast.makeText(SignActivity.this, "请输入正确手机号码", Toast.LENGTH_SHORT).show();
@@ -124,18 +125,19 @@ public class SignActivity extends BaseActivity implements ToNextListener, Static
      * @param phoneNum et得到的你输入的文字
      */
     private void sendMessageToNet(String phoneNum) {
+        Toast.makeText(SignActivity.this, "验证码以发送请注意查收", Toast.LENGTH_SHORT).show();
         OkHttpNetHelper helper = new OkHttpNetHelper();
         FormEncodingBuilder builder = new FormEncodingBuilder();
         builder.add(PHONE_NUMBER, phoneNum);
         helper.getPostDataFromNet(builder, USER_SEND_CODE, new NetListener() {
             @Override
             public void getSuccess(String s) {
-                Toast.makeText(SignActivity.this, "验证码以发送请注意查收", Toast.LENGTH_SHORT).show();
+            Log.e("dasdas","dasdas");
             }
 
             @Override
             public void getFail(String s) {
-                Log.e("失败的", s);
+                Toast.makeText(SignActivity.this, "未能发送请求,请检查网络", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -146,10 +148,11 @@ public class SignActivity extends BaseActivity implements ToNextListener, Static
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.sign_tv_sendmessage:
+                Log.e("走这里了吗?","走了这了");
                 getPhoneNum();
                 break;
             case R.id.sign_tv_creatID:
-                Toast.makeText(SignActivity.this, "11111", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignActivity.this, "请输入正确的用户名和密码", Toast.LENGTH_SHORT).show();
                 if (phoneNum.getText() != null && getCode.getText() != null && password.getText() != null) {
                     createMyId(phoneNum.getText().toString(),
                             getCode.getText().toString(),

@@ -13,6 +13,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:textColor="@android:color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/landing_mar_top_image"
@@ -26,6 +27,7 @@
             android:background="@mipmap/iv_login_line" />
 
         <TextView
+            android:textColor="@android:color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/landing_mar_top_land"
@@ -40,6 +42,7 @@
             android:background="@mipmap/img_phone_num" />
 
         <TextView
+            android:textColor="@android:color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/landing_mar_top_image"
@@ -55,11 +58,12 @@
             <EditText
                 android:id="@+id/sign_et_getCode"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="2"
+                android:gravity="center_vertical"
                 android:background="@mipmap/img_phone_num" />
 
-            <TextView
+            <Button
                 android:id="@+id/sign_tv_sendmessage"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -72,6 +76,7 @@
         </LinearLayout>
 
         <TextView
+            android:textColor="@android:color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/landing_mar_top_image"

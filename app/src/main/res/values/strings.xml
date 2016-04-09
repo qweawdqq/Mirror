@@ -30,5 +30,6 @@
 
     <string name="fragment_menu_autolinearlayoutnext_tv_text">返回首頁</string>
     <string name="fragment_menu_autolinearlayoutthird_tv_text">退出</string>
+    <string name="login_myPhone">账号登录</string>
 
 </resources>

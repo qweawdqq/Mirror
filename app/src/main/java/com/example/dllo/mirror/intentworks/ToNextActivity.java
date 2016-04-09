@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.activityworks.LoginActivity;
+import com.example.dllo.mirror.activityworks.MainActivity;
 import com.example.dllo.mirror.activityworks.SignActivity;
 
 /**
@@ -29,6 +30,9 @@ public class ToNextActivity implements ToNextListener {
                 intent.setClass(context, SignActivity.class);
                 setMyIntent(intent, context, finish, bundle);
                 break;
+            case TO_MAIN_ACTYVITY:
+                intent.setClass(context, MainActivity.class);
+                setMyIntent(intent,context,finish,bundle);
         }
     }
 
