@@ -5,10 +5,10 @@
     android:background="@mipmap/background"
     android:gravity="center">
 
-    <com.example.dllo.mirror.allviewworks.VerticalViewPager
-        android:id="@+id/fragment_home_viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <!--<com.example.dllo.mirror.allviewworks.VerticalViewPager-->
+        <!--android:id="@+id/fragment_home_viewpager"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
 
-    </com.example.dllo.mirror.allviewworks.VerticalViewPager>
+    <!--</com.example.dllo.mirror.allviewworks.VerticalViewPager>-->
 </LinearLayout>

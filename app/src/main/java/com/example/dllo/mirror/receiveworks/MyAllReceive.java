@@ -4,6 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
 
+//import com.example.dllo.mirror.fragmentworks.HomeFragment;
+
 
 /**
  * Created by jialiang on 16/3/30.
@@ -15,7 +17,6 @@ public class MyAllReceive {
      * 菜单的弹出广播
      */
     MenuBroadReceive receive;
-
 
     /**
      * @return 一个菜单的弹出的广播
@@ -31,8 +32,9 @@ public class MyAllReceive {
 
     /**
      * 注册广播的方法
-     * @param context 上下文
-     * @param key   广播的ation
+     *
+     * @param context  上下文
+     * @param key      广播的ation
      * @param receiver 广播的名字
      */
     public void startReceive(Context context, String key, BroadcastReceiver receiver) {
@@ -44,6 +46,7 @@ public class MyAllReceive {
 
     /**
      * 取消广播注册
+     *
      * @param context
      * @param receiver 广播的名字
      */

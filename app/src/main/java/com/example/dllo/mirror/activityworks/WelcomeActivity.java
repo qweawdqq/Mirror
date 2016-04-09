@@ -5,10 +5,8 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.baseworks.BaseActivity;
@@ -16,14 +14,14 @@ import com.example.dllo.mirror.bean.WelcomeBean;
 import com.example.dllo.mirror.intentworks.ToNextActivity;
 import com.example.dllo.mirror.intentworks.ToNextListener;
 import com.example.dllo.mirror.net.NetConnectionStatus;
-import com.example.dllo.mirror.net.NetListener;
-import com.example.dllo.mirror.net.OkHttpNetHelper;
 import com.example.dllo.mirror.normalstatic.StaticEntityInterface;
 import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+
 import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.squareup.okhttp.FormEncodingBuilder;
+
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
 

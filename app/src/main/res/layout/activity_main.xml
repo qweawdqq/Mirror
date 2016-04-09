@@ -1,35 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.autolayout.AutoRelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/background"
     tools:context=".activityworks.MainActivity">
 
     <FrameLayout
-        android:id="@+id/main_flt_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/darker_gray"></FrameLayout>
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/main_iv_mirror"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/main_flt_layout"
-        android:layout_marginBottom="40px"
-        android:layout_marginLeft="48px"
-        android:src="@mipmap/img_mirror" />
+        <com.example.dllo.mirror.allviewworks.VerticalViewPager
+            android:id="@+id/fragment_home_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/main_iv_land"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/main_iv_mirror"
-        android:layout_alignParentRight="true"
-        android:paddingRight="48px"
-        android:text="登录"
-        android:textColor="@android:color/white" />
+        </com.example.dllo.mirror.allviewworks.VerticalViewPager>
+
+        <FrameLayout
+            android:id="@+id/main_flt_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/main_iv_mirror"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/activity_mian_iv_mirror_marginbottom"
+                android:layout_marginLeft="@dimen/activity_mian_iv_mirror_marginleft"
+                android:src="@mipmap/img_mirror" />
+
+            <TextView
+                android:id="@+id/main_iv_land"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/main_iv_mirror"
+                android:layout_alignParentRight="true"
+                android:paddingRight="@dimen/activity_mian_tv_login_paddingright"
+                android:text="@string/activity_mian_tv_login_textview"
+                android:textColor="@android:color/white" />
+        </RelativeLayout>
+    </FrameLayout>
 </com.zhy.autolayout.AutoRelativeLayout>
 
 
