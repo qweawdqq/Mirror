@@ -30,6 +30,73 @@
     <!--  -->
     <dimen name="fragment_list_recyclerview_marginTop">27dp</dimen>
 
+    <dimen name="fragment_list_glassesitem_width">281dp</dimen>
+    <dimen name="fragment_list_glassesitem_height">417dp</dimen>
+    <dimen name="fragment_list_glassesitem_linearlayout_width">270dp</dimen>
+    <dimen name="fragment_list_glassesitem_iv_width">270dp</dimen>
+    <dimen name="fragment_list_glassesitem_iv_height">297dp</dimen>
+    <dimen name="fragment_list_glassesitem_relativeLayout_marginLeft">16dp</dimen>
+    <dimen name="fragment_list_glassesitem_relativeLayout_marginTop">25dp</dimen>
+    <dimen name="fragment_list_glassesitem_brand_textSize">15sp</dimen>
+    <dimen name="fragment_list_glassesitem_price_textSize">15sp</dimen>
+    <dimen name="fragment_list_glassesitem_price_marginRight">16dp</dimen>
+
+    <dimen name="fragment_list_glassesitem_city_marginLeft">16dp</dimen>
+    <dimen name="fragment_list_glassesitem_city_marginTop">8dp</dimen>
+    <dimen name="fragment_list_glassesitem_city_textSize">12dp</dimen>
+    <dimen name="fragment_list_glassesitem_line_marginLeft">16dp</dimen>
+    <dimen name="fragment_list_glassesitem_line_marginTop">8dp</dimen>
+    <dimen name="fragment_list_item_glasses_name_marginLeft">16dp</dimen>
+    <dimen name="fragment_list_item_glasses_name_marginTop">8dp</dimen>
+    <dimen name="fragment_list_item_glasses_name_textSize">15sp</dimen>
+
+
+
+    <dimen name="activity_everyglasses_button_share_width">20dp</dimen>
+    <dimen name="activity_everyglasses_button_share_height">20dp</dimen>
+    <dimen name="activity_everyglasses_button_share_marginRight">45dp</dimen>
+    <dimen name="activity_everyglasses_button_share_marginTop">40dp</dimen>
+    <dimen name="activity_everyglasses_layout_top_width">300dp</dimen>
+    <dimen name="activity_everyglasses_layout_top_height">335dp</dimen>
+    <dimen name="activity_everyglasses_layout_top_marginTop">140dp</dimen>
+    <dimen name="activity_everyglasses_englishTitle_marginTop">19dp</dimen>
+    <dimen name="activity_everyglasses_englishTitle_textSize">35sp</dimen>
+    <dimen name="activity_everyglasses_whiteLine_width">255dp</dimen>
+    <dimen name="activity_everyglasses_whiteLine_height">2dp</dimen>
+    <dimen name="activity_everyglasses_whiteLine_marginTop">27dp</dimen>
+    <dimen name="activity_everyglasses_everyglasses_name_width">255dp</dimen>
+    <dimen name="activity_everyglasses_everyglasses_name_height">38dp</dimen>
+    <dimen name="activity_everyglasses_everyglasses_name_textSize">21sp</dimen>
+    <dimen name="activity_everyglasses_whiteUnderLine_width">255dp</dimen>
+    <dimen name="activity_everyglasses_whiteUnderLine_height">2dp</dimen>
+    <dimen name="activity_everyglasses_glassesContent_width">255dp</dimen>
+    <dimen name="activity_everyglasses_glassesContent_marginTop">25dp</dimen>
+    <dimen name="activity_everyglasses_glassesContent_textSize">12sp</dimen>
+    <dimen name="activity_everyglasses_layout_price_marginTop">25dp</dimen>
+    <dimen name="activity_everyglasses_layout_price_marginBottom">20dp</dimen>
+    <dimen name="activity_everyglasses_price_marginLeft">6dp</dimen>
+    <dimen name="activity_everyglasses_price_textSize">15sp</dimen>
+    <dimen name="activity_everyglasses_next_textSize">11sp</dimen>
+    <dimen name="activity_everyglasses_next_iv_width">15dp</dimen>
+    <dimen name="activity_everyglasses_next_iv_height">10dp</dimen>
+    <dimen name="activity_everyglasses_next_iv_marginBottom">10dp</dimen>
+    <dimen name="activity_everyglasses_next_iv_marginTop">7dp</dimen>
+    <dimen name="activity_everyglasses_color_chance_linearLayout_height">90dp</dimen>
+    <dimen name="activity_everyglasses_white_linearLayout_height">515dp</dimen>
+    <dimen name="activity_everyglasses_layout_beforerecyclerview_height">50dp</dimen>
+    <dimen name="activity_everyglasses_front_top_layout_height">1820dp</dimen>
+    <dimen name="activity_everyglasses_front_bottom_layout_height">1470dp</dimen>
+    <dimen name="activity_everyglasses_button_layout_marginLeft">10dp</dimen>
+    <dimen name="activity_everyglasses_button_back_width">46dp</dimen>
+    <dimen name="activity_everyglasses_button_back_height">46dp</dimen>
+    <dimen name="activity_everyglasses_button_topic_width">92dp</dimen>
+    <dimen name="activity_everyglasses_button_topic_height">46dp</dimen>
+    <dimen name="activity_everyglasses_button_topic_marginLeft">32dp</dimen>
+    <dimen name="activity_everyglasses_button_topic_textSize">13sp</dimen>
+    <dimen name="activity_everyglasses_button_buy_width">105dp</dimen>
+    <dimen name="activity_everyglasses_button_buy_height">46dp</dimen>
+    <dimen name="activity_everyglasses_button_buy_marginRight">20dp</dimen>
+    <dimen name="activity_everyglasses_button_layoutmarginbottom_height">20dp</dimen>
 
     <dimen name="fragment_menu_autolinearlayout_height">109px</dimen>
     <dimen name="fragment_menu_item_autolinearlayout_height">106px</dimen>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="281dp"
     android:layout_height="417dp"
 
@@ -97,4 +98,77 @@
             android:textColor="#000"
             android:textSize="15sp" />
     </LinearLayout>
+
+    android:layout_width="@dimen/fragment_list_glassesitem_width"
+    android:layout_height="@dimen/fragment_list_glassesitem_height"
+    android:orientation="vertical"
+    android:background="@mipmap/bg">
+<LinearLayout
+    android:orientation="vertical"
+    android:background="#ffffff"
+    android:layout_width="@dimen/fragment_list_glassesitem_linearlayout_width"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/fragment_list_glassesitem_iv"
+        android:layout_width="@dimen/fragment_list_glassesitem_iv_width"
+        android:layout_height="@dimen/fragment_list_glassesitem_iv_height"
+        android:src="@mipmap/test" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/fragment_list_glassesitem_relativeLayout_marginLeft"
+        android:layout_marginTop="@dimen/fragment_list_glassesitem_relativeLayout_marginTop"
+        android:orientation="horizontal">
+
+        <!-- TODO 测试文字 -->
+        <TextView
+            android:id="@+id/fragment_list_glassesitem_brand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="@string/test_fragment_list_glassesitem_brand"
+            android:textColor="@color/fragment_list_glassesitem_brand_textColor"
+            android:textSize="@dimen/fragment_list_glassesitem_brand_textSize" />
+
+        <TextView
+            android:id="@+id/fragment_list_glassesitem_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/fragment_list_glassesitem_price_marginRight"
+            android:text="@string/test_fragment_list_glassesitem_price"
+            android:textColor="@color/fragment_list_glassesitem_price_textColor"
+            android:textSize="@dimen/fragment_list_glassesitem_price_textSize" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/fragment_list_glassesitem_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/fragment_list_glassesitem_city_marginLeft"
+        android:layout_marginTop="@dimen/fragment_list_glassesitem_city_marginTop"
+        android:text="@string/test_fragment_list_glassesitem_city"
+        android:textColor="@color/fragment_list_glassesitem_city_textColor"
+        android:textSize="@dimen/fragment_list_glassesitem_city_textSize" />
+
+    <ImageView
+        android:id="@+id/fragment_list_glassesitem_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/fragment_list_glassesitem_line_marginLeft"
+        android:layout_marginTop="@dimen/fragment_list_glassesitem_line_marginTop"
+        android:src="@mipmap/iv_black_line" />
+
+    <TextView
+        android:id="@+id/fragment_list_item_glasses_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/fragment_list_item_glasses_name_marginLeft"
+        android:layout_marginTop="@dimen/fragment_list_item_glasses_name_marginTop"
+        android:text="@string/test_fragment_list_glassesitem_name"
+        android:textColor="@color/fragment_list_item_glasses_name_textColor"
+        android:textSize="@dimen/fragment_list_item_glasses_name_textSize" />
+</LinearLayout>
+
 </LinearLayout>

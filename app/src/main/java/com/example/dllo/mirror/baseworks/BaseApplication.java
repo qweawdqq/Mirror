@@ -15,6 +15,8 @@ import com.zhy.autolayout.config.AutoLayoutConifg;
 
 import java.io.File;
 
+import cn.jpush.android.api.JPushInterface;
+
 /**
  * Created by jialiang on 16/3/28.
  * application的基类
@@ -27,7 +29,12 @@ public class BaseApplication extends Application {
         super.onCreate();
         context = this;
         initImageLoader(this);
+
         AutoLayoutConifg.getInstance().useDeviceSize();
+
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
+
     }
 
     /*

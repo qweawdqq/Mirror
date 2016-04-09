@@ -21,6 +21,7 @@
 
 
     <string name="test_fragment_list_title">浏览平光眼镜</string>
+
     <string name="test_fragment_list_titleNest">顯示排列為 最新推薦</string>
     <string name="test_fragment_list_item_brand">SEE CONCEPT</string>
     <string name="test_fragment_list_item_city">法国巴黎</string>
@@ -36,5 +37,22 @@
     <string name="fragment_buy_frame_tv_text">您的購物車沒有商品</string>
     <string name="activity_mian_tv_login_textview">登录</string>
 
+
+    <string name="test_fragment_list_titleNest">显示排列为 最新推荐</string>
+    <string name="test_fragment_list_glassesitem_brand">SEE CONCEPT</string>
+    <string name="test_fragment_list_glassesitem_city">法国巴黎</string>
+    <string name="test_fragment_list_glassesitem_price">$1000</string>
+    <string name="test_fragment_list_glassesitem_name">草莓红色圆框阅读镜</string>
+    <string name="hello">Hello World, JPush!</string>
+    <string name="tag_hint">Tag为大小写字母，数字，下划线,中文， 多个用以逗号分隔</string>
+    <string name="alias_hint">Alias为大小写字母，数字，下划线</string>
+    <string name="style_hint">style为数字</string>
+    <string name="error_style_empty">style不能为空</string>
+    <string name="error_alias_empty">alias不能为空</string>
+    <string name="error_tag_empty">tag不能为空</string>
+    <string name="error_tag_gs_empty">格式不对</string>
+    <string name="error_network">网络连接异常,初始化失败 请检查网络！</string>
+    <string name="logining">程序在后台执行, 请查看日志！</string>
+    <string name="setting_su">设置成功</string>
 
 </resources>

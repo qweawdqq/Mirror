@@ -44,6 +44,7 @@ public class ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapte
         //  缓存类 构造方法
         public ListViewHolder(View itemView) {
             super(itemView);
+
             iv = (ImageView) itemView.findViewById(R.id.fragment_list_item_iv);
             tv_name= (TextView) itemView.findViewById(R.id.fragment_list_item_name);
             tv_goods_price= (TextView) itemView.findViewById(R.id.fragment_list_item_goods_price);
@@ -51,6 +52,9 @@ public class ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapte
             tv_produce_area= (TextView) itemView.findViewById(R.id.fragment_list_item_city);
             tv_brand= (TextView) itemView.findViewById(R.id.fragment_list_item_brand);
             tv_rmb = (TextView) itemView.findViewById(R.id.fragment_list_item_rmb);
+
+            iv = (ImageView) itemView.findViewById(R.id.fragment_list_glassesitem_iv);
+
         }
 
     }

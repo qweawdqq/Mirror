@@ -3,8 +3,16 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
     <color name="landing_layout_hui">#f1f1f1</color>
     <color name="nothing">#00000000</color>
     <color name="my_pink">#ff5aab</color>
     <color name="fragment_menu_textcolor">#fff</color>
+
+
+    <color name="fragment_list_glassesitem_brand_textColor">#000</color>
+    <color name="fragment_list_glassesitem_price_textColor">#000</color>
+    <color name="fragment_list_glassesitem_city_textColor">#333</color>
+    <color name="fragment_list_item_glasses_name_textColor">#000</color>
+
 </resources>

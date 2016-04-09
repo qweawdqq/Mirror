@@ -87,6 +87,7 @@ public class VerticalViewPager extends ViewPager {
             case MotionEvent.ACTION_MOVE:
                 float moveX = event.getX();
                 float moveY = event.getY();
+                // 绝对值
                 if(Math.abs(moveY - startY) - Math.abs(moveX - startX) > 0){
                     return true;
                 }
