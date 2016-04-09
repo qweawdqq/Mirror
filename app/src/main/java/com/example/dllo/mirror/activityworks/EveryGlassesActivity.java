@@ -16,15 +16,18 @@ import android.widget.Toast;
 
 import com.example.dllo.mirror.Bean;
 import com.example.dllo.mirror.FullyGridLayoutManager;
-import com.example.dllo.mirror.NetListener;
+
 import com.example.dllo.mirror.ObservableScrollView;
-import com.example.dllo.mirror.OkHttpNetHelper;
+
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.ScrollViewListener;
-import com.example.dllo.mirror.StaticEntityInterface;
+
 import com.example.dllo.mirror.adapterworks.EveryGlassesBackRecyclerViewAdapter;
 import com.example.dllo.mirror.adapterworks.EveryGlassesFrontRecyclerViewAdapter;
 import com.example.dllo.mirror.baseworks.BaseActivity;
+import com.example.dllo.mirror.net.NetListener;
+import com.example.dllo.mirror.net.OkHttpNetHelper;
+import com.example.dllo.mirror.normalstatic.StaticEntityInterface;
 import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;

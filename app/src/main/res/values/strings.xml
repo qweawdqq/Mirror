@@ -22,7 +22,7 @@
 
     <string name="test_fragment_list_title">浏览平光眼镜</string>
 
-    <string name="test_fragment_list_titleNest">顯示排列為 最新推薦</string>
+
     <string name="test_fragment_list_item_brand">SEE CONCEPT</string>
     <string name="test_fragment_list_item_city">法国巴黎</string>
     <string name="test_fragment_list_item_price">$1000</string>

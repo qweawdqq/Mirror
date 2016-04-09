@@ -25,6 +25,7 @@ import com.squareup.okhttp.FormEncodingBuilder;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
 
+import cn.jpush.android.api.JPushInterface;
 import okhttp3.Call;
 import okhttp3.Response;
 
@@ -136,4 +137,15 @@ public class WelcomeActivity extends BaseActivity implements StaticEntityInterfa
 
     }
 
+    @Override
+    protected void onPause() {
+        JPushInterface.onPause(this);
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        JPushInterface.onResume(this);
+        super.onResume();
+    }
 }
