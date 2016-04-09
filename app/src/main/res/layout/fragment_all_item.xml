@@ -12,7 +12,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/fragment_list_item_iv"
+            android:id="@+id/fragment_all_item_iv"
             android:layout_width="270dp"
             android:layout_height="297dp"
             android:src="@mipmap/test" />
@@ -26,7 +26,7 @@
 
             <!-- TODO 测试文字 -->
             <TextView
-                android:id="@+id/fragment_list_item_name"
+                android:id="@+id/fragment_all_item_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -35,7 +35,7 @@
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/fragment_list_item_goods_price"
+                android:id="@+id/fragment_all_item_goods_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -53,7 +53,7 @@
 
             <!-- TODO 测试文字 -->
             <TextView
-                android:id="@+id/fragment_list_item_city"
+                android:id="@+id/fragment_all_item_city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/test_fragment_list_item_city"
@@ -61,7 +61,7 @@
                 android:textSize="12dp" />
 
             <TextView
-                android:id="@+id/fragment_list_item_discount_price"
+                android:id="@+id/fragment_all_item_discount_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -72,10 +72,10 @@
                 android:visibility="invisible" />
 
             <TextView
-                android:id="@+id/fragment_list_item_rmb"
+                android:id="@+id/fragment_all_item_rmb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toLeftOf="@id/fragment_list_item_discount_price"
+                android:layout_toLeftOf="@id/fragment_all_item_discount_price"
                 android:textColor="#000"
                 android:visibility="invisible"/>
         </RelativeLayout>
@@ -88,7 +88,7 @@
             android:src="@mipmap/iv_black_line" />
 
         <TextView
-            android:id="@+id/fragment_list_item_brand"
+            android:id="@+id/fragment_all_item_brand"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"

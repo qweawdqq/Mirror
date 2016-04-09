@@ -1,8 +1,10 @@
 package com.example.dllo.mirror.fragmentworks;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 
@@ -10,7 +12,7 @@ import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.adapterworks.HomeFragmentAdapter;
 import com.example.dllo.mirror.allviewworks.VerticalViewPager;
 import com.example.dllo.mirror.baseworks.BaseFragment;
-import com.example.dllo.mirror.bean.GoodsListBean;
+import com.example.dllo.mirror.bean.MenuFragmentBean;
 import com.example.dllo.mirror.net.NetListener;
 import com.example.dllo.mirror.net.OkHttpNetHelper;
 import com.example.dllo.mirror.normalstatic.StaticEntityInterface;
@@ -25,14 +27,12 @@ import java.util.List;
  * 主页的fragment
  */
 public class HomeFragment extends BaseFragment implements StaticEntityInterface {
-    //    private Button btn_home;
     private VerticalViewPager viewPager;
     private HomeFragmentAdapter adapter;
-    private List<Fragment> fragments;
     private float startY;
     private int viewpagerPosition;
-
-    GoodsListBean data;
+    private Handler handler;
+    MenuFragmentBean t;
 
     @Override
     protected int initLayout() {
@@ -41,82 +41,94 @@ public class HomeFragment extends BaseFragment implements StaticEntityInterface 
 
     @Override
     protected void initView() {
-
         viewPager = bindView(R.id.fragment_home_viewpager);
-        fragments = new ArrayList<>();
-        fragments.add(new ListFragment());
-        fragments.add(new ListFragment());
-        fragments.add(new ListFragment());
-
     }
 
     @Override
     protected void initData() {
-
         getData();
+        adapter = new HomeFragmentAdapter(getActivity().getSupportFragmentManager());
 
-        FragmentManager fm = getActivity().getSupportFragmentManager();
-        adapter = new HomeFragmentAdapter(fm, fragments);
-
-        viewPager.setAdapter(adapter);
-
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            //页面在滑动的时候会调用此方法，在滑动被停止之前，此方法回一直得到
+        handler = new Handler(new Handler.Callback() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            public boolean handleMessage(Message msg) {
 
-            }
-
-            //onPageSelected选中了.......
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            //此方法是在状态改变的时候调用，其中arg0这个参数
-            //有三种状态（0，1，2）。arg0 ==1的时辰默示正在滑动，arg0==2的时辰默示滑动完毕了，arg0==0的时辰默示什么都没做。
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
+                ArrayList<Fragment> list = (ArrayList<Fragment>) msg.obj;
+                Log.e("传过来东西了吗", "" + list.size());
+                adapter.addData(list);
+//                Bundle bundle = getArguments();
+//                String pos = bundle.getString("页数");
+//                Log.d("测试结果", pos);
+//                viewPager.setCurrentItem(pos);
+                viewPager.setAdapter(adapter);
+                return false;
             }
         });
+
+        passDataItem();
 
 
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.e("----", "ondestroy");
+    }
 
-    public void setBroadReveice() {
+    public void setBroadReveice(int x) {
         Intent intent = new Intent();
         intent.setAction("activityworks");
         getActivity().sendBroadcast(intent);
     }
 
-    public void getData(){
+    public void getData() {
+
         // 获取网络数据
         OkHttpNetHelper helper = new OkHttpNetHelper();
-        FormEncodingBuilder builder = new FormEncodingBuilder();
-        builder.add(DEVICE_TYPE, "2");
-        builder.add(PAGE,"");
-        builder.add(LAST_TIME,"");
-        builder.add(GOODS_LIST_CATEGORY_ID,"");
-        builder.add(GOODS_LIST_VERSION,"");
-        helper.getPostDataFromNet(builder, GOODS_LIST, new NetListener() {
-            @Override
-            public void getSuccess(final String s) {
 
-                Log.i("+++",s);
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        data = new Gson().fromJson(s.toString(),GoodsListBean.class);
-                        fragments = new ArrayList<Fragment>();
-                        for (int i = 0; i < data.getData().getList().size();i++){
-                            fragments.add(new ListFragment());
-                        }
+        // 获取菜单页的标签的集合的大小来确定ViewPager 能滑动的页数
+        // 并且设置标签内容到MenuFragment 的Title 上
+        FormEncodingBuilder formEncodingBuilder = new FormEncodingBuilder();
+        formEncodingBuilder.add(TOKEN, "");
+        formEncodingBuilder.add(DEVICE_TYPE, "2");
+        helper.getPostDataFromNet(formEncodingBuilder, MENU_LIST, new NetListener() {
+            @Override
+            public void getSuccess(String s) {
+                t = new Gson().fromJson(s.toString(), MenuFragmentBean.class);
+                Log.d("size", t.getData().getList().size() + "");
+                MenuFragmentBean.DataBean b = t.getData();
+                List<MenuFragmentBean.DataBean.ListBean> l = b.getList();
+                ArrayList<Fragment> fragment = new ArrayList<Fragment>();
+
+                for (int i = 0; i < l.size(); i++) {
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable("title", l.get(i));
+                    String type = l.get(i).getType();
+                    switch (type) {
+                        case "6":
+                            AllFragment af = new AllFragment();
+                            af.setArguments(bundle);
+                            fragment.add(af);
+                            break;
+                        case "3":
+                            ListFragment lf = new ListFragment();
+                            lf.setArguments(bundle);
+                            fragment.add(lf);
+                            break;
+                        case "4":
+                            BuyFragment bf = new BuyFragment();
+                            bf.setArguments(bundle);
+                            fragment.add(bf);
+                            break;
 
                     }
-                });
+
+                }
+
+                Message message = Message.obtain();
+                message.obj = fragment;
+                handler.sendMessage(message);
             }
 
             @Override
@@ -126,5 +138,34 @@ public class HomeFragment extends BaseFragment implements StaticEntityInterface 
         });
     }
 
+    /**
+     * 传递当前页面是viewPager 的第几个页面
+     */
+    public void passDataItem() {
+
+        Log.i("刚进来没滑动时第几页", viewPager.getCurrentItem() + 1 + "");
+        // 监听ViewPager ,重载方法,可以的出当前在第几行
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            //页面在滑动的时候会调用此方法，在滑动被停止之前，此方法回一直得到
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            // 被选中在第几行
+            @Override
+            public void onPageSelected(int position) {
+                viewPager.getCurrentItem();
+                Log.i("第几页", viewPager.getCurrentItem() + 1 + "");
+
+            }
+
+            // 改变状态是调用
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
 
 }

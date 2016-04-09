@@ -32,4 +32,6 @@ dependencies {
     compile 'com.squareup.okio:okio:1.5.0'
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.zhy:okhttputils:2.3.8'
+    compile 'de.greenrobot:eventbus:2.4.0'
+
 }

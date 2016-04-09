@@ -1,12 +1,15 @@
 package com.example.dllo.mirror.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by dllo on 16/4/1.
  */
 public class GoodsListBean {
-
 
     /**
      * result : 1
@@ -70,7 +73,7 @@ public class GoodsListBean {
          * discount_price : 0.01
          * brand : BIG BULLY 飛行員太陽鏡
          * info_des : Gentle Monster一直是大热的韩国眼镜品牌，继全智贤在《星你》中的热推后，在热播韩剧《看见味道的少女》中又被当作定情信物，是权志龙等韩流明星的热衷单品，也备受李晨、范冰冰、Anglebaby等明星追捧。GM除了设计复古气息浓郁的圆形墨镜，还有许多配色夸张、造型奇特的镜面太阳镜，这也印证了品牌的名字——绅士怪物。而这款独特的BIG BULLY，是最新推出的时尚款。
-         搭配建议：银色袖口、白色双肩包、J.Crew衬衫、GIUSEPPE ZANOTTI白色运动鞋
+         * 搭配建议：银色袖口、白色双肩包、J.Crew衬衫、GIUSEPPE ZANOTTI白色运动鞋
          * goods_data : [{"introContent":"这款眼镜来自现在正热的韩国大势眼镜品牌Gentle Monster，专注复古，眼镜均为纯手工打造。这款飞行员金属太阳镜，镜圈采用黑色金属框，散发前卫与帅气相融合的气息，银色镜片时髦又新颖。","cellHeight":"590","name":"","location":"來自時尚之都韓國","country":"首爾","english":"The frame comes from Korea"},{"introContent":"从侧面看，银色金属框较宽，相比镜框纤细的镜腿与镜框形成强烈反差，镜腿也采用黑色金属，纤细精致的极简设计，使整个太阳镜十分轻巧，告别黑色沉闷感。","cellHeight":"590","name":"專註復古","location":"","country":"","english":""},{"introContent":"因为是来自韩国的品牌，设计的眼镜都非常符合亚洲人的脸型，专注复古，将复古与潮流完美融合，是权志龙、Ziont都非常喜欢的眼镜品牌。纯手工制作的镜框打造完美，拥有独特视觉质感，偏圆的镜框立刻打开脸型。","cellHeight":"590","name":"明星同款","location":"","country":"","english":""},{"introContent":"在Gentle Monstor那里，复古可能不是那么纯粹，毕竟这是一个前卫的时代。Gentle Monstor的特别之处在于除了贯彻复古时尚理念，还以\u201c创新实验\u201d为设计理念，在复古镜框中加入了前卫新潮的设计元素，每一款眼镜都被放在复古与前卫融合的漆皮手袋里。","cellHeight":"590","name":"復古與前衛融合","location":"","country":"","english":""}]
          * design_des : [{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/sliver21b93bca79f1dca3a37a3eb7e7850095e.jpg","cellHeight":"480","type":"1"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/silver38807872f22325a71d51a3591472c5e93.jpg","cellHeight":"480","type":"1"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/silver4fa4390c4a9b6ed4114d54313c9481e65.jpg","cellHeight":"480","type":"1"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/5918145b03d2e5eca887244874ee74e5f3ed401599783296b62fe768f4bb213e051a035.jpg","cellHeight":"550","type":"2"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/111144f5dfcb7c7557efe71a3a7331f3bd03.jpg","cellHeight":"828","type":"3"}]
          * goods_share : http://api101.test.mirroreye.cn/index.php/goodweb/info?id=96Psa1455524521
@@ -124,7 +127,8 @@ public class GoodsListBean {
             }
         }
 
-        public static class ListBean {
+        public static class ListBean implements Parcelable {
+
             private String goods_id;
             private String goods_pic;
             private String goods_img;
@@ -292,6 +296,43 @@ public class GoodsListBean {
 
             public void setDesign_des(List<DesignDesBean> design_des) {
                 this.design_des = design_des;
+            }
+
+            // 序列化内部用到的类
+            protected ListBean(Parcel in) {
+                goods_name = in.readString();
+                goods_price = in.readString();
+                goods_img = in.readString();
+                discount_price = in.readString();
+                product_area = in.readString();
+                brand = in.readString();
+            }
+
+            public static final Creator<ListBean> CREATOR = new Creator<ListBean>() {
+                @Override
+                public ListBean createFromParcel(Parcel source) {
+                    return new ListBean(source);
+                }
+
+                @Override
+                public ListBean[] newArray(int size) {
+                    return new ListBean[size];
+                }
+            };
+
+            @Override
+            public int describeContents() {
+                return 0;
+            }
+
+            @Override
+            public void writeToParcel(Parcel dest, int flags) {
+                dest.writeString(goods_name);
+                dest.writeString(goods_price);
+                dest.writeString(discount_price);
+                dest.writeString(product_area);
+                dest.writeString(brand);
+                dest.writeString(goods_img);
             }
 
             public static class GoodsDataBean {

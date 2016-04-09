@@ -1,5 +1,9 @@
 package com.example.dllo.mirror.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -47,6 +51,7 @@ public class MenuFragmentBean {
         this.data = data;
     }
 
+    // 传递的是Object组成的List列表,所有
     public static class DataBean {
         /**
          * default_font_color : #496383
@@ -122,7 +127,7 @@ public class MenuFragmentBean {
             }
         }
 
-        public static class ListBean {
+        public static class ListBean implements Parcelable{
             private String title;
             private String topColor;
             private String buttomColor;
@@ -176,6 +181,33 @@ public class MenuFragmentBean {
 
             public void setStore(String store) {
                 this.store = store;
+            }
+
+            protected ListBean(Parcel in) {
+                title = in.readString();
+            }
+
+            public static final Creator<ListBean> CREATOR = new Creator<ListBean>() {
+                @Override
+                public ListBean createFromParcel(Parcel source) {
+                    return new ListBean(source);
+                }
+
+                @Override
+                public ListBean[] newArray(int size) {
+                    return new ListBean[size];
+                }
+            };
+
+
+            @Override
+            public int describeContents() {
+                return 0;
+            }
+
+            @Override
+            public void writeToParcel(Parcel dest, int flags) {
+                dest.writeString(title);
             }
         }
     }

@@ -3,6 +3,7 @@ package com.example.dllo.mirror.adapterworks;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.Log;
 
 import java.util.List;
 
@@ -13,10 +14,15 @@ import java.util.List;
 public class  HomeFragmentAdapter extends FragmentPagerAdapter {
     private List<Fragment> mFragments;
 
-    public HomeFragmentAdapter(FragmentManager fm,List<Fragment> fragments) {
+    public HomeFragmentAdapter(FragmentManager fm) {
         super(fm);
         // TODO Auto-generated constructor stub
-        mFragments=fragments;
+    }
+
+    public void addData(List<Fragment> mFragments){
+        this.mFragments = mFragments;
+        Log.e("adapter===", mFragments.size() + "");
+        notifyDataSetChanged();
     }
 
     @Override

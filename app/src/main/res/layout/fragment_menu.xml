@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/fragment_menu_autolinearlayoutnext_height"
             android:orientation="vertical"
-            >
+            android:id="@+id/fragment_menu_back_title">
 
             <TextView
                 android:id="@+id/fragment_menu_tvfirst_tab"
@@ -50,7 +50,8 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/fragment_menu_autolinearlayoutthird_height"
             android:orientation="vertical"
-            android:layout_marginTop="@dimen/fragment_menu_autolinearlayoutthird_top">
+            android:layout_marginTop="@dimen/fragment_menu_autolinearlayoutthird_top"
+            android:id="@+id/fragment_menu_exit">
 
             <TextView
                 android:id="@+id/fragment_menu_item_tvnext_tab"
