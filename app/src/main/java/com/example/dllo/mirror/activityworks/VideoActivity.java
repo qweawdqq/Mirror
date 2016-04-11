@@ -2,6 +2,8 @@ package com.example.dllo.mirror.activityworks;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageButton;
 
 import com.example.dllo.mirror.R;
@@ -39,6 +41,8 @@ public class VideoActivity extends BaseActivity {
 
     private void setRecyclerView(){
         adapter = new HeadRecycleAdapter(this);
+        View view = LayoutInflater.from(this).inflate(R.layout.video_recycle_video,null);
+        adapter.setHeaderView(view);
         ArrayList<String>data = new ArrayList<>();
         data.add("http://e.hiphotos.baidu.com/image/pic/item/eaf81a4c510fd9f99b356067272dd42a2834a499.jpg");
         data.add("http://e.hiphotos.baidu.com/image/pic/item/b90e7bec54e736d1db84320899504fc2d562691f.jpg");

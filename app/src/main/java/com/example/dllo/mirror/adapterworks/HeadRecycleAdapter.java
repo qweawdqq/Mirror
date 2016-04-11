@@ -68,6 +68,7 @@ public class HeadRecycleAdapter extends RecyclerView.Adapter<HeadRecycleAdapter.
     @Override
     public int getItemViewType(int position) {
         if (mHeaderView != null && position == 0) {
+            Log.e("position","position");
             return TYPE_HEADER;
         }
         if (mFootView != null && position + 1 == getItemCount()) {
@@ -89,13 +90,15 @@ public class HeadRecycleAdapter extends RecyclerView.Adapter<HeadRecycleAdapter.
 
     @Override
     public HeadRecycleAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if (mHeaderView != null && viewType == TYPE_HEADER)
+        if (mHeaderView != null && viewType == TYPE_HEADER){
+            Log.e("创建","创建");
             return new MyViewHolder(mHeaderView);
+    }
         if (mFootView != null && viewType == TYPE_FOOT) {
             return new MyViewHolder(mFootView);
         }
         return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.video_recycle_item, parent, false));
-//        return null;
+
     }
 
 

@@ -7,6 +7,8 @@ import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.adapterworks.HomeFragmentAdapter;
@@ -18,6 +20,7 @@ import com.example.dllo.mirror.net.OkHttpNetHelper;
 import com.example.dllo.mirror.normalstatic.StaticEntityInterface;
 import com.google.gson.Gson;
 import com.squareup.okhttp.FormEncodingBuilder;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,11 +45,13 @@ public class HomeFragment extends BaseFragment implements StaticEntityInterface 
     @Override
     protected void initView() {
         viewPager = bindView(R.id.fragment_home_viewpager);
+
     }
 
     @Override
     protected void initData() {
         getData();
+
         adapter = new HomeFragmentAdapter(getActivity().getSupportFragmentManager());
 
         handler = new Handler(new Handler.Callback() {

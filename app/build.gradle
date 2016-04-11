@@ -37,7 +37,7 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
 
     compile 'de.greenrobot:eventbus:2.4.0'
-
+    compile 'com.linsea:universalvideoview:1.1.0@aar'
     compile files('libs/MobCommons-2016.0301.1053.jar')
     compile files('libs/MobTools-2016.0301.1053.jar')
     compile files('libs/ShareSDK-Core-2.7.0.jar')
