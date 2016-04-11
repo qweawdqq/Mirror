@@ -46,8 +46,8 @@
             android:textColorHint="@android:color/black"
             android:textSize="@dimen/landing_text_order_fifteen" />
 
-        <EditText
-            android:id="@+id/order_et_address"
+        <TextView
+            android:id="@+id/order_tv_address"
             android:layout_width="match_parent"
             android:layout_height="@dimen/landing_mar_order_et"
             android:background="@mipmap/img_phone_num"
@@ -64,6 +64,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/order_glasses_image"
                 android:layout_width="@dimen/order_max"
 
                 android:layout_height="wrap_content" />
@@ -73,6 +74,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/order_glasses_name"
                     style="@style/auto_view_width"
                     android:layout_marginTop="@dimen/landing_mar_top_land"
                     android:paddingLeft="5dp"
@@ -81,6 +83,7 @@
                     android:textSize="@dimen/landing_text_order_fifteen" />
 
                 <TextView
+                    android:id="@+id/order_glasses_content"
                     style="@style/auto_view_width"
                     android:layout_marginTop="@dimen/landing_mar_top_image"
                     android:ellipsize="end"
@@ -104,6 +107,7 @@
                         android:textSize="@dimen/landing_text_phonenum_size" />
 
                     <TextView
+                        android:id="@+id/order_glasses_price"
                         style="@style/auto_view_width_two"
                         android:textColor="@color/my_pink"
                         android:textSize="@dimen/landing_text_phonenum_size" />

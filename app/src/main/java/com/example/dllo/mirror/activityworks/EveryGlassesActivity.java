@@ -1,6 +1,7 @@
 package com.example.dllo.mirror.activityworks;
 
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Message;
@@ -266,7 +267,10 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
                 Toast.makeText(EveryGlassesActivity.this, "点击了佩戴图集按钮", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.everyglasses_button_buy:
-                Toast.makeText(EveryGlassesActivity.this, "点击了购买按钮", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(EveryGlassesActivity.this, "点击了购买按钮", Toast.LENGTH_SHORT).show();
+                Intent intentToOrder=new Intent(EveryGlassesActivity.this,OrderActivity.class);
+                startActivity(intentToOrder);
+
                 break;
         }
     }
