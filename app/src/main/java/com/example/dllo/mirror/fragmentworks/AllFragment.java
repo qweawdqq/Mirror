@@ -70,6 +70,7 @@ public class AllFragment extends BaseFragment implements StaticEntityInterface {
             builder.add(DEVICE_TYPE, "2");
             builder.add(PAGE, "");
             builder.add(LAST_TIME, "");
+            builder.add(VERSION,"1.0.1");
             OkHttpNetHelper httpNetHelper = new OkHttpNetHelper();
             httpNetHelper.getPostDataFromNet(builder, MRTJ, new NetListener() {
                 @Override

@@ -18,7 +18,6 @@ import com.example.dllo.mirror.activityworks.EveryGlassesActivity;
 import com.example.dllo.mirror.bean.GoodsListBean;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.squareup.picasso.Picasso;
 
 /**
  * Created by dllo on 16/3/30.
