@@ -89,13 +89,16 @@ public class HeadRecycleAdapter extends RecyclerView.Adapter<HeadRecycleAdapter.
 
     @Override
     public HeadRecycleAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if (mHeaderView != null && viewType == TYPE_HEADER)
+        if (mHeaderView != null && viewType == TYPE_HEADER){
+            Log.e("创建","创建");
+
             return new MyViewHolder(mHeaderView);
+    }
         if (mFootView != null && viewType == TYPE_FOOT) {
             return new MyViewHolder(mFootView);
         }
         return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.video_recycle_item, parent, false));
-//        return null;
+
     }
 
 
@@ -139,6 +142,9 @@ public class HeadRecycleAdapter extends RecyclerView.Adapter<HeadRecycleAdapter.
         });
 
     }
+
+
+
 
     //    放大bitmap 使其充满屏幕
 //    private Bitmap getMyBitmap(Bitmap bitmap, ImageView im) {

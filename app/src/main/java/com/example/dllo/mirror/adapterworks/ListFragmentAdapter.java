@@ -18,6 +18,7 @@ import com.example.dllo.mirror.activityworks.EveryGlassesActivity;
 import com.example.dllo.mirror.bean.GoodsListBean;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by dllo on 16/3/30.
@@ -89,6 +90,7 @@ public class ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapte
 
         if (bean != null) {   // 判断  数据存在时
             ImageLoader.getInstance().displayImage(bean.getData().getList().get(position).getGoods_img(), holder.iv, options);
+
             holder.tv_name.setText(bean.getData().getList().get(position).getGoods_name());
             listLine.setOnClickListener(new View.OnClickListener() {
                 @Override

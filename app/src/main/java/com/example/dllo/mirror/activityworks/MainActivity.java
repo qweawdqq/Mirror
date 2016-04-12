@@ -1,15 +1,16 @@
 package com.example.dllo.mirror.activityworks;
 
-import android.content.Context;
+
 import android.content.Intent;
+
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.dllo.mirror.R;
@@ -17,33 +18,33 @@ import com.example.dllo.mirror.adapterworks.HomeFragmentAdapter;
 import com.example.dllo.mirror.allviewworks.VerticalViewPager;
 import com.example.dllo.mirror.animationworks.MirrorScaleAtion;
 import com.example.dllo.mirror.baseworks.BaseActivity;
+import com.example.dllo.mirror.baseworks.BitMapTools;
 import com.example.dllo.mirror.bean.MenuFragmentBean;
-import com.example.dllo.mirror.db.DaoSingleton;
+
+
 import com.example.dllo.mirror.db.HomeData;
-import com.example.dllo.mirror.db.HomeDataDao;
-import com.example.dllo.mirror.eventbusclass.PassTitleToMenu;
+
 import com.example.dllo.mirror.fragmentworks.AllFragment;
 import com.example.dllo.mirror.fragmentworks.BuyFragment;
 import com.example.dllo.mirror.fragmentworks.ListFragment;
-import com.example.dllo.mirror.interfaceworks.AllReceiveListener;
-import com.example.dllo.mirror.net.NetConnectionStatus;
+
 import com.example.dllo.mirror.net.NetListener;
 import com.example.dllo.mirror.net.OkHttpNetHelper;
 import com.example.dllo.mirror.normalstatic.StaticEntityInterface;
-import com.example.dllo.mirror.receiveworks.MyAllReceive;
 import com.google.gson.Gson;
 import com.squareup.okhttp.FormEncodingBuilder;
+import com.zhy.autolayout.AutoLinearLayout;
+import com.zhy.autolayout.AutoRelativeLayout;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-
-import de.greenrobot.event.EventBus;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener, StaticEntityInterface {
     private ImageView mirror;
     private TextView land;
     private MirrorScaleAtion action;
-
+    private AutoRelativeLayout layout;
     //
     private VerticalViewPager viewPager;
     private HomeFragmentAdapter adapter;
@@ -59,6 +60,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     protected void initView() {
+        layout = bindView(R.id.main_layout);
         mirror = bindView(R.id.main_iv_mirror);
         land = bindView(R.id.main_iv_land);
         viewPager = bindView(R.id.fragment_home_viewpager);
@@ -66,7 +68,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     protected void initData() {
-
+        layout.setBackground(BitMapTools.readBitMap(this, R.mipmap.background));
         action = new MirrorScaleAtion(this, null);
         mirror.setOnClickListener(this);
         land.setOnClickListener(this);
@@ -91,6 +93,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             }
         });
     }
+
+
 
 
     @Override

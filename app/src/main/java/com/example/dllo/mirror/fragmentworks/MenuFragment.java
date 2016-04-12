@@ -17,6 +17,7 @@ import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.activityworks.MainActivity;
 import com.example.dllo.mirror.adapterworks.MenuFragmentAdapter;
 import com.example.dllo.mirror.baseworks.BaseFragment;
+import com.example.dllo.mirror.baseworks.BitMapTools;
 import com.example.dllo.mirror.bean.MenuFragmentBean;
 import com.example.dllo.mirror.eventbusclass.PassTitleToMenu;
 import com.example.dllo.mirror.net.NetListener;
@@ -26,6 +27,7 @@ import com.example.dllo.mirror.normalstatic.StaticEntityInterface;
 import com.google.gson.Gson;
 import com.squareup.okhttp.FormEncodingBuilder;
 import com.zhy.autolayout.AutoLinearLayout;
+import com.zhy.autolayout.AutoRelativeLayout;
 
 import de.greenrobot.event.EventBus;
 
@@ -37,7 +39,7 @@ public class MenuFragment extends BaseFragment implements StaticEntityInterface,
     private ListView listView;
     private MenuFragmentAdapter adapter;
     MenuFragmentBean bean;
-
+private AutoLinearLayout layout;
     private TextView tvTitle;
     private ImageView ivLine;
 
@@ -54,6 +56,7 @@ public class MenuFragment extends BaseFragment implements StaticEntityInterface,
 
     @Override
     protected void initView() {
+        layout = bindView(R.id.menu_layout);
         fragment_menu_line = bindView(R.id.fragment_menu_line);
         listView = bindView(R.id.fragment_menu_listview);
         backTitle = bindView(R.id.fragment_menu_back_title);
@@ -80,7 +83,7 @@ public class MenuFragment extends BaseFragment implements StaticEntityInterface,
 
     @Override
     protected void initData() {
-
+layout.setBackground(BitMapTools.readBitMap(getActivity(),R.mipmap.background));
         // 注册eventbus
 //        EventBus.getDefault().register(this);
 
