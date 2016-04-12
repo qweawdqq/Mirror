@@ -18,11 +18,15 @@ import com.example.dllo.mirror.allviewworks.VerticalViewPager;
 import com.example.dllo.mirror.animationworks.MirrorScaleAtion;
 import com.example.dllo.mirror.baseworks.BaseActivity;
 import com.example.dllo.mirror.bean.MenuFragmentBean;
+import com.example.dllo.mirror.db.DaoSingleton;
+import com.example.dllo.mirror.db.HomeData;
+import com.example.dllo.mirror.db.HomeDataDao;
 import com.example.dllo.mirror.eventbusclass.PassTitleToMenu;
 import com.example.dllo.mirror.fragmentworks.AllFragment;
 import com.example.dllo.mirror.fragmentworks.BuyFragment;
 import com.example.dllo.mirror.fragmentworks.ListFragment;
 import com.example.dllo.mirror.interfaceworks.AllReceiveListener;
+import com.example.dllo.mirror.net.NetConnectionStatus;
 import com.example.dllo.mirror.net.NetListener;
 import com.example.dllo.mirror.net.OkHttpNetHelper;
 import com.example.dllo.mirror.normalstatic.StaticEntityInterface;
@@ -46,6 +50,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private Handler handler;
     MenuFragmentBean bean;
 
+    private HomeData homeData;
 
     @Override
     protected int initLayout() {
@@ -56,6 +61,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     protected void initView() {
         mirror = bindView(R.id.main_iv_mirror);
         land = bindView(R.id.main_iv_land);
+        viewPager = bindView(R.id.fragment_home_viewpager);
     }
 
     @Override
@@ -68,10 +74,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         // 接收从MenuFragment中传过来的 点击 菜单行布局 的 position, 让viewPager滑动到相对应的位置
         Intent intent = getIntent();
         final int pos = intent.getIntExtra("position", 0);
-        viewPager = (VerticalViewPager) findViewById(R.id.fragment_home_viewpager);
 
         getNetData();
-
         adapter = new HomeFragmentAdapter(getSupportFragmentManager());
 
         handler = new Handler(new Handler.Callback() {
@@ -93,7 +97,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.main_iv_mirror:
-
                 //mirror 缩放动画
                 action.setView(mirror);
                 action.setMirrorScaleLinister();
@@ -122,6 +125,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 bean = new Gson().fromJson(s.toString(), MenuFragmentBean.class);
 //                Log.d("size", bean.getData().getList().size() + "");
                 List<MenuFragmentBean.DataBean.ListBean> list = bean.getData().getList();
+
+//                // 有网运行时加入到数据库中,到网络断开在运行程序时依然有数据显示
+//                List<String> titles = new ArrayList<String>();
+//                for (int i = 0; i < list.size(); i++) {
+//                    titles.add(bean.getData().getList().get(i).getTitle());
+//                }
+//                HomeDataDao dataDao = DaoSingleton.getInstance().getHomeDataDao();
+//                homeData = new HomeData(null,titles,null,null,null,null);
                 ArrayList<Fragment> fragment = new ArrayList<Fragment>();
                 for (int i = 0; i < list.size(); i++) {
                     Bundle bundle = new Bundle();
@@ -129,6 +140,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                     bundle.putInt("titleAtWhatItem", i);
 //                    bundle.putString("titleNetData", bean.toString());
                     String type = list.get(i).getType();
+                    // 根据type判断加载不同的fragment, 6 是 全部分类, 3 是两种眼镜的种类的列表, 4 是购物车
                     switch (type) {
                         case "6":
                             AllFragment af = new AllFragment();
@@ -149,10 +161,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                     }
 
                 }
-//                Log.d("执行了?","==");
-                //event 传递类到menuFragment中
-//                EventBus.getDefault().post(new PassTitleToMenu(bean));
-//                Log.d("执行了ma?", "==");
                 Message message = Message.obtain();
                 message.obj = fragment;
                 handler.sendMessage(message);

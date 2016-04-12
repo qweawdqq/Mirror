@@ -1,15 +1,18 @@
 package com.example.dllo.mirror.fragmentworks;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.dllo.mirror.R;
+import com.example.dllo.mirror.activityworks.EveryGlassesActivity;
 import com.example.dllo.mirror.adapterworks.AllFragmentAdapter;
 import com.example.dllo.mirror.baseworks.BaseFragment;
 import com.example.dllo.mirror.bean.DailyCommandBean;
@@ -54,7 +57,7 @@ public class AllFragment extends BaseFragment implements StaticEntityInterface {
         lm.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(lm);
 
-        // 接收Bundle 从AllFragment 的上级 >> HomeFragment 传递过来的数据
+        // 接收Bundle 从AllFragment 的上级 >> MianActivity 传递过来的数据
         bundle = getArguments();
         bean = bundle.getParcelable("title");
         titleTv.setText(bean.getTitle());
@@ -76,7 +79,7 @@ public class AllFragment extends BaseFragment implements StaticEntityInterface {
                         @Override
                         public void run() {
                             allFragmentAdapter = new AllFragmentAdapter();
-                            allFragmentAdapter.addData(data);
+                            allFragmentAdapter.addData(data,getContext());
                             recyclerView.setAdapter(allFragmentAdapter);
                         }
                     });
@@ -101,7 +104,6 @@ public class AllFragment extends BaseFragment implements StaticEntityInterface {
 
             }
         });
-
     }
 
 }

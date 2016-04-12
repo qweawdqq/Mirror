@@ -48,10 +48,10 @@
                     <TextView
                         android:id="@+id/everyglasses_englishTitle"
                         android:layout_width="match_parent"
-                        android:gravity="center"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="@dimen/activity_everyglasses_englishTitle_marginTop"
+                        android:gravity="center"
                         android:textColor="#ffffff"
                         android:textSize="@dimen/activity_everyglasses_englishTitle_textSize" />
 
@@ -227,7 +227,6 @@
     </com.example.dllo.mirror.ObservableScrollView>
 
 
-
     <!-- 按钮 -->
     <RelativeLayout
         android:id="@+id/everyglasses_button_layout"
@@ -273,7 +272,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/activity_everyglasses_button_layoutmarginbottom_height"
             android:layout_alignParentBottom="true"
-            android:orientation="horizontal"/>
+            android:orientation="horizontal" />
     </RelativeLayout>
 
 </FrameLayout>

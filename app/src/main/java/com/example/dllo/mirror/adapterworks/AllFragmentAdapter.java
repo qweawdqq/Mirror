@@ -1,5 +1,7 @@
 package com.example.dllo.mirror.adapterworks;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
@@ -8,9 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.dllo.mirror.R;
+import com.example.dllo.mirror.activityworks.EveryGlassesActivity;
 import com.example.dllo.mirror.bean.DailyCommandBean;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -21,12 +25,15 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 public class AllFragmentAdapter extends RecyclerView.Adapter<AllFragmentAdapter.AllViewHolder> {
 
     private DailyCommandBean bean;
+    private LinearLayout allLine;
+    private Context context;
 
     /**
      * 自定义 添加数据方法
      */
-    public void addData(DailyCommandBean bean) {
+    public void addData(DailyCommandBean bean,Context context) {
         this.bean = bean;
+        this.context = context;
         Log.d("111111", bean.toString());
         notifyDataSetChanged();  // 通知适配器  数据是实时更新的
 
@@ -37,8 +44,6 @@ public class AllFragmentAdapter extends RecyclerView.Adapter<AllFragmentAdapter.
 
         private TextView tv_name, tv_goods_price, tv_discount_price, tv_produce_area, tv_brand, tv_rmb;
         private ImageView iv;
-//        private int position;  // 用于监听事件
-//        private LinearLayout linearLayout;
 
         //  缓存类 构造方法
         public AllViewHolder(View itemView) {
@@ -50,6 +55,16 @@ public class AllFragmentAdapter extends RecyclerView.Adapter<AllFragmentAdapter.
             tv_produce_area = (TextView) itemView.findViewById(R.id.fragment_all_item_city);
             tv_brand = (TextView) itemView.findViewById(R.id.fragment_all_item_brand);
             tv_rmb = (TextView) itemView.findViewById(R.id.fragment_all_item_rmb);
+            allLine = (LinearLayout) itemView.findViewById(R.id.fragment_all_item_line);
+            // 给RecyclerView设置跳转,到二级商品详情界面
+            allLine.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, EveryGlassesActivity.class);
+                    intent.putExtra("id", bean.getData().getList().get(0).getData_info().getGoods_id());
+                    context.startActivity(intent);
+                }
+            });
         }
 
     }

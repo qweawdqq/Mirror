@@ -23,6 +23,13 @@ import com.squareup.okhttp.FormEncodingBuilder;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.framework.PlatformActionListener;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.sina.weibo.SinaWeibo;
+
 /**
  * Created by jialiang on 16/3/30.
  * 登录的界面
@@ -31,7 +38,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     private ImageButton back;
     private Button create, land;
     private EditText getNum, getPassWord;
-    private ImageButton weixin, weibo;
+    private ImageButton weiXin, weiBo;
 
     @Override
     protected int initLayout() {
@@ -45,8 +52,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         land = bindView(R.id.landing_btn_land);
         getNum = bindView(R.id.login_et_phoneNum);
         getPassWord = bindView(R.id.login_et_prossed);
-        weixin = bindView(R.id.login_img_weixin);
-        weibo = bindView(R.id.login_img_weibo);
+        weiXin = bindView(R.id.login_img_weixin);
+        weiBo = bindView(R.id.login_img_weibo);
     }
 
     @Override
@@ -54,6 +61,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         back.setOnClickListener(this);
         create.setOnClickListener(this);
         land.setOnClickListener(this);
+        weiXin.setOnClickListener(this);
+        weiBo.setOnClickListener(this);
     }
 
     @Override
@@ -69,9 +78,36 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 getEtString();
                 break;
             case R.id.login_img_weibo:
+                ShareSDK.initSDK(this);
+                Platform platform1 = ShareSDK.getPlatform(SinaWeibo.NAME);
+                if (platform1.isAuthValid()){
+                    platform1.removeAccount();
+                }
+                platform1.setPlatformActionListener(new PlatformActionListener() {
+                    @Override
+                    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+                        Log.i("android!", platform.getDb().getUserName() + "---onComplete---" + platform.getDb().getUserIcon());
+
+                    }
+
+                    @Override
+                    public void onError(Platform platform, int i, Throwable throwable) {
+                        Log.i("android", "---onError---");
+
+                    }
+
+                    @Override
+                    public void onCancel(Platform platform, int i) {
+                        Log.i("android", "---onCancel---");
+
+                    }
+                });
+                platform1.SSOSetting(false);
+                platform1.showUser(null);
                 break;
             case R.id.login_img_weixin:
                 break;
+
         }
     }
 

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -78,7 +79,7 @@ public class ListFragment extends BaseFragment implements StaticEntityInterface 
                     @Override
                     public void run() {
                         adapter = new ListFragmentAdapter();
-                        adapter.addData(data);
+                        adapter.addData(data,getContext());
                         recyclerView.setAdapter(adapter);
                     }
                 });

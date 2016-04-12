@@ -1,5 +1,7 @@
 package com.example.dllo.mirror.adapterworks;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
@@ -8,9 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.dllo.mirror.R;
+import com.example.dllo.mirror.activityworks.EveryGlassesActivity;
 import com.example.dllo.mirror.bean.GoodsListBean;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -22,14 +26,17 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 public class ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapter.ListViewHolder> {
 
     private GoodsListBean bean;
-
+    private LinearLayout listLine;
+    private Context context;
     /**
      * 自定义 添加数据方法
      */
-    public void addData(GoodsListBean bean) {
+    public void addData(GoodsListBean bean,Context context) {
+        this.context = context;
         this.bean = bean;
         Log.d("111111",bean.toString());
         notifyDataSetChanged();  // 通知适配器  数据是实时更新的
+        Log.d("图", bean.getData().getList().get(0).getGoods_img());
 
     }
 
@@ -52,9 +59,9 @@ public class ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapte
             tv_produce_area= (TextView) itemView.findViewById(R.id.fragment_list_item_city);
             tv_brand= (TextView) itemView.findViewById(R.id.fragment_list_item_brand);
             tv_rmb = (TextView) itemView.findViewById(R.id.fragment_list_item_rmb);
-
             iv = (ImageView) itemView.findViewById(R.id.fragment_list_glassesitem_iv);
 
+            listLine = (LinearLayout) itemView.findViewById(R.id.fragment_list_item_glasses_line);
         }
 
     }
@@ -69,7 +76,7 @@ public class ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapte
 
 
     @Override
-    public void onBindViewHolder(ListViewHolder holder, int position) {
+    public void onBindViewHolder(ListViewHolder holder, final int position) {
 
         //显示图片的配置
         DisplayImageOptions options = new DisplayImageOptions.Builder()
@@ -83,6 +90,15 @@ public class ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapte
         if (bean != null) {   // 判断  数据存在时
             ImageLoader.getInstance().displayImage(bean.getData().getList().get(position).getGoods_img(), holder.iv, options);
             holder.tv_name.setText(bean.getData().getList().get(position).getGoods_name());
+            listLine.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, EveryGlassesActivity.class);
+                    intent.putExtra("id", bean.getData().getList().get(position).getGoods_id());
+                    context.startActivity(intent);
+                }
+            });
+
             // 商品是否打折,根据判断显示不同的内容
             if (!bean.getData().getList().get(position).getDiscount_price().equals("")){
                 holder.tv_rmb.setText("¥");

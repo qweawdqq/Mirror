@@ -18,7 +18,7 @@ public class NetConnectionStatus implements ToNextListener {
     public static boolean getNetContectStatus(Context context) {
         ConnectivityManager manager;
         manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-//        获取代表联网状态的netWorkInfo对象
+    //  获取代表联网状态的netWorkInfo对象
         NetworkInfo info = manager.getActiveNetworkInfo();
         if (info == null) {
             Toast.makeText(context, "网络未连接", Toast.LENGTH_SHORT).show();

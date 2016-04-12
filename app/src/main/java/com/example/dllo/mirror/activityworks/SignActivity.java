@@ -57,7 +57,6 @@ public class SignActivity extends BaseActivity implements ToNextListener, Static
     private void getPhoneNum() {
         if (phoneNum != null && phoneNum.getText().length() == 11) {
             String getPhoneNum = phoneNum.getText().toString();
-            Log.e("zou ","dadasd");
             sendMessageToNet(getPhoneNum);
         } else {
             Toast.makeText(SignActivity.this, "请输入正确手机号码", Toast.LENGTH_SHORT).show();
@@ -125,19 +124,29 @@ public class SignActivity extends BaseActivity implements ToNextListener, Static
      * @param phoneNum et得到的你输入的文字
      */
     private void sendMessageToNet(String phoneNum) {
-        Toast.makeText(SignActivity.this, "验证码以发送请注意查收", Toast.LENGTH_SHORT).show();
         OkHttpNetHelper helper = new OkHttpNetHelper();
         FormEncodingBuilder builder = new FormEncodingBuilder();
         builder.add(PHONE_NUMBER, phoneNum);
         helper.getPostDataFromNet(builder, USER_SEND_CODE, new NetListener() {
             @Override
             public void getSuccess(String s) {
-            Log.e("dasdas","dasdas");
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(SignActivity.this, "验证码以发送请注意查收", Toast.LENGTH_SHORT).show();
+                }
+            });
             }
 
             @Override
             public void getFail(String s) {
-                Toast.makeText(SignActivity.this, "未能发送请求,请检查网络", Toast.LENGTH_SHORT).show();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(SignActivity.this, "请检查您的网络连接", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
             }
         });
 
@@ -148,7 +157,6 @@ public class SignActivity extends BaseActivity implements ToNextListener, Static
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.sign_tv_sendmessage:
-                Log.e("走这里了吗?","走了这了");
                 getPhoneNum();
                 break;
             case R.id.sign_tv_creatID:
