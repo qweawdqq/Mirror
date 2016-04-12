@@ -1,10 +1,13 @@
 package com.example.dllo.mirror.activityworks;
 
 import android.graphics.Bitmap;
+import android.media.Image;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.adapterworks.HeadRecycleAdapter;
@@ -20,10 +23,11 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 /**
  * Created by dllo on 16/4/8.
  */
-public class VideoActivity extends BaseActivity {
+public class VideoActivity extends BaseActivity implements View.OnClickListener {
     private RecyclerView recyclerView;
     private HeadRecycleAdapter adapter;
     private JCVideoPlayer jCVideoPlayer;
+    private ImageButton btn_back, btn_buy;
 
     @Override
     protected int initLayout() {
@@ -33,6 +37,8 @@ public class VideoActivity extends BaseActivity {
     @Override
     protected void initView() {
         recyclerView = bindView(R.id.video_recycle);
+        btn_back = bindView(R.id.video_btn_back);
+        btn_buy = bindView(R.id.video_btn_buy);
     }
 
     @Override
@@ -41,7 +47,13 @@ public class VideoActivity extends BaseActivity {
         setMyVideoView();
         setRecyclerView();
         stopVideoview();
+        setBtnOnclick();
 
+    }
+
+    private void setBtnOnclick(){
+        btn_buy.setOnClickListener(this);
+        btn_back.setOnClickListener(this);
     }
 
     private void setMyVideoView() {
@@ -94,4 +106,14 @@ public class VideoActivity extends BaseActivity {
     }
 
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.video_btn_back:
+                finish();
+                break;
+            case R.id.video_btn_buy:
+                break;
+        }
+    }
 }

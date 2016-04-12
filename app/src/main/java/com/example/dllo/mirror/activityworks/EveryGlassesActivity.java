@@ -25,6 +25,8 @@ import com.example.dllo.mirror.ScrollViewListener;
 import com.example.dllo.mirror.adapterworks.EveryGlassesBackRecyclerViewAdapter;
 import com.example.dllo.mirror.adapterworks.EveryGlassesFrontRecyclerViewAdapter;
 import com.example.dllo.mirror.baseworks.BaseActivity;
+import com.example.dllo.mirror.intentworks.ToNextActivity;
+import com.example.dllo.mirror.intentworks.ToNextListener;
 import com.example.dllo.mirror.net.NetListener;
 import com.example.dllo.mirror.net.OkHttpNetHelper;
 import com.example.dllo.mirror.normalstatic.StaticEntityInterface;
@@ -41,7 +43,7 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
 
 
 public class EveryGlassesActivity extends BaseActivity implements ScrollViewListener,
-        View.OnClickListener, StaticEntityInterface {
+        View.OnClickListener, StaticEntityInterface,ToNextListener {
 
     private ObservableScrollView scrollViewFront = null;
     private ObservableScrollView scrollViewBack = null;
@@ -182,6 +184,8 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
             public boolean handleMessage(Message msg) {
 
                 Bean newBean = (Bean) msg.obj;
+
+
                 tvEnglishTitle.setText(bean.getData().getGoods_name());
                 tvName.setText(bean.getData().getBrand());
                 tvContent.setText(bean.getData().getInfo_des());
@@ -267,7 +271,8 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
                 finish();
                 break;
             case R.id.everyglasses_button_topic:
-                Toast.makeText(EveryGlassesActivity.this, "点击了佩戴图集按钮", Toast.LENGTH_SHORT).show();
+                ToNextActivity.toNextActivity(TO_VIEDO_ACTIVITY,this,false,null);
+
                 break;
             case R.id.everyglasses_button_buy:
                 Toast.makeText(EveryGlassesActivity.this, "点击了购买按钮", Toast.LENGTH_SHORT).show();

@@ -9,7 +9,7 @@ public interface ToNextListener {
     String TO_SIGN_ACTIVITY = "toSignActivity";//跳转到SignActivity
     //得到sharedPreferences  ----welcomeActivity 的
     String SHARED_PREFERENCES = "MySharedPreferences";
-    String WELCOME_ACTIVITY = "welcomeactivity";
+    String WELCOME_ACTIVITY = "toWelcomeactivity";
     String TO_MAIN_ACTYVITY = "toMainActivity";
-    String MainActivity = "mainactivity";
+    String TO_VIEDO_ACTIVITY = "toVideoActivity";
 }

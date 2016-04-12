@@ -10,6 +10,7 @@ import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.activityworks.LoginActivity;
 import com.example.dllo.mirror.activityworks.MainActivity;
 import com.example.dllo.mirror.activityworks.SignActivity;
+import com.example.dllo.mirror.activityworks.VideoActivity;
 
 /**
  * Created by dllo on 16/3/31.
@@ -33,6 +34,11 @@ public class ToNextActivity implements ToNextListener {
             case TO_MAIN_ACTYVITY:
                 intent.setClass(context, MainActivity.class);
                 setMyIntent(intent,context,finish,bundle);
+                break;
+            case TO_VIEDO_ACTIVITY:
+                intent.setClass(context, VideoActivity.class);
+                setMyIntent(intent,context,finish,bundle);
+                break;
         }
     }
 
