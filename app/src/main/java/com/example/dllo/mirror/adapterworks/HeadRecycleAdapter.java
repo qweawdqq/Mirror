@@ -68,7 +68,6 @@ public class HeadRecycleAdapter extends RecyclerView.Adapter<HeadRecycleAdapter.
     @Override
     public int getItemViewType(int position) {
         if (mHeaderView != null && position == 0) {
-            Log.e("position","position");
             return TYPE_HEADER;
         }
         if (mFootView != null && position + 1 == getItemCount()) {
@@ -92,6 +91,7 @@ public class HeadRecycleAdapter extends RecyclerView.Adapter<HeadRecycleAdapter.
     public HeadRecycleAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (mHeaderView != null && viewType == TYPE_HEADER){
             Log.e("创建","创建");
+
             return new MyViewHolder(mHeaderView);
     }
         if (mFootView != null && viewType == TYPE_FOOT) {
@@ -142,6 +142,9 @@ public class HeadRecycleAdapter extends RecyclerView.Adapter<HeadRecycleAdapter.
         });
 
     }
+
+
+
 
     //    放大bitmap 使其充满屏幕
 //    private Bitmap getMyBitmap(Bitmap bitmap, ImageView im) {

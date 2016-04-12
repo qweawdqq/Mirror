@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:layout_marginLeft="@dimen/landing_mar_top_image"
     android:layout_marginRight="@dimen/landing_mar_top_image"
+    android:id="@+id/video_autoLayout"
     android:orientation="vertical">
 
     <TextView
@@ -15,8 +16,10 @@
         android:textColor="@android:color/black" />
 
     <ImageView
+        android:id="@+id/video_line"
         style="@style/auto_view_width"
         android:layout_marginTop="@dimen/landing_mar_top_phone"
+        android:layout_marginBottom="@dimen/landing_mar_top_phone"
         android:background="@mipmap/iv_login_line" />
 
     <ImageView style="@style/auto_view_width" />
@@ -24,13 +27,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/landing_mar_top_phone"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        >
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/video_recycle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+            android:layout_height="match_parent"
+            ></android.support.v7.widget.RecyclerView>
 
         <RelativeLayout
             android:layout_width="match_parent"
