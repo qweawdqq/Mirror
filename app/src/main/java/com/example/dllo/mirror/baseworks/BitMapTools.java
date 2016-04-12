@@ -9,7 +9,8 @@ import android.graphics.drawable.BitmapDrawable;
 import java.io.InputStream;
 
 /**
- * Created by dllo on 16/4/9.
+ * 用于压缩bitmap的大小
+ * Created by jialiang on 16/4/9.
  */
 public class BitMapTools {
 
