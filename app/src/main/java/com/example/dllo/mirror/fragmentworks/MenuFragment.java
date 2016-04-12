@@ -39,14 +39,14 @@ public class MenuFragment extends BaseFragment implements StaticEntityInterface,
     private ListView listView;
     private MenuFragmentAdapter adapter;
     MenuFragmentBean bean;
-private AutoLinearLayout layout;
+    private AutoLinearLayout layout;
     private TextView tvTitle;
     private ImageView ivLine;
 
     AutoLinearLayout backTitle, exit;
     LinearLayout fragment_menu_line;
     private Intent intent;
-    private int i,k= 333;
+    private int i, k = 333;
 
 
     @Override
@@ -83,7 +83,7 @@ private AutoLinearLayout layout;
 
     @Override
     protected void initData() {
-layout.setBackground(BitMapTools.readBitMap(getActivity(),R.mipmap.background));
+        layout.setBackground(BitMapTools.readBitMap(getActivity(), R.mipmap.background));
         // 注册eventbus
 //        EventBus.getDefault().register(this);
 
@@ -168,7 +168,7 @@ layout.setBackground(BitMapTools.readBitMap(getActivity(),R.mipmap.background));
                 getActivity().finish();
                 break;
             case R.id.fragment_menu_exit:
-                Toast.makeText(getActivity(),"退出了应用",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "退出了应用", Toast.LENGTH_SHORT).show();
                 getActivity().finish();
                 break;
         }
