@@ -1,4 +1,4 @@
-package com.example.dllo.mirror;
+package com.example.dllo.mirror.bean;
 
 import java.io.Serializable;
 import java.util.List;

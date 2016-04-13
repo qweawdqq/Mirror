@@ -7,10 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.dllo.mirror.Bean;
+import com.example.dllo.mirror.bean.Bean;
 import com.example.dllo.mirror.R;
-
-import java.util.ArrayList;
 
 /**
  * Created by dllo on 16/4/1.

@@ -2,17 +2,15 @@ package com.example.dllo.mirror.activityworks;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
-import com.example.dllo.mirror.Bean;
+import com.example.dllo.mirror.bean.Bean;
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.adapterworks.HeadRecycleAdapter;
 import com.example.dllo.mirror.baseworks.BaseActivity;

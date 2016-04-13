@@ -12,4 +12,5 @@ public interface ToNextListener {
     String WELCOME_ACTIVITY = "toWelcomeactivity";
     String TO_MAIN_ACTYVITY = "toMainActivity";
     String TO_VIEDO_ACTIVITY = "toVideoActivity";
+    String TO_ORDER_ACTIVITY= "toOrderActivity";
 }

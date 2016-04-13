@@ -9,10 +9,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.dllo.mirror.Bean;
+
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.adapterworks.AddressActivityAdapter;
 import com.example.dllo.mirror.baseworks.BaseActivity;
@@ -37,7 +38,7 @@ public class OrderActivity extends BaseActivity implements View.OnClickListener,
     private AllAddressBean bean;
     private Handler handler;
     private int pos;
-
+    private ImageButton btnback;
 
     @Override
     protected int initLayout() {
@@ -48,29 +49,38 @@ public class OrderActivity extends BaseActivity implements View.OnClickListener,
     protected void initView() {
         etAddressee = bindView(R.id.order_tv_addressee);
         tvAddress = bindView(R.id.order_tv_address);
-        tvAddress.setOnClickListener(this);
+
         ivGlasses = bindView(R.id.order_glasses_image);
         tvGlassesName = bindView(R.id.order_glasses_name);
         tvGlassesContent = bindView(R.id.order_glasses_content);
         tvPrice = bindView(R.id.order_glasses_price);
         btnOrder = bindView(R.id.order_btn_order);
-
+        btnback = bindView(R.id.order_btn_back);
 
     }
 
     @Override
     protected void initData() {
-
+        setBtnListener();
         addAddress();
+        setMyHandler();
 
+    }
+private void setBtnListener(){
+    tvAddress.setOnClickListener(this);
+    btnback.setOnClickListener(this);
+}
+
+
+    private void setMyHandler() {
         handler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
 
-                pos=msg.arg1;
+                pos = msg.arg1;
                 AllAddressBean bean = (AllAddressBean) msg.obj;
-                etAddressee.setText("收件人: "+bean.getData().getList().get(pos).getUsername() + "\n"
-                             + "地址: "+bean.getData().getList().get(pos).getAddr_info() + "\n"
+                etAddressee.setText("收件人: " + bean.getData().getList().get(pos).getUsername() + "\n"
+                        + "地址: " + bean.getData().getList().get(pos).getAddr_info() + "\n"
                         + bean.getData().getList().get(pos).getCellphone());
 
                 return false;
@@ -88,6 +98,9 @@ public class OrderActivity extends BaseActivity implements View.OnClickListener,
                 break;
             case R.id.order_btn_order:
 
+                break;
+            case R.id.order_btn_back:
+                this.finish();
                 break;
         }
     }
@@ -118,10 +131,10 @@ public class OrderActivity extends BaseActivity implements View.OnClickListener,
 
                 String address = NetConnectionStatus.getSharedPrefer(OrderActivity.this, "myAddress");
                 for (int i = 0; i < bean.getData().getList().size(); i++) {
-                    if (address.equals(bean.getData().getList().get(i).getAddr_id()) ) {
+                    if (address.equals(bean.getData().getList().get(i).getAddr_id())) {
                         Message msg = Message.obtain();
                         msg.obj = bean;
-                        msg.arg1=i;
+                        msg.arg1 = i;
                         handler.sendMessage(msg);
                         return;
                     }

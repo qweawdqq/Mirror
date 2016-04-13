@@ -79,7 +79,6 @@
                     style="@style/auto_view_width"
                     android:layout_marginTop="@dimen/landing_mar_top_land"
                     android:paddingLeft="5dp"
-                    android:text="sadfasd"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/landing_text_order_fifteen" />
 
@@ -90,7 +89,6 @@
                     android:ellipsize="end"
                     android:maxLines="3"
                     android:padding="@dimen/landing_text_order_min"
-                    android:text="sadfasdfdsafsdfgsdfgsdgsdgsdgsdgfasfdasfsdfsdfsdfsdfssadfasdfdsafsdfgsdfgsdgsdgsdgsdgfasfdasfsdfsdfsdfsdfssadfasdfdsafsdfgsdfgsdgsdgsdgsdgfasfdasfsdfsdfsdfsdfs"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/landing_text_order_size" />
 

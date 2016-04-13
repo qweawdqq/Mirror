@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     <!-- 背景布局 -->
-    <com.example.dllo.mirror.ObservableScrollView
+    <com.example.dllo.mirror.allviewworks.ObservableScrollView
         android:id="@+id/everyglasses_scrollView_back"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -196,11 +196,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-    </com.example.dllo.mirror.ObservableScrollView>
+    </com.example.dllo.mirror.allviewworks.ObservableScrollView>
 
 
     <!-- 前景布局 -->
-    <com.example.dllo.mirror.ObservableScrollView
+    <com.example.dllo.mirror.allviewworks.ObservableScrollView
         android:id="@+id/everyglasses_scrollView_front"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -224,7 +224,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/activity_everyglasses_front_bottom_layout_height" />
         </LinearLayout>
-    </com.example.dllo.mirror.ObservableScrollView>
+    </com.example.dllo.mirror.allviewworks.ObservableScrollView>
 
 
     <!-- 按钮 -->

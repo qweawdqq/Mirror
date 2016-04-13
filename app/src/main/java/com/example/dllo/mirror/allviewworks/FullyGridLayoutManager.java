@@ -1,4 +1,4 @@
-package com.example.dllo.mirror;
+package com.example.dllo.mirror.allviewworks;
 
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;

@@ -9,20 +9,18 @@ import android.os.Message;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.dllo.mirror.Bean;
-import com.example.dllo.mirror.FullyGridLayoutManager;
+import com.example.dllo.mirror.bean.Bean;
+import com.example.dllo.mirror.allviewworks.FullyGridLayoutManager;
 
-import com.example.dllo.mirror.ObservableScrollView;
+import com.example.dllo.mirror.allviewworks.ObservableScrollView;
 
 import com.example.dllo.mirror.R;
-import com.example.dllo.mirror.ScrollViewListener;
+import com.example.dllo.mirror.interfaceworks.ScrollViewListener;
 
 import com.example.dllo.mirror.adapterworks.EveryGlassesBackRecyclerViewAdapter;
 import com.example.dllo.mirror.adapterworks.EveryGlassesFrontRecyclerViewAdapter;
@@ -39,7 +37,6 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.squareup.okhttp.FormEncodingBuilder;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import cn.sharesdk.framework.ShareSDK;
@@ -267,7 +264,6 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
 
 
     private void toVideoActivity() {
-
         if (bean != null) {
             Log.e("size", bean.getData().getWear_video().size() + "");
             List<Bean.DataBean.WearVideoBean> videoBeans = bean.getData().getWear_video();
@@ -286,13 +282,9 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
                 break;
             case R.id.everyglasses_button_topic:
                 toVideoActivity();
-
                 break;
             case R.id.everyglasses_button_buy:
-//                Toast.makeText(EveryGlassesActivity.this, "点击了购买按钮", Toast.LENGTH_SHORT).show();
-                Intent intentToOrder=new Intent(EveryGlassesActivity.this,OrderActivity.class);
-                startActivity(intentToOrder);
-
+                 ToNextActivity.toNextActivity(TO_ORDER_ACTIVITY,this,false,null);
                 break;
             case R.id.everyglasses_share:
                 Log.d("share", "share");
