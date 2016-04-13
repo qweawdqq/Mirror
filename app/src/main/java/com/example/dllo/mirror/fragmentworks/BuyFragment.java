@@ -1,5 +1,6 @@
 package com.example.dllo.mirror.fragmentworks;
 
+import android.bluetooth.BluetoothGatt;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -9,7 +10,9 @@ import android.widget.TextView;
 
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.baseworks.BaseFragment;
+import com.example.dllo.mirror.baseworks.BitMapTools;
 import com.example.dllo.mirror.bean.MenuFragmentBean;
+import com.zhy.autolayout.AutoLinearLayout;
 
 /**
  * Created by dllo on 16/4/6.
@@ -21,7 +24,7 @@ public class BuyFragment extends BaseFragment {
     private LinearLayout buyLine;
     private Bundle bundle,bundle1;
     private int atItem;// 是从MainActivity 中传过来的现在的ViewPager所在的位置
-
+AutoLinearLayout layout_bg;
     @Override
     protected int initLayout() {
         return R.layout.fragment_buy;
@@ -29,12 +32,14 @@ public class BuyFragment extends BaseFragment {
 
     @Override
     protected void initView() {
+        layout_bg = bindView(R.id.buyFragment_bg);
         titleTv = bindView(R.id.fragment_buy_title);
         buyLine = bindView(R.id.fragment_buy_click);
     }
 
     @Override
     protected void initData() {
+        layout_bg.setBackground(BitMapTools.readBitMap(getActivity(),R.mipmap.background));
         bundle = getArguments();
         bean = bundle.getParcelable("title");
         titleTv.setText(bean.getTitle());

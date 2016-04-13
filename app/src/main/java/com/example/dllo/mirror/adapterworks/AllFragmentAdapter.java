@@ -48,6 +48,7 @@ public class AllFragmentAdapter extends RecyclerView.Adapter<AllFragmentAdapter.
         //  缓存类 构造方法
         public AllViewHolder(View itemView) {
             super(itemView);
+
             iv = (ImageView) itemView.findViewById(R.id.fragment_all_item_iv);
             tv_name = (TextView) itemView.findViewById(R.id.fragment_all_item_name);
             tv_goods_price = (TextView) itemView.findViewById(R.id.fragment_all_item_goods_price);
@@ -83,7 +84,7 @@ public class AllFragmentAdapter extends RecyclerView.Adapter<AllFragmentAdapter.
 
         //显示图片的配置
         DisplayImageOptions options = new DisplayImageOptions.Builder()
-                .showImageOnLoading(R.mipmap.ic_launcher)   //加载过程中的图片
+                .showImageOnLoading(R.drawable.loading_gif)   //加载过程中的图片
                 .showImageOnFail(R.mipmap.ic_launcher) //加载失败的图片
                 .cacheInMemory(true)//是否放到内存缓存中
                 .cacheOnDisk(true)//是否放到硬盘缓存中

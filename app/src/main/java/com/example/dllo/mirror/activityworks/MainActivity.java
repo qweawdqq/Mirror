@@ -68,7 +68,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     protected void initData() {
-        layout.setBackground(BitMapTools.readBitMap(this, R.mipmap.background));
+//        layout.setBackground(BitMapTools.readBitMap(this, R.mipmap.background));
         action = new MirrorScaleAtion(this, null);
         mirror.setOnClickListener(this);
         land.setOnClickListener(this);

@@ -15,6 +15,7 @@ import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.activityworks.EveryGlassesActivity;
 import com.example.dllo.mirror.adapterworks.AllFragmentAdapter;
 import com.example.dllo.mirror.baseworks.BaseFragment;
+import com.example.dllo.mirror.baseworks.BitMapTools;
 import com.example.dllo.mirror.bean.DailyCommandBean;
 import com.example.dllo.mirror.bean.MenuFragmentBean;
 import com.example.dllo.mirror.net.NetListener;
@@ -36,7 +37,7 @@ public class AllFragment extends BaseFragment implements StaticEntityInterface {
     private LinearLayout allLine;
     private Bundle bundle, bundle1;
     private int atItem;// 是从MainActivity 中传过来的现在的ViewPager所在的位置
-
+private LinearLayout allFragment_bg;
     @Override
     protected int initLayout() {
         return R.layout.fragment_all;
@@ -44,6 +45,7 @@ public class AllFragment extends BaseFragment implements StaticEntityInterface {
 
     @Override
     protected void initView() {
+        allFragment_bg = bindView(R.id.allFragment_bg);
         titleTv = bindView(R.id.fragment_all_title);
         recyclerView = bindView(R.id.fragment_all_recyclerview);
         allLine = bindView(R.id.fragment_all_click);
@@ -51,6 +53,8 @@ public class AllFragment extends BaseFragment implements StaticEntityInterface {
 
     @Override
     protected void initData() {
+allFragment_bg.setBackground(BitMapTools.readBitMap(getActivity(),R.mipmap.background));
+
 
         // recyclerView管理者   横向
         LinearLayoutManager lm = new LinearLayoutManager(getActivity());

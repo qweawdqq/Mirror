@@ -49,7 +49,7 @@ public class EveryGlassesBackRecyclerViewAdapter extends RecyclerView.Adapter<Ev
 
         //显示图片的配置
         DisplayImageOptions options = new DisplayImageOptions.Builder()
-                .showImageOnLoading(R.mipmap.ic_launcher)   //加载过程中的图片
+                .showImageOnLoading(R.drawable.loading_gif)   //加载过程中的图片
                 .showImageOnFail(R.mipmap.ic_launcher) //加载失败的图片
                 .cacheInMemory(true)//是否放到内存缓存中
                 .cacheOnDisk(true)//是否放到硬盘缓存中

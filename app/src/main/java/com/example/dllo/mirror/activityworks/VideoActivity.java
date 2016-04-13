@@ -1,33 +1,40 @@
 package com.example.dllo.mirror.activityworks;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.media.Image;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.example.dllo.mirror.Bean;
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.adapterworks.HeadRecycleAdapter;
 import com.example.dllo.mirror.baseworks.BaseActivity;
+import com.example.dllo.mirror.intentworks.ToNextListener;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
 /**
  * Created by dllo on 16/4/8.
  */
-public class VideoActivity extends BaseActivity implements View.OnClickListener {
+public class VideoActivity extends BaseActivity implements View.OnClickListener, ToNextListener {
     private RecyclerView recyclerView;
     private HeadRecycleAdapter adapter;
     private JCVideoPlayer jCVideoPlayer;
     private ImageButton btn_back, btn_buy;
+    private List<Bean.DataBean.WearVideoBean> videoBeans;
 
     @Override
     protected int initLayout() {
@@ -43,24 +50,57 @@ public class VideoActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     protected void initData() {
+        getIntentBundle();
         adapter = new HeadRecycleAdapter(this);
-        setMyVideoView();
+        setMyVideoView(getVideoUrl(), getVideoImg());
         setRecyclerView();
         stopVideoview();
         setBtnOnclick();
 
     }
 
-    private void setBtnOnclick(){
+    private ArrayList<Bean.DataBean.WearVideoBean> getImgArrayList() {
+        ArrayList<Bean.DataBean.WearVideoBean> vbs = new ArrayList<Bean.DataBean.WearVideoBean>();
+        for (int i = 0; i < videoBeans.size(); i++) {
+            if (!videoBeans.get(i).getType().equals("8") && i != 1) {
+                vbs.add(videoBeans.get(i));
+            }
+        }
+        return vbs;
+    }
+
+    private String getVideoUrl() {
+        Bean.DataBean.WearVideoBean videoBean = new Bean.DataBean.WearVideoBean();
+        for (int i = 0; i < videoBeans.size(); i++) {
+            if (videoBeans.get(i).getType().equals("8")) {
+                videoBean = videoBeans.get(i);
+            }
+        }
+        return videoBean.getData();
+    }
+
+    private String getVideoImg() {
+        String img = videoBeans.get(1).getData();
+        Log.e("-------", img);
+        return img;
+    }
+
+    private void getIntentBundle() {
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        videoBeans = (List<Bean.DataBean.WearVideoBean>) bundle.get(TO_VIEDO_ACTIVITY);
+    }
+
+    private void setBtnOnclick() {
         btn_buy.setOnClickListener(this);
         btn_back.setOnClickListener(this);
     }
 
-    private void setMyVideoView() {
+    private void setMyVideoView(String videoUrl, String videoImg) {
         View view = LayoutInflater.from(this).inflate(R.layout.video_recycle_video, null);
         jCVideoPlayer = (JCVideoPlayer) view.findViewById(R.id.videocontroller1);
 //        这里的网址换成 我们拉取数据的网址就OK了
-        jCVideoPlayer.setUp("http://flv2.bn.netease.com/videolib3/1604/11/GUubL9293/SD/GUubL9293-mobile.mp4", "");
+        jCVideoPlayer.setUp(videoUrl, "");
         //显示图片的配置
         DisplayImageOptions options = new DisplayImageOptions.Builder()
                 .showImageOnLoading(R.mipmap.ic_launcher)
@@ -71,7 +111,7 @@ public class VideoActivity extends BaseActivity implements View.OnClickListener 
                 .bitmapConfig(Bitmap.Config.RGB_565)
                 .build();
 //        图片的网址换成网络拉取数据的网址就OK了
-        ImageLoader.getInstance().displayImage("http://c.hiphotos.baidu.com/image/pic/item/b7003af33a87e9500f22e6aa14385343fbf2b43a.jpg", jCVideoPlayer.ivThumb, options);
+        ImageLoader.getInstance().displayImage(videoImg, jCVideoPlayer.ivThumb, options);
 
         adapter.setHeaderView(view);
     }
@@ -90,17 +130,9 @@ public class VideoActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void setRecyclerView() {
+        ArrayList<Bean.DataBean.WearVideoBean> list = getImgArrayList();
 
-        ArrayList<String> data = new ArrayList<>();
-        data.add("http://e.hiphotos.baidu.com/image/pic/item/eaf81a4c510fd9f99b356067272dd42a2834a499.jpg");
-        data.add("http://e.hiphotos.baidu.com/image/pic/item/b90e7bec54e736d1db84320899504fc2d562691f.jpg");
-        data.add("http://f.hiphotos.baidu.com/image/pic/item/2f738bd4b31c8701b40e7bc8257f9e2f0708ff60.jpg");
-        data.add("http://c.hiphotos.baidu.com/image/pic/item/c83d70cf3bc79f3dfa086b84bfa1cd11738b299c.jpg");
-        data.add("http://b.hiphotos.baidu.com/image/pic/item/a686c9177f3e670900d880193fc79f3df9dc5578.jpg");
-        data.add("http://c.hiphotos.baidu.com/image/pic/item/b7003af33a87e9500f22e6aa14385343fbf2b43a.jpg");
-        data.add("http://b.hiphotos.baidu.com/image/pic/item/738b4710b912c8fcda0a68faf9039245d688210f.jpg");
-        data.add("http://a.hiphotos.baidu.com/image/pic/item/dbb44aed2e738bd49b456038a38b87d6277ff957.jpg");
-        adapter.addInfo(data);
+        adapter.addInfo(list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
     }
@@ -108,7 +140,7 @@ public class VideoActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.video_btn_back:
                 finish();
                 break;

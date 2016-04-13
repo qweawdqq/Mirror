@@ -16,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.dllo.mirror.Bean;
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.activityworks.PhotoActivity;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -34,7 +35,7 @@ import java.util.ArrayList;
 public class HeadRecycleAdapter extends RecyclerView.Adapter<HeadRecycleAdapter.MyViewHolder> {
 
 
-    private ArrayList<String> data;
+    private ArrayList<Bean.DataBean.WearVideoBean> data;
     private Context context;
     //添加头要用的东西
     private final int TYPE_HEADER = 0;
@@ -44,7 +45,7 @@ public class HeadRecycleAdapter extends RecyclerView.Adapter<HeadRecycleAdapter.
     private View mFootView;
 
 
-    public ArrayList<String> getData() {
+    public ArrayList<Bean.DataBean.WearVideoBean> getData() {
         return this.data;
     }
 
@@ -81,7 +82,7 @@ public class HeadRecycleAdapter extends RecyclerView.Adapter<HeadRecycleAdapter.
         this.context = context;
     }
 
-    public void addInfo(ArrayList<String> data) {
+    public void addInfo(ArrayList<Bean.DataBean.WearVideoBean> data) {
         this.data = data;
         notifyDataSetChanged();
     }
@@ -117,7 +118,7 @@ public class HeadRecycleAdapter extends RecyclerView.Adapter<HeadRecycleAdapter.
 
         //显示图片的配置
         DisplayImageOptions options = new DisplayImageOptions.Builder()
-                .showImageOnLoading(R.mipmap.ic_launcher)
+                .showImageOnLoading(R.drawable.loading_gif)
                 .showImageOnFail(R.mipmap.ic_launcher)
                 .cacheInMemory(true)
                 .cacheOnDisk(true)
@@ -127,7 +128,7 @@ public class HeadRecycleAdapter extends RecyclerView.Adapter<HeadRecycleAdapter.
 
 //        ImageLoader.getInstance().displayImage(data.get(pos), holder.img, options);
 
-        ImageLoader.getInstance().loadImage(data.get(pos), options, new SimpleImageLoadingListener() {
+        ImageLoader.getInstance().loadImage(data.get(pos).getData(), options, new SimpleImageLoadingListener() {
             @Override
             public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
                 super.onLoadingComplete(imageUri, view, loadedImage);
@@ -214,7 +215,7 @@ public class HeadRecycleAdapter extends RecyclerView.Adapter<HeadRecycleAdapter.
 
         private void startNewActivity(ActivityOptionsCompat options) {
             Intent intent = new Intent(context, PhotoActivity.class);
-            intent.putExtra("photoacticity", data.get(position));
+            intent.putExtra("photoacticity", data.get(position).getData());
             ActivityCompat.startActivity((Activity) context, intent, options.toBundle());
         }
 

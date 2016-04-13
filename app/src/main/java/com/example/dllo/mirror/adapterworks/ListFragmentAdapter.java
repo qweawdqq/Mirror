@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.activityworks.EveryGlassesActivity;
+import com.example.dllo.mirror.baseworks.BitMapTools;
 import com.example.dllo.mirror.bean.GoodsListBean;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -28,13 +29,14 @@ public class ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapte
     private GoodsListBean bean;
     private LinearLayout listLine;
     private Context context;
+
     /**
      * 自定义 添加数据方法
      */
-    public void addData(GoodsListBean bean,Context context) {
+    public void addData(GoodsListBean bean, Context context) {
         this.context = context;
         this.bean = bean;
-        Log.d("111111",bean.toString());
+        Log.d("111111", bean.toString());
         notifyDataSetChanged();  // 通知适配器  数据是实时更新的
         Log.d("图", bean.getData().getList().get(0).getGoods_img());
 
@@ -43,7 +45,7 @@ public class ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapte
     // 缓存类
     class ListViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView tv_name,tv_goods_price,tv_discount_price,tv_produce_area,tv_brand,tv_rmb;
+        private TextView tv_name, tv_goods_price, tv_discount_price, tv_produce_area, tv_brand, tv_rmb;
         private ImageView iv;
 //        private int position;  // 用于监听事件
 //        private LinearLayout linearLayout;
@@ -53,14 +55,12 @@ public class ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapte
             super(itemView);
 
             iv = (ImageView) itemView.findViewById(R.id.fragment_list_item_iv);
-            tv_name= (TextView) itemView.findViewById(R.id.fragment_list_item_name);
-            tv_goods_price= (TextView) itemView.findViewById(R.id.fragment_list_item_goods_price);
+            tv_name = (TextView) itemView.findViewById(R.id.fragment_list_item_name);
+            tv_goods_price = (TextView) itemView.findViewById(R.id.fragment_list_item_goods_price);
             tv_discount_price = (TextView) itemView.findViewById(R.id.fragment_list_item_discount_price);
-            tv_produce_area= (TextView) itemView.findViewById(R.id.fragment_list_item_city);
-            tv_brand= (TextView) itemView.findViewById(R.id.fragment_list_item_brand);
+            tv_produce_area = (TextView) itemView.findViewById(R.id.fragment_list_item_city);
+            tv_brand = (TextView) itemView.findViewById(R.id.fragment_list_item_brand);
             tv_rmb = (TextView) itemView.findViewById(R.id.fragment_list_item_rmb);
-            iv = (ImageView) itemView.findViewById(R.id.fragment_list_glassesitem_iv);
-
             listLine = (LinearLayout) itemView.findViewById(R.id.fragment_list_item_glasses_line);
         }
 
@@ -101,14 +101,14 @@ public class ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapte
             });
 
             // 商品是否打折,根据判断显示不同的内容
-            if (!bean.getData().getList().get(position).getDiscount_price().equals("")){
+            if (!bean.getData().getList().get(position).getDiscount_price().equals("")) {
                 holder.tv_rmb.setText("¥");
                 holder.tv_rmb.setVisibility(View.VISIBLE);
                 holder.tv_discount_price.setText(bean.getData().getList().get(position).getDiscount_price());
                 holder.tv_discount_price.setVisibility(View.VISIBLE);
                 holder.tv_goods_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
                 holder.tv_goods_price.setText("¥" + bean.getData().getList().get(position).getGoods_price());
-            }else {
+            } else {
                 holder.tv_rmb.setVisibility(View.INVISIBLE);
                 holder.tv_goods_price.setText("¥" + bean.getData().getList().get(position).getGoods_price());
             }

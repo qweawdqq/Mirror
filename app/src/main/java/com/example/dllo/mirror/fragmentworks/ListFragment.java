@@ -1,5 +1,6 @@
 package com.example.dllo.mirror.fragmentworks;
 
+import android.bluetooth.BluetoothGatt;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.adapterworks.ListFragmentAdapter;
 import com.example.dllo.mirror.baseworks.BaseFragment;
+import com.example.dllo.mirror.baseworks.BitMapTools;
 import com.example.dllo.mirror.bean.GoodsListBean;
 import com.example.dllo.mirror.bean.MenuFragmentBean;
 import com.example.dllo.mirror.net.NetListener;
@@ -30,6 +32,7 @@ public class ListFragment extends BaseFragment implements StaticEntityInterface 
     private MenuFragmentBean.DataBean.ListBean bean;
     private TextView title, title_nest;
     private Bundle bundle, bundle1;
+    private LinearLayout layout_bg;
     private int atItem;// 是从MainActivity 中传过来的现在的ViewPager所在的位置
 
 
@@ -40,7 +43,7 @@ public class ListFragment extends BaseFragment implements StaticEntityInterface 
 
     @Override
     protected void initView() {
-
+        layout_bg = bindView(R.id.list_img_bg);
         title = bindView(R.id.fragment_list_title);
         title_nest = bindView(R.id.fragment_list_titleNest);
         recyclerView = bindView(R.id.fragment_list_recyclerview);
@@ -52,7 +55,7 @@ public class ListFragment extends BaseFragment implements StaticEntityInterface 
 
     @Override
     protected void initData() {
-
+        layout_bg.setBackground(BitMapTools.readBitMap(getActivity(),R.mipmap.background));
         // recyclerView管理者   横向
         LinearLayoutManager lm = new LinearLayoutManager(getActivity());
         lm.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -68,7 +71,7 @@ public class ListFragment extends BaseFragment implements StaticEntityInterface 
         builder.add(PAGE, "");
         builder.add(LAST_TIME, "");
         builder.add(GOODS_LIST_CATEGORY_ID, bean.getInfo_data());
-        builder.add(GOODS_LIST_VERSION, "1.0.0");
+        builder.add(GOODS_LIST_VERSION, "1.0.1");
         OkHttpNetHelper helper = new OkHttpNetHelper();
         helper.getPostDataFromNet(builder, GOODS_LIST, new NetListener() {
             @Override
@@ -78,7 +81,7 @@ public class ListFragment extends BaseFragment implements StaticEntityInterface 
                     @Override
                     public void run() {
                         adapter = new ListFragmentAdapter();
-                        adapter.addData(data,getContext());
+                        adapter.addData(data, getContext());
                         recyclerView.setAdapter(adapter);
                     }
                 });

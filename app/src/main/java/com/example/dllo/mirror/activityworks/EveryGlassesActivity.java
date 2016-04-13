@@ -2,6 +2,7 @@ package com.example.dllo.mirror.activityworks;
 
 import android.animation.ObjectAnimator;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.RecyclerView;
@@ -36,14 +37,16 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.squareup.okhttp.FormEncodingBuilder;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.onekeyshare.OnekeyShare;
 
 
 public class EveryGlassesActivity extends BaseActivity implements ScrollViewListener,
-        View.OnClickListener, StaticEntityInterface,ToNextListener {
+        View.OnClickListener, StaticEntityInterface, ToNextListener {
 
     private ObservableScrollView scrollViewFront = null;
     private ObservableScrollView scrollViewBack = null;
@@ -150,23 +153,22 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
         builder.add("token", "");
         builder.add("device_type", "3");
         builder.add("goods_id", id);
-
+        builder.add(GOODS_LIST_VERSION, "1.0.1");
 
         httpNetHelper.getPostDataFromNet(builder, GOODS_INFO, new NetListener() {
             @Override
             public void getSuccess(String s) {
 
-//                Log.i("8888888888888888", "解析成功");
-
-
                 Gson gson = new Gson();
-                bean = gson.fromJson(s.toString(), Bean.class);
+                Bean myBean = gson.fromJson(s.toString(), Bean.class);
 
 //                Log.i("8888888888888888", s);
 //                Log.i("8888888888888888", bean.toString());
 
                 Message msg = Message.obtain();
-                msg.obj = bean;
+                msg.obj = myBean;
+
+
                 handler.sendMessage(msg);
 
 
@@ -183,8 +185,7 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
             @Override
             public boolean handleMessage(Message msg) {
 
-                Bean newBean = (Bean) msg.obj;
-
+                bean = (Bean) msg.obj;
 
                 tvEnglishTitle.setText(bean.getData().getGoods_name());
                 tvName.setText(bean.getData().getBrand());
@@ -264,6 +265,18 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
     }
 
 
+    private void toVideoActivity() {
+
+        if (bean != null) {
+            Log.e("size", bean.getData().getWear_video().size() + "");
+            List<Bean.DataBean.WearVideoBean> videoBeans = bean.getData().getWear_video();
+            Bundle bundle = new Bundle();
+            bundle.putSerializable(TO_VIEDO_ACTIVITY, (Serializable) videoBeans);
+            ToNextActivity.toNextActivity(TO_VIEDO_ACTIVITY, this, false, bundle);
+        }
+
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -271,14 +284,14 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
                 finish();
                 break;
             case R.id.everyglasses_button_topic:
-                ToNextActivity.toNextActivity(TO_VIEDO_ACTIVITY,this,false,null);
+                toVideoActivity();
 
                 break;
             case R.id.everyglasses_button_buy:
                 Toast.makeText(EveryGlassesActivity.this, "点击了购买按钮", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.everyglasses_share:
-                 Log.d("share","share");
+                Log.d("share", "share");
 
                 ShareSDK.initSDK(this);
                 OnekeyShare oks = new OnekeyShare();
