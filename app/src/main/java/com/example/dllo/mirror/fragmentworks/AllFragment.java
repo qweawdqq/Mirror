@@ -17,7 +17,11 @@ import com.example.dllo.mirror.adapterworks.AllFragmentAdapter;
 import com.example.dllo.mirror.baseworks.BaseFragment;
 import com.example.dllo.mirror.baseworks.BitMapTools;
 import com.example.dllo.mirror.bean.DailyCommandBean;
+import com.example.dllo.mirror.bean.GoodsListBean;
 import com.example.dllo.mirror.bean.MenuFragmentBean;
+import com.example.dllo.mirror.db.DbHelper;
+import com.example.dllo.mirror.db.HomeData;
+import com.example.dllo.mirror.net.NetConnectionStatus;
 import com.example.dllo.mirror.net.NetListener;
 import com.example.dllo.mirror.net.OkHttpNetHelper;
 import com.example.dllo.mirror.normalstatic.StaticEntityInterface;
@@ -37,7 +41,8 @@ public class AllFragment extends BaseFragment implements StaticEntityInterface {
     private LinearLayout allLine;
     private Bundle bundle, bundle1;
     private int atItem;// 是从MainActivity 中传过来的现在的ViewPager所在的位置
-private LinearLayout allFragment_bg;
+    private LinearLayout allFragment_bg;
+private boolean netStauts;
     @Override
     protected int initLayout() {
         return R.layout.fragment_all;
@@ -53,20 +58,40 @@ private LinearLayout allFragment_bg;
 
     @Override
     protected void initData() {
-allFragment_bg.setBackground(BitMapTools.readBitMap(getActivity(),R.mipmap.background));
-
-
-        // recyclerView管理者   横向
-        LinearLayoutManager lm = new LinearLayoutManager(getActivity());
-        lm.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recyclerView.setLayoutManager(lm);
-
+        netStauts = NetConnectionStatus.getNetContectStatus(getActivity());
+        setRecyclerView();
         // 接收Bundle 从AllFragment 的上级 >> MianActivity 传递过来的数据
         bundle = getArguments();
         bean = bundle.getParcelable("title");
         titleTv.setText(bean.getTitle());
         atItem = bundle.getInt("titleAtWhatItem");
+        jsonFromNetStauts();
 
+        setOnClick();
+    }
+
+
+
+    private void jsonFromNetStauts(){
+        if (netStauts){
+            jsonFromNet();
+        }else {
+            HomeData homeData = DbHelper.getInstance(getActivity()).getNote(bean.getTitle());
+            String value = homeData.getValue();
+            data = new Gson().fromJson(value, DailyCommandBean.class);
+            setRecyclerFromNet();
+        }
+    }
+
+    private void setRecyclerView(){
+        allFragment_bg.setBackground(BitMapTools.readBitMap(getActivity(), R.mipmap.background));
+        // recyclerView管理者   横向
+        LinearLayoutManager lm = new LinearLayoutManager(getActivity());
+        lm.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerView.setLayoutManager(lm);
+
+    }
+    private void jsonFromNet(){
         // 通过标题的Type 参数判断,解析网络数据
         if (bean.getType().equals("6")) {
             FormEncodingBuilder builder = new FormEncodingBuilder();
@@ -74,18 +99,17 @@ allFragment_bg.setBackground(BitMapTools.readBitMap(getActivity(),R.mipmap.backg
             builder.add(DEVICE_TYPE, "2");
             builder.add(PAGE, "");
             builder.add(LAST_TIME, "");
-            builder.add(VERSION,"1.0.1");
+            builder.add(VERSION, "1.0.1");
             OkHttpNetHelper httpNetHelper = new OkHttpNetHelper();
             httpNetHelper.getPostDataFromNet(builder, MRTJ, new NetListener() {
                 @Override
                 public void getSuccess(String s) {
                     data = new Gson().fromJson(s, DailyCommandBean.class);
+                    dbGetData(s);
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            allFragmentAdapter = new AllFragmentAdapter();
-                            allFragmentAdapter.addData(data,getContext());
-                            recyclerView.setAdapter(allFragmentAdapter);
+                            setRecyclerFromNet();
                         }
                     });
                 }
@@ -97,6 +121,22 @@ allFragment_bg.setBackground(BitMapTools.readBitMap(getActivity(),R.mipmap.backg
             });
         }
 
+    }
+    private void setRecyclerFromNet(){
+        allFragmentAdapter = new AllFragmentAdapter();
+        allFragmentAdapter.addData(data, getContext());
+        recyclerView.setAdapter(allFragmentAdapter);
+    }
+
+    private void dbGetData(String s) {
+
+        HomeData hd = new HomeData();
+        hd.setKey(bean.getTitle());
+        hd.setValue(s);
+        DbHelper.getInstance(getActivity()).addData(hd);
+    }
+
+    private void setOnClick(){
         allLine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

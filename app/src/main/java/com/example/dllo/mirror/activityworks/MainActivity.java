@@ -22,12 +22,14 @@ import com.example.dllo.mirror.baseworks.BitMapTools;
 import com.example.dllo.mirror.bean.MenuFragmentBean;
 
 
+import com.example.dllo.mirror.db.DbHelper;
 import com.example.dllo.mirror.db.HomeData;
 
 import com.example.dllo.mirror.fragmentworks.AllFragment;
 import com.example.dllo.mirror.fragmentworks.BuyFragment;
 import com.example.dllo.mirror.fragmentworks.ListFragment;
 
+import com.example.dllo.mirror.net.NetConnectionStatus;
 import com.example.dllo.mirror.net.NetListener;
 import com.example.dllo.mirror.net.OkHttpNetHelper;
 import com.example.dllo.mirror.normalstatic.StaticEntityInterface;
@@ -49,9 +51,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private VerticalViewPager viewPager;
     private HomeFragmentAdapter adapter;
     private Handler handler;
-    MenuFragmentBean bean;
-
+    private MenuFragmentBean bean;
+    private int pos;
+    private boolean netStauts;
     private HomeData homeData;
+
 
     @Override
     protected int initLayout() {
@@ -68,22 +72,35 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     protected void initData() {
-//        layout.setBackground(BitMapTools.readBitMap(this, R.mipmap.background));
-        action = new MirrorScaleAtion(this, null);
-        mirror.setOnClickListener(this);
-        land.setOnClickListener(this);
+        setAllonClick();
+
 
         // 接收从MenuFragment中传过来的 点击 菜单行布局 的 position, 让viewPager滑动到相对应的位置
         Intent intent = getIntent();
-        final int pos = intent.getIntExtra("position", 0);
-
-        getNetData();
+        pos = intent.getIntExtra("position", 0);
+        setMyHandler(pos);
+        getNetStatus();
         adapter = new HomeFragmentAdapter(getSupportFragmentManager());
+    }
 
+    private void getNetStatus() {
+        netStauts = NetConnectionStatus.getNetContectStatus(this);
+        if (netStauts) {
+            getNetData();
+        } else {
+         HomeData homeData = DbHelper.getInstance(this).getNote("mainActivity");
+            String value = homeData.getValue();
+            jsonData(value);
+        }
+
+
+    }
+
+
+    private void setMyHandler(final int pos) {
         handler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-
                 ArrayList<Fragment> list = (ArrayList<Fragment>) msg.obj;
                 Log.e("传过来东西了吗", "" + list.size());
                 adapter.addData(list);
@@ -94,8 +111,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         });
     }
 
-
-
+    private void setAllonClick() {
+        action = new MirrorScaleAtion(this, null);
+        mirror.setOnClickListener(this);
+        land.setOnClickListener(this);
+    }
 
     @Override
     public void onClick(View v) {
@@ -126,48 +146,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         helper.getPostDataFromNet(formEncodingBuilder, MENU_LIST, new NetListener() {
             @Override
             public void getSuccess(String s) {
-                bean = new Gson().fromJson(s.toString(), MenuFragmentBean.class);
-//                Log.d("size", bean.getData().getList().size() + "");
-                List<MenuFragmentBean.DataBean.ListBean> list = bean.getData().getList();
-
-//                // 有网运行时加入到数据库中,到网络断开在运行程序时依然有数据显示
-//                List<String> titles = new ArrayList<String>();
-//                for (int i = 0; i < list.size(); i++) {
-//                    titles.add(bean.getData().getList().get(i).getTitle());
-//                }
-//                HomeDataDao dataDao = DaoSingleton.getInstance().getHomeDataDao();
-//                homeData = new HomeData(null,titles,null,null,null,null);
-                ArrayList<Fragment> fragment = new ArrayList<Fragment>();
-                for (int i = 0; i < list.size(); i++) {
-                    Bundle bundle = new Bundle();
-                    bundle.putParcelable("title", list.get(i));
-                    bundle.putInt("titleAtWhatItem", i);
-//                    bundle.putString("titleNetData", bean.toString());
-                    String type = list.get(i).getType();
-                    // 根据type判断加载不同的fragment, 6 是 全部分类, 3 是两种眼镜的种类的列表, 4 是购物车
-                    switch (type) {
-                        case "6":
-                            AllFragment af = new AllFragment();
-                            af.setArguments(bundle);
-                            fragment.add(af);
-                            break;
-                        case "3":
-                            ListFragment lf = new ListFragment();
-                            lf.setArguments(bundle);
-                            fragment.add(lf);
-                            break;
-                        case "4":
-                            BuyFragment bf = new BuyFragment();
-                            bf.setArguments(bundle);
-                            fragment.add(bf);
-                            break;
-
-                    }
-
-                }
-                Message message = Message.obtain();
-                message.obj = fragment;
-                handler.sendMessage(message);
+                jsonData(s);
+                HomeData hd = new HomeData();
+                hd.setKey("mainActivity");
+                hd.setValue(s);
+                DbHelper.getInstance(MainActivity.this).addData(hd);
             }
 
             @Override
@@ -177,5 +160,44 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         });
     }
 
+    private void jsonData(String s) {
+        bean = new Gson().fromJson(s.toString(), MenuFragmentBean.class);
+        List<MenuFragmentBean.DataBean.ListBean> list = bean.getData().getList();
+        sendMessage(list);
+    }
 
+
+    private void sendMessage(List<MenuFragmentBean.DataBean.ListBean> list) {
+        ArrayList<Fragment> fragment = new ArrayList<Fragment>();
+        for (int i = 0; i < list.size(); i++) {
+            Bundle bundle = new Bundle();
+            bundle.putParcelable("title", list.get(i));
+            bundle.putInt("titleAtWhatItem", i);
+//                    bundle.putString("titleNetData", bean.toString());
+            String type = list.get(i).getType();
+            // 根据type判断加载不同的fragment, 6 是 全部分类, 3 是两种眼镜的种类的列表, 4 是购物车
+            switch (type) {
+                case "6":
+                    AllFragment af = new AllFragment();
+                    af.setArguments(bundle);
+                    fragment.add(af);
+                    break;
+                case "3":
+                    ListFragment lf = new ListFragment();
+                    lf.setArguments(bundle);
+                    fragment.add(lf);
+                    break;
+                case "4":
+                    BuyFragment bf = new BuyFragment();
+                    bf.setArguments(bundle);
+                    fragment.add(bf);
+                    break;
+
+            }
+
+        }
+        Message message = Message.obtain();
+        message.obj = fragment;
+        handler.sendMessage(message);
+    }
 }

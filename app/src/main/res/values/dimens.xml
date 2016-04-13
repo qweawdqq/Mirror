@@ -51,7 +51,6 @@
     <dimen name="fragment_list_item_glasses_name_textSize">15sp</dimen>
 
 
-
     <dimen name="activity_everyglasses_button_share_width">20dp</dimen>
     <dimen name="activity_everyglasses_button_share_height">20dp</dimen>
     <dimen name="activity_everyglasses_button_share_marginRight">45dp</dimen>
@@ -127,5 +126,98 @@
     <dimen name="activity_mian_iv_mirror_marginbottom">40px</dimen>
     <dimen name="activity_mian_iv_mirror_marginleft">48px</dimen>
     <dimen name="activity_mian_tv_login_paddingright">48px</dimen>
+
+    <dimen name="activity_addaddress_layout_marginLeft">15dp</dimen>
+    <dimen name="activity_addaddress_layout_marginRight">15dp</dimen>
+    <dimen name="activity_addaddress_title_line_marginTop">10dp</dimen>
+    <dimen name="activity_addaddress_name_textView_marginTop">20dp</dimen>
+    <dimen name="activity_addaddress_name_textView_textSize">12sp</dimen>
+    <dimen name="activity_addaddress_name_editText_height">40dp</dimen>
+    <dimen name="activity_addaddress_name_editText_marginTop">10dp</dimen>
+    <dimen name="activity_addaddress_phone_textView_marginTop">15dp</dimen>
+    <dimen name="activity_addaddress_phone_textView_textSize">12sp</dimen>
+    <dimen name="activity_addaddress_phone_editText_height">40dp</dimen>
+    <dimen name="activity_addaddress_phone_editText_marginTop">10dp</dimen>
+    <dimen name="activity_addaddress_address_textView_marginTop">15dp</dimen>
+    <dimen name="activity_addaddress_address_textView_textSize">12sp</dimen>
+    <dimen name="activity_addaddress_address_editText_height">100dp</dimen>
+    <dimen name="activity_addaddress_address_editText_marginTop">10dp</dimen>
+    <dimen name="activity_addaddress_button_height">40dp</dimen>
+    <dimen name="activity_addaddress_button_marginTop">25dp</dimen>
+
+    <dimen name="activity_address_line_marginTop">10dp</dimen>
+    <dimen name="activity_address_testview_toAdd_height">80dp</dimen>
+    <dimen name="activity_address_listview_height">0dp</dimen>
+    <dimen name="activity_address_listview_marginTop">10dp</dimen>
+
+    <dimen name="activity_address_item_name_textview_textSize">13sp</dimen>
+    <dimen name="activity_address_item_textview_textSize">12sp</dimen>
+    <dimen name="activity_address_item_del_textview_textSize">13sp</dimen>
+    <dimen name="activity_address_item_layout_marginLeft">12dp</dimen>
+    <dimen name="activity_address_item_layout_marginTop">20dp</dimen>
+    <dimen name="activity_address_item_layout_white_height">20dp</dimen>
+    <dimen name="activity_address_item_imageview_marginRight">30dp</dimen>
+    <dimen name="activity_address_item_del_layout_width">65dp</dimen>
+    <dimen name="activity_address_item_del_layout_height">120dp</dimen>
+
+
+    <dimen name="activity_changeaddress_layout_marginLeft">15dp</dimen>
+    <dimen name="activity_changeaddress_layout_marginRight">15dp</dimen>
+    <dimen name="activity_changeaddress_textview_textSize">12sp</dimen>
+    <dimen name="activity_changeaddress_line_marginTop">10dp</dimen>
+    <dimen name="activity_changeaddress_textview_name_marginTop">20dp</dimen>
+    <dimen name="activity_changeaddress_textview_marginTop">15dp</dimen>
+    <dimen name="activity_changeaddress_name_editText_height">40dp</dimen>
+    <dimen name="activity_changeaddress_name_editText_marginTop">10dp</dimen>
+    <dimen name="activity_changeaddress_phone_editText_height">40dp</dimen>
+    <dimen name="activity_changeaddress_phone_editText_marginTop">10dp</dimen>
+    <dimen name="activity_changeaddress_address_editText_height">100dp</dimen>
+    <dimen name="activity_changeaddress_address_editText_marginTop">10dp</dimen>
+    <dimen name="activity_changeaddress_button_height">40dp</dimen>
+    <dimen name="activity_changeaddress_button_marginTop">25dp</dimen>
+
+    <dimen name="activity_everyglasses_beforerecyclerview_layout_marginLeft">27dp</dimen>
+    <dimen name="activity_everyglasses_beforerecyclerview_layout_marginRight">27dp</dimen>
+    <dimen name="activity_everyglasses_beforerecyclerview_layout_marginTop">51dp</dimen>
+    <dimen name="activity_everyglasses_beforerecyclerview_textview_textSize">16sp</dimen>
+    <dimen name="activity_everyglasses_beforerecyclerview_imageview_marginTop">12dp</dimen>
+
+    <dimen name="everyglasses_backrecyclerview_item_imageview_height">550dp</dimen>
+
+    <dimen name="everyglasses_frontrecyclerview_itemfirst_marginTopLayout_height">200dp</dimen>
+    <dimen name="everyglasses_frontrecyclerview_itemfirst_content_layout_margin">27dp</dimen>
+    <dimen name="everyglasses_frontrecyclerview_itemfirst_line_margin">15dp</dimen>
+    <dimen name="everyglasses_frontrecyclerview_itemfirst_topline_marginTop">14dp</dimen>
+    <dimen name="everyglasses_frontrecyclerview_itemfirst_bottomline_marginTop">13dp</dimen>
+    <dimen name="everyglasses_frontrecyclerview_itemfirst_city_layout_marginRight">15dp</dimen>
+    <dimen name="everyglasses_frontrecyclerview_itemfirst_city_layout_marginTop">17dp</dimen>
+    <dimen name="everyglasses_frontrecyclerview_itemfirst_textview_textSize">32sp</dimen>
+    <dimen name="everyglasses_frontrecyclerview_itemfirst_from_layout_marginRight">13dp</dimen>
+    <dimen name="everyglasses_frontrecyclerview_itemfirst_from_textview_textSize">16sp</dimen>
+    <dimen name="everyglasses_frontrecyclerview_itemfirst_englisrfrom_textview_marginTop">5dp</dimen>
+    <dimen name="everyglasses_frontrecyclerview_itemfirst_englisrfrom_textview_textSize">12sp</dimen>
+    <dimen name="everyglasses_frontrecyclerview_itemfirst_content_textview_marginLeft">15dp</dimen>
+    <dimen name="everyglasses_frontrecyclerview_itemfirst_content_textview_marginRight">15dp</dimen>
+    <dimen name="everyglasses_frontrecyclerview_itemfirst_content_textview_marginTop">14dp</dimen>
+    <dimen name="everyglasses_frontrecyclerview_itemfirst_content_textview_textSize">13sp</dimen>
+    <dimen name="everyglasses_frontrecyclerview_itemfirst_contentMarginBottom_layout_height">15dp</dimen>
+    <dimen name="everyglasses_frontrecyclerview_itemfirst_marginBottomLayout_height">307dp</dimen>
+
+    <dimen name="everyglasses_frontrecyclerview_itemother_marginTopLayout_height">200dp</dimen>
+    <dimen name="everyglasses_frontrecyclerview_itemother_content_layout_margin">27dp</dimen>
+    <dimen name="everyglasses_frontrecyclerview_itemother_line_margin">15dp</dimen>
+    <dimen name="everyglasses_frontrecyclerview_itemother_topline_marginTop">14dp</dimen>
+    <dimen name="everyglasses_frontrecyclerview_itemother_title_marginTop">16dp</dimen>
+    <dimen name="everyglasses_frontrecyclerview_itemother_title_textSize">30sp</dimen>
+    <dimen name="everyglasses_frontrecyclerview_itemother_bottomline_marginTop">17dp</dimen>
+    <dimen name="everyglasses_frontrecyclerview_itemother_content_textview_margin">15dp</dimen>
+    <dimen name="everyglasses_frontrecyclerview_itemother_content_textview_textSize">13sp</dimen>
+    <dimen name="everyglasses_frontrecyclerview_itemother_contentMarginBottom_layout_height">15dp</dimen>
+    <dimen name="everyglasses_frontrecyclerview_itemother_marginBottomLayout_height">307dp</dimen>
+
+
+
+
+
 
 </resources>

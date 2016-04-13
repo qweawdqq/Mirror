@@ -6,8 +6,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginLeft="@dimen/activity_changeaddress_layout_marginLeft"
+        android:layout_marginRight="@dimen/activity_changeaddress_layout_marginRight"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -19,7 +19,7 @@
                 style="@style/landing_view_textsize_creat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="编辑地址"
+                android:text="@string/activity_changeaddress_title_text"
                 android:textColor="@android:color/black" />
 
             <ImageButton
@@ -34,61 +34,61 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/activity_changeaddress_line_marginTop"
             android:background="@mipmap/iv_login_line" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="编辑收件人姓名"
-            android:textColor="#333"
-            android:textSize="12sp" />
+            android:layout_marginTop="@dimen/activity_changeaddress_textview_name_marginTop"
+            android:text="@string/activity_changeaddress_name_textView_text"
+            android:textColor="@color/activity_changeaddress_textview_textColor"
+            android:textSize="@dimen/activity_changeaddress_textview_textSize" />
 
         <EditText
             android:id="@+id/changeaddress_name"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
-            android:background="#ffffff" />
+            android:layout_height="@dimen/activity_changeaddress_name_editText_height"
+            android:layout_marginTop="@dimen/activity_changeaddress_name_editText_marginTop"
+            android:background="@color/activity_changeaddress_editText_background" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="编辑联系人电话号码"
-            android:textColor="#333"
-            android:textSize="12sp" />
+            android:layout_marginTop="@dimen/activity_changeaddress_textview_marginTop"
+            android:text="@string/activity_changeaddress_phone_textView_text"
+            android:textColor="@color/activity_changeaddress_textview_textColor"
+            android:textSize="@dimen/activity_changeaddress_textview_textSize" />
 
         <EditText
             android:id="@+id/changeaddress_phone"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
-            android:background="#ffffff" />
+            android:layout_height="@dimen/activity_changeaddress_phone_editText_height"
+            android:layout_marginTop="@dimen/activity_changeaddress_phone_editText_marginTop"
+            android:background="@color/activity_changeaddress_editText_background" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="编辑收货地址"
-            android:textColor="#333"
-            android:textSize="12sp" />
+            android:layout_marginTop="@dimen/activity_changeaddress_textview_marginTop"
+            android:text="@string/activity_changeaddress_address_textView_text"
+            android:textColor="@color/activity_changeaddress_textview_textColor"
+            android:textSize="@dimen/activity_changeaddress_textview_textSize" />
 
         <EditText
             android:id="@+id/changeaddress_address"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="10dp"
-            android:background="#ffffff" />
+            android:layout_height="@dimen/activity_changeaddress_address_editText_height"
+            android:layout_marginTop="@dimen/activity_changeaddress_address_editText_marginTop"
+            android:background="@color/activity_changeaddress_editText_background" />
 
         <Button
             android:id="@+id/changeaddress_btn_change"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="25dp"
+            android:layout_height="@dimen/activity_changeaddress_button_height"
+            android:layout_marginTop="@dimen/activity_changeaddress_button_marginTop"
             android:background="@mipmap/iv_creat_num"
-            android:text="提交修改"
-            android:textColor="#ffffff" />
+            android:text="@string/activity_changeaddress_button_text"
+            android:textColor="@color/activity_changeaddress_button_textColor" />
     </LinearLayout>
 </LinearLayout>

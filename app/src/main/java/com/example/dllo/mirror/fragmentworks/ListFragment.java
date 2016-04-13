@@ -5,21 +5,28 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.dllo.mirror.R;
+import com.example.dllo.mirror.activityworks.MainActivity;
 import com.example.dllo.mirror.adapterworks.ListFragmentAdapter;
 import com.example.dllo.mirror.baseworks.BaseFragment;
 import com.example.dllo.mirror.baseworks.BitMapTools;
 import com.example.dllo.mirror.bean.GoodsListBean;
 import com.example.dllo.mirror.bean.MenuFragmentBean;
+import com.example.dllo.mirror.db.DbHelper;
+import com.example.dllo.mirror.db.HomeData;
+import com.example.dllo.mirror.net.NetConnectionStatus;
 import com.example.dllo.mirror.net.NetListener;
 import com.example.dllo.mirror.net.OkHttpNetHelper;
 import com.example.dllo.mirror.normalstatic.StaticEntityInterface;
 import com.google.gson.Gson;
 import com.squareup.okhttp.FormEncodingBuilder;
+
+import java.util.ArrayList;
 
 /**
  * Created by dllo on 16/3/30.
@@ -34,7 +41,7 @@ public class ListFragment extends BaseFragment implements StaticEntityInterface 
     private Bundle bundle, bundle1;
     private LinearLayout layout_bg;
     private int atItem;// 是从MainActivity 中传过来的现在的ViewPager所在的位置
-
+    private boolean netStatus;
 
     @Override
     protected int initLayout() {
@@ -55,17 +62,43 @@ public class ListFragment extends BaseFragment implements StaticEntityInterface 
 
     @Override
     protected void initData() {
-        layout_bg.setBackground(BitMapTools.readBitMap(getActivity(),R.mipmap.background));
+        setRecyclerView();
+        bundle = getArguments();
+        bean = bundle.getParcelable("title");
+        title.setText(bean.getTitle());
+        atItem = bundle.getInt("titleAtWhatItem");
+        getNetStatus();
+
+        setClickLayout();
+
+    }
+
+    private void getNetStatus() {
+        netStatus = NetConnectionStatus.getNetContectStatus(getActivity());
+        if (netStatus) {
+            jsonFromNet();
+        } else {
+            noNetStauts();
+        }
+    }
+
+
+    private void setRecyclerView() {
+        layout_bg.setBackground(BitMapTools.readBitMap(getActivity(), R.mipmap.background));
         // recyclerView管理者   横向
         LinearLayoutManager lm = new LinearLayoutManager(getActivity());
         lm.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(lm);
 
-        bundle = getArguments();
-        bean = bundle.getParcelable("title");
-        title.setText(bean.getTitle());
-        atItem = bundle.getInt("titleAtWhatItem");
+    }
 
+    private void noNetStauts() {
+        HomeData hd =  DbHelper.getInstance(getActivity()).getNote(bean.getTitle());
+        data = new Gson().fromJson(hd.getValue(), GoodsListBean.class);
+        getRecycleData();
+    }
+
+    private void jsonFromNet() {
         FormEncodingBuilder builder = new FormEncodingBuilder();
         builder.add(DEVICE_TYPE, "2");
         builder.add(PAGE, "");
@@ -76,13 +109,13 @@ public class ListFragment extends BaseFragment implements StaticEntityInterface 
         helper.getPostDataFromNet(builder, GOODS_LIST, new NetListener() {
             @Override
             public void getSuccess(String s) {
-                data = new Gson().fromJson(s, GoodsListBean.class);
+
+                dbGetData(s);
+
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        adapter = new ListFragmentAdapter();
-                        adapter.addData(data, getContext());
-                        recyclerView.setAdapter(adapter);
+                        getRecycleData();
                     }
                 });
             }
@@ -92,8 +125,25 @@ public class ListFragment extends BaseFragment implements StaticEntityInterface 
 
             }
         });
+    }
+
+    private void dbGetData(String s) {
+        data = new Gson().fromJson(s, GoodsListBean.class);
+        Log.e("长度", data.getData().getList().get(0).getGoods_name() + "");
+        HomeData hd = new HomeData();
+        hd.setKey(bean.getTitle());
+        hd.setValue(s);
+        DbHelper.getInstance(getActivity()).addData(hd);
+    }
+
+    private void getRecycleData() {
+        adapter = new ListFragmentAdapter();
+        adapter.addData(data, getContext());
+        recyclerView.setAdapter(adapter);
+    }
 
 
+    private void setClickLayout() {
         clickLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,7 +155,6 @@ public class ListFragment extends BaseFragment implements StaticEntityInterface 
                 fm.beginTransaction().replace(R.id.main_flt_layout, menuFragment).commit();
             }
         });
-
     }
 
 }

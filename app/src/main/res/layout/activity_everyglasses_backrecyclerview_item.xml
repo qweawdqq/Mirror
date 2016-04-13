@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/everyglasses_backrecyclerview_item_iv"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_height="@dimen/everyglasses_backrecyclerview_item_imageview_height"
         />
 
     <!--<LinearLayout-->
