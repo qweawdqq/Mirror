@@ -14,11 +14,9 @@ public class MyClass {
         Entity homeData = schema.addEntity("HomeData");
         homeData.addIdProperty().primaryKey().autoincrement();
 
-        homeData.addShortProperty("menu");
-        homeData.addShortProperty("name");
-        homeData.addShortProperty("resource");
-        homeData.addShortProperty("price");
-        homeData.addShortProperty("brand");
+        homeData.addStringProperty("key");
+        homeData.addStringProperty("value");
+
         try {
             new DaoGenerator().generateAll(schema,"./app/src/main/java/");
         } catch (Exception e) {

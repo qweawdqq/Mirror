@@ -24,11 +24,8 @@ public class HomeDataDao extends AbstractDao<HomeData, Long> {
     */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
-        public final static Property Menu = new Property(1, Short.class, "menu", false, "MENU");
-        public final static Property Name = new Property(2, Short.class, "name", false, "NAME");
-        public final static Property Resource = new Property(3, Short.class, "resource", false, "RESOURCE");
-        public final static Property Price = new Property(4, Short.class, "price", false, "PRICE");
-        public final static Property Brand = new Property(5, Short.class, "brand", false, "BRAND");
+        public final static Property Key = new Property(1, String.class, "key", false, "KEY");
+        public final static Property Value = new Property(2, String.class, "value", false, "VALUE");
     };
 
 
@@ -45,11 +42,8 @@ public class HomeDataDao extends AbstractDao<HomeData, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"HOME_DATA\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
-                "\"MENU\" INTEGER," + // 1: menu
-                "\"NAME\" INTEGER," + // 2: name
-                "\"RESOURCE\" INTEGER," + // 3: resource
-                "\"PRICE\" INTEGER," + // 4: price
-                "\"BRAND\" INTEGER);"); // 5: brand
+                "\"KEY\" TEXT," + // 1: key
+                "\"VALUE\" TEXT);"); // 2: value
     }
 
     /** Drops the underlying database table. */
@@ -68,29 +62,14 @@ public class HomeDataDao extends AbstractDao<HomeData, Long> {
             stmt.bindLong(1, id);
         }
  
-        Short menu = entity.getMenu();
-        if (menu != null) {
-            stmt.bindLong(2, menu);
+        String key = entity.getKey();
+        if (key != null) {
+            stmt.bindString(2, key);
         }
  
-        Short name = entity.getName();
-        if (name != null) {
-            stmt.bindLong(3, name);
-        }
- 
-        Short resource = entity.getResource();
-        if (resource != null) {
-            stmt.bindLong(4, resource);
-        }
- 
-        Short price = entity.getPrice();
-        if (price != null) {
-            stmt.bindLong(5, price);
-        }
- 
-        Short brand = entity.getBrand();
-        if (brand != null) {
-            stmt.bindLong(6, brand);
+        String value = entity.getValue();
+        if (value != null) {
+            stmt.bindString(3, value);
         }
     }
 
@@ -105,11 +84,8 @@ public class HomeDataDao extends AbstractDao<HomeData, Long> {
     public HomeData readEntity(Cursor cursor, int offset) {
         HomeData entity = new HomeData( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.isNull(offset + 1) ? null : cursor.getShort(offset + 1), // menu
-            cursor.isNull(offset + 2) ? null : cursor.getShort(offset + 2), // name
-            cursor.isNull(offset + 3) ? null : cursor.getShort(offset + 3), // resource
-            cursor.isNull(offset + 4) ? null : cursor.getShort(offset + 4), // price
-            cursor.isNull(offset + 5) ? null : cursor.getShort(offset + 5) // brand
+            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // key
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2) // value
         );
         return entity;
     }
@@ -118,11 +94,8 @@ public class HomeDataDao extends AbstractDao<HomeData, Long> {
     @Override
     public void readEntity(Cursor cursor, HomeData entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setMenu(cursor.isNull(offset + 1) ? null : cursor.getShort(offset + 1));
-        entity.setName(cursor.isNull(offset + 2) ? null : cursor.getShort(offset + 2));
-        entity.setResource(cursor.isNull(offset + 3) ? null : cursor.getShort(offset + 3));
-        entity.setPrice(cursor.isNull(offset + 4) ? null : cursor.getShort(offset + 4));
-        entity.setBrand(cursor.isNull(offset + 5) ? null : cursor.getShort(offset + 5));
+        entity.setKey(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
+        entity.setValue(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
      }
     
     /** @inheritdoc */

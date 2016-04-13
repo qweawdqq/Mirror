@@ -3,6 +3,8 @@ package com.example.dllo.mirror.baseworks;
 import android.app.Application;
 import android.content.Context;
 
+import com.example.dllo.mirror.db.DaoMaster;
+import com.example.dllo.mirror.db.DaoSession;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.UsingFreqLimitedMemoryCache;
@@ -23,7 +25,8 @@ import cn.jpush.android.api.JPushInterface;
  */
 public class BaseApplication extends Application {
     private static Context context;
-
+    private static DaoMaster daoMaster;
+    private static DaoSession daoSession;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -68,5 +71,33 @@ public class BaseApplication extends Application {
     public static Context getContext(){
         return context;
     }
+    /**
+     * 取得DaoMaster
+     *
+     * @param context        上下文
+     * @return               DaoMaster
+     */
+    public static DaoMaster getDaoMaster(Context context) {
+        if (daoMaster == null) {
+            DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(context, "HomeData.db", null);
+            daoMaster = new DaoMaster(helper.getWritableDatabase());
+        }
+        return daoMaster;
+    }
 
+    /**
+     * 取得DaoSession
+     *
+     * @param context        上下文
+     * @return               DaoSession
+     */
+    public static DaoSession getDaoSession(Context context) {
+        if (daoSession == null) {
+            if (daoMaster == null) {
+                daoMaster = getDaoMaster(context);
+            }
+            daoSession = daoMaster.newSession();
+        }
+        return daoSession;
+    }
 }

@@ -7,11 +7,8 @@ package com.example.dllo.mirror.db;
 public class HomeData {
 
     private Long id;
-    private Short menu;
-    private Short name;
-    private Short resource;
-    private Short price;
-    private Short brand;
+    private String key;
+    private String value;
 
     public HomeData() {
     }
@@ -20,13 +17,10 @@ public class HomeData {
         this.id = id;
     }
 
-    public HomeData(Long id, Short menu, Short name, Short resource, Short price, Short brand) {
+    public HomeData(Long id, String key, String value) {
         this.id = id;
-        this.menu = menu;
-        this.name = name;
-        this.resource = resource;
-        this.price = price;
-        this.brand = brand;
+        this.key = key;
+        this.value = value;
     }
 
     public Long getId() {
@@ -37,44 +31,20 @@ public class HomeData {
         this.id = id;
     }
 
-    public Short getMenu() {
-        return menu;
+    public String getKey() {
+        return key;
     }
 
-    public void setMenu(Short menu) {
-        this.menu = menu;
+    public void setKey(String key) {
+        this.key = key;
     }
 
-    public Short getName() {
-        return name;
+    public String getValue() {
+        return value;
     }
 
-    public void setName(Short name) {
-        this.name = name;
-    }
-
-    public Short getResource() {
-        return resource;
-    }
-
-    public void setResource(Short resource) {
-        this.resource = resource;
-    }
-
-    public Short getPrice() {
-        return price;
-    }
-
-    public void setPrice(Short price) {
-        this.price = price;
-    }
-
-    public Short getBrand() {
-        return brand;
-    }
-
-    public void setBrand(Short brand) {
-        this.brand = brand;
+    public void setValue(String value) {
+        this.value = value;
     }
 
 }

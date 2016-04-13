@@ -19,7 +19,10 @@ import com.example.dllo.mirror.adapterworks.MenuFragmentAdapter;
 import com.example.dllo.mirror.baseworks.BaseFragment;
 import com.example.dllo.mirror.baseworks.BitMapTools;
 import com.example.dllo.mirror.bean.MenuFragmentBean;
+import com.example.dllo.mirror.db.DbHelper;
+import com.example.dllo.mirror.db.HomeData;
 import com.example.dllo.mirror.eventbusclass.PassTitleToMenu;
+import com.example.dllo.mirror.net.NetConnectionStatus;
 import com.example.dllo.mirror.net.NetListener;
 import com.example.dllo.mirror.net.OkHttpNetHelper;
 import com.example.dllo.mirror.normalstatic.MenuPassDataEvent;
@@ -42,7 +45,7 @@ public class MenuFragment extends BaseFragment implements StaticEntityInterface,
     private AutoLinearLayout layout;
     private TextView tvTitle;
     private ImageView ivLine;
-
+    private boolean netStauts;
     AutoLinearLayout backTitle, exit;
     LinearLayout fragment_menu_line;
     private Intent intent;
@@ -65,24 +68,29 @@ public class MenuFragment extends BaseFragment implements StaticEntityInterface,
         ivLine = bindView(R.id.fragment_menu_first_iv);
     }
 
-//    public void onEventMainThread(PassTitleToMenu event){
-//        Object o = event.getObject();
-//        Log.d("有东西吗+++?",o.toString());
-//        adapter = new MenuFragmentAdapter((MenuFragmentBean) o, i,k); // 通过构造方法将值viewpager的值传到适配器中,设置显示
-//        listView.setAdapter(adapter);
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                intent = new Intent(getActivity(), MainActivity.class);
-//                intent.putExtra("position", position);
-//                startActivity(intent);
-//                getActivity().finish();
-//            }
-//        });
-//    }
 
     @Override
     protected void initData() {
+        initialFragment();
+
+        jsonFromNetStauts();
+        backTitle.setOnClickListener(this);
+        exit.setOnClickListener(this);
+
+    }
+
+    private void jsonFromNetStauts() {
+        if (netStauts) {
+            jsonFromNet();
+        } else {
+           HomeData hd =  DbHelper.getInstance(getActivity()).getNote("toMenuFragment");
+            setAdapter(hd.getValue());
+        }
+
+    }
+
+    private void initialFragment() {
+        netStauts = NetConnectionStatus.getNetContectStatus(getActivity());
         layout.setBackground(BitMapTools.readBitMap(getActivity(), R.mipmap.background));
         // 注册eventbus
 //        EventBus.getDefault().register(this);
@@ -97,8 +105,9 @@ public class MenuFragment extends BaseFragment implements StaticEntityInterface,
             ivLine.setVisibility(View.VISIBLE);
             tvTitle.setAlpha(1);
         }
+    }
 
-
+    private void jsonFromNet() {
         // ******* 请求网络数据并解析 ******* //
         OkHttpNetHelper httpNetHelper = new OkHttpNetHelper();
         FormEncodingBuilder builder = new FormEncodingBuilder();
@@ -109,24 +118,13 @@ public class MenuFragment extends BaseFragment implements StaticEntityInterface,
             @Override
             public void getSuccess(final String s) {
                 Log.d("数据", s);
-
+                dbAddData(s);
                 // 指出Fragment 的寄主activity, 更新UI需要主线程来更新,所以复写Activity 的这个方法更新,
                 // 另一个方法是用Handler的对象,用handleMessage回调函数调用更新界面显示的函数
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        bean = new Gson().fromJson(s.toString(), MenuFragmentBean.class);
-                        adapter = new MenuFragmentAdapter(bean, i); // 通过构造方法将值viewpager的值传到适配器中,设置显示
-                        listView.setAdapter(adapter);
-                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                intent = new Intent(getActivity(), MainActivity.class);
-                                intent.putExtra("position", position);
-                                startActivity(intent);
-                                getActivity().finish();
-                            }
-                        });
+                        setAdapter(s);
                     }
                 });
             }
@@ -136,10 +134,28 @@ public class MenuFragment extends BaseFragment implements StaticEntityInterface,
 
             }
         });
+    }
 
-        backTitle.setOnClickListener(this);
-        exit.setOnClickListener(this);
+    private void setAdapter(String s){
+        bean = new Gson().fromJson(s, MenuFragmentBean.class);
+        adapter = new MenuFragmentAdapter(bean, i); // 通过构造方法将值viewpager的值传到适配器中,设置显示
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                intent = new Intent(getActivity(), MainActivity.class);
+                intent.putExtra("position", position);
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
+    }
 
+    private void dbAddData(String s){
+        HomeData homeData = new HomeData();
+        homeData.setKey("toMenuFragment");
+        homeData.setValue(s);
+        DbHelper.getInstance(getActivity()).addData(homeData);
     }
 
     // ********************************//

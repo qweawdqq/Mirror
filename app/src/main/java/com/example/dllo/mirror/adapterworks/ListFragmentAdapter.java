@@ -36,7 +36,7 @@ public class ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapte
     public void addData(GoodsListBean bean, Context context) {
         this.context = context;
         this.bean = bean;
-        Log.d("111111", bean.toString());
+        Log.e("adapter.size", bean.getData().getList().size()+"");
         notifyDataSetChanged();  // 通知适配器  数据是实时更新的
         Log.d("图", bean.getData().getList().get(0).getGoods_img());
 
