@@ -15,4 +15,25 @@
     <color name="fragment_list_glassesitem_city_textColor">#333</color>
     <color name="fragment_list_item_glasses_name_textColor">#000</color>
 
+    <color name="activity_addaddress_textView_textColor">#333</color>
+    <color name="activity_addaddress_editText_background">#ffffff</color>
+    <color name="activity_addaddress_button_textColor">#ffffff</color>
+    <color name="activity_address_item_textview_textColor">#333</color>
+
+    <color name="activity_changeaddress_textview_textColor">#333</color>
+    <color name="activity_changeaddress_editText_background">#ffffff</color>
+    <color name="activity_changeaddress_button_textColor">#ffffff</color>
+
+    <color name="activity_everyglasses_title_backgroundColor">#9a9a9a</color>
+    <color name="activity_everyglasses_beforerecyclerview_textview_textColor">#333</color>
+
+    <color name="everyglasses_frontrecyclerview_itemfirst_content_layout_background">#000000</color>
+    <color name="everyglasses_frontrecyclerview_itemfirst_textview_textColor">#fff</color>
+    <color name="everyglasses_frontrecyclerview_itemfirst_from_textview_textColor">#fff</color>
+    <color name="everyglasses_frontrecyclerview_itemfirst_englisrfrom_textview_textColor">#fff</color>
+    <color name="everyglasses_frontrecyclerview_itemfirst_content_textview_textColor">#fff</color>
+
+    <color name="everyglasses_frontrecyclerview_itemother_content_layout_background">#000000</color>
+<color name="everyglasses_frontrecyclerview_itemother_title_textColor">#fff</color>
+
 </resources>

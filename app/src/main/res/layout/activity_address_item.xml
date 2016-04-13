@@ -16,30 +16,28 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-
                 android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:id="@+id/address_item_layout_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginTop="20dp">
+                    android:layout_marginLeft="@dimen/activity_address_item_layout_marginLeft"
+                    android:layout_marginTop="@dimen/activity_address_item_layout_marginTop">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="收件人:"
-                        android:textColor="#333"
-                        android:textSize="13sp" />
+                        android:text="@string/activity_address_item_textview_name_text"
+                        android:textColor="@color/activity_address_item_textview_textColor"
+                        android:textSize="@dimen/activity_address_item_name_textview_textSize" />
 
                     <TextView
                         android:id="@+id/address_item_tv_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="刘德华"
-                        android:textColor="#333"
-                        android:textSize="13sp" />
+                        android:textColor="@color/activity_address_item_textview_textColor"
+                        android:textSize="@dimen/activity_address_item_name_textview_textSize" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -47,23 +45,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/address_item_layout_name"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginLeft="@dimen/activity_address_item_layout_marginLeft"
+                    android:layout_marginTop="@dimen/activity_address_item_layout_marginTop">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="地址:"
-                        android:textColor="#333"
-                        android:textSize="12sp" />
+                        android:text="@string/activity_address_item_textview_address_text"
+                        android:textColor="@color/activity_address_item_textview_textColor"
+                        android:textSize="@dimen/activity_address_item_textview_textSize" />
 
                     <TextView
                         android:id="@+id/address_item_tv_address"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="中国香港跑马路100号"
-                        android:textColor="#333"
-                        android:textSize="12sp" />
+                        android:textColor="@color/activity_address_item_textview_textColor"
+                        android:textSize="@dimen/activity_address_item_textview_textSize" />
                 </LinearLayout>
 
                 <!-- 电话号 -->
@@ -72,48 +69,42 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/address_item_layout_address"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginTop="10dp"
-                    android:text="15050505050"
-                    android:textColor="#333"
-                    android:textSize="12sp" />
+                    android:layout_marginLeft="@dimen/activity_address_item_layout_marginLeft"
+                    android:layout_marginTop="@dimen/activity_address_item_layout_marginTop"
+                    android:textColor="@color/activity_address_item_textview_textColor"
+                    android:textSize="@dimen/activity_address_item_textview_textSize" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_height="@dimen/activity_address_item_layout_white_height"
                     android:layout_below="@id/address_item_tv_phone"></LinearLayout>
 
-                <!--    android:src="@mipmap/xiugai" -->
                 <ImageView
                     android:id="@+id/address_item_btn_change"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="30dp"
+                    android:layout_marginRight="@dimen/activity_address_item_imageview_marginRight"
                     android:src="@mipmap/xiugai" />
             </RelativeLayout>
 
 
         <RelativeLayout
             android:id="@+id/address_item_btn_delete"
-            android:layout_width="65dp"
-            android:layout_height="120dp"
+            android:layout_width="@dimen/activity_address_item_del_layout_width"
+            android:layout_height="@dimen/activity_address_item_del_layout_height"
             android:background="@mipmap/iv_creat_num"
             android:clickable="true">
 
-            <!--<View-->
-            <!--android:layout_width="28dp"-->
-            <!--android:layout_height="28dp"-->
-            <!--android:layout_centerInParent="true"-->
-            <!--/>-->
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="删除"
-                android:textColor="#333"
-                android:textSize="13sp" />
+                android:text="@string/activity_address_item_textview_del_text"
+                android:textColor="@color/activity_address_item_textview_textColor"
+                android:textSize="@dimen/activity_address_item_del_textview_textSize" />
 
         </RelativeLayout>
     </com.example.dllo.mirror.allviewworks.SwipeLayout>
