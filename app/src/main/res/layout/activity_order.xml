@@ -28,13 +28,14 @@
 
         <ImageView
             style="@style/auto_view_width"
-            android:layout_marginTop="@dimen/landing_phonenum_top"
+            android:layout_marginTop="10dp"
             android:background="@mipmap/iv_login_line" />
 
         <ImageView style="@style/auto_view_width" />
 
-        <EditText
-            android:id="@+id/order_et_addressee"
+        <TextView
+            android:singleLine="false"
+            android:id="@+id/order_tv_addressee"
             style="@style/auto_view_width"
             android:layout_marginTop="@dimen/landing_mar_top_land"
             android:background="@mipmap/img_address"
@@ -42,7 +43,7 @@
             android:hint="@string/order_someone"
             android:paddingLeft="@dimen/landing_mar_top_phone"
             android:paddingTop="@dimen/landing_mar_top_phone"
-            android:textColor="@android:color/black"
+            android:textColor="#333"
             android:textColorHint="@android:color/black"
             android:textSize="@dimen/landing_text_order_fifteen" />
 

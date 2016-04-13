@@ -131,6 +131,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         String result = json.getString("result");
         if (result.equals("1")) {
             Gson gson = new Gson();
+            // TODO 数据类不对吧   数据类注了能打出来String s
             LoginEntity entity = gson.fromJson(s, LoginEntity.class);
         } else {
 
