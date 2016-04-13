@@ -15,18 +15,18 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/addaddress_creat"
+                android:id="@+id/changeaddress_creat"
                 style="@style/landing_view_textsize_creat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="添加地址"
+                android:text="编辑地址"
                 android:textColor="@android:color/black" />
 
             <ImageButton
-                android:id="@+id/addaddress_btn_back"
+                android:id="@+id/changeaddress_btn_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/addaddress_creat"
+                android:layout_alignBottom="@+id/changeaddress_creat"
                 android:layout_alignParentRight="true"
                 android:background="@mipmap/close" />
         </RelativeLayout>
@@ -41,12 +41,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="添加收件人姓名"
+            android:text="编辑收件人姓名"
             android:textColor="#333"
             android:textSize="12sp" />
 
         <EditText
-            android:id="@+id/addaddress_name"
+            android:id="@+id/changeaddress_name"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="10dp"
@@ -56,12 +56,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="添加联系人电话号码"
+            android:text="编辑联系人电话号码"
             android:textColor="#333"
             android:textSize="12sp" />
 
         <EditText
-            android:id="@+id/addaddress_phone"
+            android:id="@+id/changeaddress_phone"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="10dp"
@@ -71,24 +71,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="添加收货地址"
+            android:text="编辑收货地址"
             android:textColor="#333"
             android:textSize="12sp" />
 
         <EditText
-            android:id="@+id/addaddress_address"
+            android:id="@+id/changeaddress_address"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginTop="10dp"
             android:background="#ffffff" />
 
         <Button
-            android:id="@+id/addaddress_btn_add"
+            android:id="@+id/changeaddress_btn_change"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="25dp"
             android:background="@mipmap/iv_creat_num"
-            android:text="提交地址"
+            android:text="提交修改"
             android:textColor="#ffffff" />
     </LinearLayout>
 </LinearLayout>

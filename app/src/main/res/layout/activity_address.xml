@@ -24,23 +24,33 @@
                 android:layout_alignParentRight="true"
                 android:background="@mipmap/close" />
         </RelativeLayout>
+
         <ImageView
             style="@style/auto_view_width"
-            android:layout_marginTop="@dimen/landing_mar_top_user"
+            android:layout_marginTop="10dp"
             android:background="@mipmap/iv_login_line" />
+
         <ImageView style="@style/auto_view_width" />
-        <EditText
-            android:id="@+id/address_et_address"
+
+        <TextView
+            android:id="@+id/address_tv_toAdd"
             android:layout_width="match_parent"
-            android:layout_height="160px"
+            android:layout_height="80dp"
             android:layout_marginTop="@dimen/landing_mar_top_user"
             android:background="@mipmap/img_address"
             android:gravity="center"
-            android:hint="添加地址"
             android:paddingLeft="@dimen/landing_mar_top_phone"
             android:paddingTop="@dimen/landing_mar_top_phone"
+            android:text="添加地址"
             android:textColor="@android:color/black"
             android:textColorHint="@android:color/black"
             android:textSize="@dimen/landing_text_order_fifteen" />
+
+        <ListView
+            android:id="@+id/address_listview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp" />
     </LinearLayout>
 </com.zhy.autolayout.AutoLinearLayout>

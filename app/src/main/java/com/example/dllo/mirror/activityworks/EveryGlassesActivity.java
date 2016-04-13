@@ -1,6 +1,7 @@
 package com.example.dllo.mirror.activityworks;
 
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
@@ -288,7 +289,10 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
 
                 break;
             case R.id.everyglasses_button_buy:
-                Toast.makeText(EveryGlassesActivity.this, "点击了购买按钮", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(EveryGlassesActivity.this, "点击了购买按钮", Toast.LENGTH_SHORT).show();
+                Intent intentToOrder=new Intent(EveryGlassesActivity.this,OrderActivity.class);
+                startActivity(intentToOrder);
+
                 break;
             case R.id.everyglasses_share:
                 Log.d("share", "share");

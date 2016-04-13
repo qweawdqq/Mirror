@@ -14,7 +14,7 @@
     <string name="login_phonenum">手机号</string>
     <string name="login_create">创建账号</string>
     <string name="toSignActivity">toSignActivity</string>
-    <string name="order_order">订单详情</string>
+    <string name="order_order">购买详情</string>
     <string name="order_assend">填写地址</string>
     <string name="order_someone">请填写收件人信息</string>
     <string name="order_confirm">确认下单</string>
