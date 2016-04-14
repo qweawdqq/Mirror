@@ -83,7 +83,7 @@ public class MenuFragment extends BaseFragment implements StaticEntityInterface,
         if (netStauts) {
             jsonFromNet();
         } else {
-           HomeData hd =  DbHelper.getInstance(getActivity()).getNote("toMenuFragment");
+            HomeData hd = DbHelper.getInstance(getActivity()).getNote("toMenuFragment");
             setAdapter(hd.getValue());
         }
 
@@ -136,7 +136,7 @@ public class MenuFragment extends BaseFragment implements StaticEntityInterface,
         });
     }
 
-    private void setAdapter(String s){
+    private void setAdapter(String s) {
         bean = new Gson().fromJson(s, MenuFragmentBean.class);
         adapter = new MenuFragmentAdapter(bean, i); // 通过构造方法将值viewpager的值传到适配器中,设置显示
         listView.setAdapter(adapter);
@@ -151,7 +151,7 @@ public class MenuFragment extends BaseFragment implements StaticEntityInterface,
         });
     }
 
-    private void dbAddData(String s){
+    private void dbAddData(String s) {
         HomeData homeData = new HomeData();
         homeData.setKey("toMenuFragment");
         homeData.setValue(s);

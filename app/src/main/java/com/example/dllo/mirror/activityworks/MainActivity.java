@@ -29,6 +29,7 @@ import com.example.dllo.mirror.fragmentworks.AllFragment;
 import com.example.dllo.mirror.fragmentworks.BuyFragment;
 import com.example.dllo.mirror.fragmentworks.ListFragment;
 
+import com.example.dllo.mirror.fragmentworks.ShareFragment;
 import com.example.dllo.mirror.net.NetConnectionStatus;
 import com.example.dllo.mirror.net.NetListener;
 import com.example.dllo.mirror.net.OkHttpNetHelper;
@@ -46,7 +47,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private ImageView mirror;
     private TextView land;
     private MirrorScaleAtion action;
-    private AutoRelativeLayout layout;
     //
     private VerticalViewPager viewPager;
     private HomeFragmentAdapter adapter;
@@ -54,7 +54,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private MenuFragmentBean bean;
     private int pos;
     private boolean netStauts;
-    private HomeData homeData;
 
 
     @Override
@@ -64,7 +63,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     protected void initView() {
-        layout = bindView(R.id.main_layout);
         mirror = bindView(R.id.main_iv_mirror);
         land = bindView(R.id.main_iv_land);
         viewPager = bindView(R.id.fragment_home_viewpager);
@@ -88,7 +86,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         if (netStauts) {
             getNetData();
         } else {
-         HomeData homeData = DbHelper.getInstance(this).getNote("mainActivity");
+            HomeData homeData = DbHelper.getInstance(this).getNote("mainActivity");
             String value = homeData.getValue();
             jsonData(value);
         }
@@ -186,6 +184,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                     ListFragment lf = new ListFragment();
                     lf.setArguments(bundle);
                     fragment.add(lf);
+                    break;
+                case "2":
+                    ShareFragment sf = new ShareFragment();
+                    sf.setArguments(bundle);
+                    fragment.add(sf);
                     break;
                 case "4":
                     BuyFragment bf = new BuyFragment();

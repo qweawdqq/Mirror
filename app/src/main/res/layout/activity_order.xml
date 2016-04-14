@@ -28,7 +28,7 @@
 
         <ImageView
             style="@style/auto_view_width"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/activity_order_iv_margintop"
             android:background="@mipmap/iv_login_line" />
 
         <ImageView style="@style/auto_view_width" />
@@ -43,7 +43,7 @@
             android:hint="@string/order_someone"
             android:paddingLeft="@dimen/landing_mar_top_phone"
             android:paddingTop="@dimen/landing_mar_top_phone"
-            android:textColor="#333"
+            android:textColor="@color/activity_addaddress_textView_textColor"
             android:textColorHint="@android:color/black"
             android:textSize="@dimen/landing_text_order_fifteen" />
 
@@ -67,7 +67,6 @@
             <ImageView
                 android:id="@+id/order_glasses_image"
                 android:layout_width="@dimen/order_max"
-
                 android:layout_height="wrap_content" />
 
             <LinearLayout
@@ -78,7 +77,7 @@
                     android:id="@+id/order_glasses_name"
                     style="@style/auto_view_width"
                     android:layout_marginTop="@dimen/landing_mar_top_land"
-                    android:paddingLeft="5dp"
+                    android:paddingLeft="@dimen/landing_paddring_left_land"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/landing_text_order_fifteen" />
 
@@ -101,7 +100,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/landing_mar_top_image"
-                        android:text="￥"
+                        android:text="@string/landing_mar_tv_text"
                         android:textColor="@color/my_pink"
                         android:textSize="@dimen/landing_text_phonenum_size" />
 

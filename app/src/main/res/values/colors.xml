@@ -30,10 +30,24 @@
     <color name="everyglasses_frontrecyclerview_itemfirst_content_layout_background">#000000</color>
     <color name="everyglasses_frontrecyclerview_itemfirst_textview_textColor">#fff</color>
     <color name="everyglasses_frontrecyclerview_itemfirst_from_textview_textColor">#fff</color>
-    <color name="everyglasses_frontrecyclerview_itemfirst_englisrfrom_textview_textColor">#fff</color>
+    <color name="everyglasses_frontrecyclerview_itemfirst_englisrfrom_textview_textColor">#fff
+    </color>
     <color name="everyglasses_frontrecyclerview_itemfirst_content_textview_textColor">#fff</color>
 
     <color name="everyglasses_frontrecyclerview_itemother_content_layout_background">#000000</color>
-<color name="everyglasses_frontrecyclerview_itemother_title_textColor">#fff</color>
+    <color name="everyglasses_frontrecyclerview_itemother_title_textColor">#fff</color>
+
+    <color name="customer_notitfication_layout_tvone_textcolor">#286CA6</color>
+    <color name="customer_notitfication_layout_tvtwo_textcolor">#6FA45E</color>
+    <color name="customer_notitfication_layout_one_tvone_textcolor">#A4C638</color>
+    <color name="customer_notitfication_layout_one_tvtwo_textcolor">#FFB6FF</color>
+
+    <color name="fragment_all_item_textcolor">#000</color>
+    <color name="fragment_all_item_texttwocolor">#333</color>
+
+    <color name="fragment_list_textcolor">#fff</color>
+
+    <color name="fragment_list_glassesitem_background">#fff</color>
+
 
 </resources>

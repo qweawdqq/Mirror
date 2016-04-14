@@ -57,7 +57,7 @@
 
             <EditText
                 android:id="@+id/sign_et_getCode"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/landing_line_et_width"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:gravity="center_vertical"
@@ -65,7 +65,7 @@
 
             <Button
                 android:id="@+id/sign_tv_sendmessage"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/landing_line_btn_width"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@mipmap/iv_creat_num"

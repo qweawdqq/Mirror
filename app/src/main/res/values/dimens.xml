@@ -214,10 +214,45 @@
     <dimen name="everyglasses_frontrecyclerview_itemother_content_textview_textSize">13sp</dimen>
     <dimen name="everyglasses_frontrecyclerview_itemother_contentMarginBottom_layout_height">15dp</dimen>
     <dimen name="everyglasses_frontrecyclerview_itemother_marginBottomLayout_height">307dp</dimen>
-
-
-
-
+    <dimen name="activity_order_iv_margintop">10dp</dimen>
+    <dimen name="landing_paddring_left_land">5dp</dimen>
+    <dimen name="landing_line_et_width">0dp</dimen>
+    <dimen name="landing_line_btn_width">0dp</dimen>
+    <dimen name="activity_video_rl_height">0dp</dimen>
+    <dimen name="customer_notitfication_layout_line_marginleft">10dip</dimen>
+    <dimen name="textsizeoftwenty">20sp</dimen>
+    <dimen name="textsizeofsixteen">16sp</dimen>
+    <dimen name="customer_notitfication_layout_one_line_marginleft">10dip</dimen>
+    <dimen name="textsizeoften">10sp</dimen>
+    <dimen name="fragment_all_item_line_width">270dp</dimen>
+    <dimen name="fragment_all_item_line_iv_width">270dp</dimen>
+    <dimen name="fragment_all_item_line_iv_height">297dp</dimen>
+    <dimen name="fragment_all_item_line_rl_marginleft">16dp</dimen>
+    <dimen name="fragment_all_item_line_rl_margintop">25dp</dimen>
+    <dimen name="textsizeoffifteen">15sp</dimen>
+    <dimen name="fragment_all_item_line_rl_tvtwo_marginright">16dp</dimen>
+    <dimen name="fragment_all_item_line_rltwo_marginleft">16dp</dimen>
+    <dimen name="textsizeoftwelf">12dp</dimen>
+    <dimen name="fragment_all_item_line_rltwo_tvtwo_marginright">16dp</dimen>
+    <dimen name="fragment_all_item_line_iv_marginleft">16dp</dimen>
+    <dimen name="fragment_all_item_line_iv_margintop">8dp</dimen>
+    <dimen name="fragment_all_item_line_tv_marginlfet">16dp</dimen>
+    <dimen name="fragment_all_item_line_tv_marginright">8dp</dimen>
+    <dimen name="fragment_list_glassesitem_line_width">270dp</dimen>
+    <dimen name="fragment_list_glassesitem_line_iv_width">270dp</dimen>
+    <dimen name="fragment_list_glassesitem_line_iv_height">297dp</dimen>
+    <dimen name="fragment_list_glassesitem_line_rl_marginleft">16dp</dimen>
+    <dimen name="fragment_list_glassesitem_line_rl_margintop">25dp</dimen>
+    <dimen name="fragment_list_glassesitem_line_rl_tvtwo_marginright">16dp</dimen>
+    <dimen name="fragment_list_glassesitem_line_rltwo_marginleft">16dp</dimen>
+    <dimen name="fragment_list_glassesitem_line_rltwo_tvtwo_marginright">16dp</dimen>
+    <dimen name="fragment_list_glassesitem_line_ivtwo_marginleft">16dp</dimen>
+    <dimen name="fragment_list_glassesitem_line_ivtwo_margintop">8dp</dimen>
+    <dimen name="fragment_list_glassesitem_line_two_marginleft">16dp</dimen>
+    <dimen name="fragment_list_glassesitem_line_two_margintop">8dp</dimen>
+    <dimen name="video_recycle_video_videoplayer_height">200dp</dimen>
+    <dimen name="fragment_share_item_line_iv_height">352dp</dimen>
+    <dimen name="fragment_share_item_line_ivtwo_margintop">17dp</dimen>
 
 
 </resources>

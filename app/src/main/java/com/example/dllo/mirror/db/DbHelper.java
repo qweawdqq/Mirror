@@ -87,11 +87,11 @@ public class DbHelper {
 
 
     public HomeData getNote(String key) {
-        try{
+        try {
             HomeData data = (HomeData) userDao.queryBuilder()
                     .where(HomeDataDao.Properties.Key.eq(key)).uniqueOrThrow();
             return data;
-        }catch (Exception o){
+        } catch (Exception o) {
             Toast.makeText(appContext, "网络状态异常", Toast.LENGTH_SHORT).show();
         }
 
