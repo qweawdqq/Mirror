@@ -29,7 +29,7 @@ public interface StaticEntityInterface {
     String PAGE = "page";       // 请求条数
     String LAST_TIME = "last_time"; //最后一条数据插入时间
 
-    
+
     /**
      * 故事详情
      * 输入参数  < 用户凭证 token; 设备类型  device_type; 故事ID story_id  >
