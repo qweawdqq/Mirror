@@ -67,7 +67,10 @@ public class WelcomeActivity extends BaseActivity implements StaticEntityInterfa
 
     }
 
-    //获取网络状态
+
+    /**
+     * 得到网络连接的状态
+     */
     private void getNetStatus() {
         if (netConnection) {
             jsonFromNet();
@@ -77,7 +80,10 @@ public class WelcomeActivity extends BaseActivity implements StaticEntityInterfa
         }
     }
 
-    //设置handler
+
+    /**
+     * 初始化handler
+     */
     private void setHandler() {
         handler = new Handler(new Handler.Callback() {
             @Override
@@ -92,7 +98,10 @@ public class WelcomeActivity extends BaseActivity implements StaticEntityInterfa
         });
     }
 
-    //跳转到下一页
+
+    /**
+     * 跳转到下一页
+     */
     private void toNextActivity() {
         handler.postDelayed(new Runnable() {
             @Override
@@ -102,8 +111,11 @@ public class WelcomeActivity extends BaseActivity implements StaticEntityInterfa
         }, SPLASH_LENGTH); // 2秒后跳转至MainActivity
     }
 
+    /**
+     * 显示图片的配置
+     */
     private void setMyImgLonder() {
-        //显示图片的配置
+
         options = new DisplayImageOptions.Builder()
                 .cacheInMemory(true)//是否放到内存缓存中
                 .cacheOnDisk(true)//是否放到硬盘缓存中
@@ -112,6 +124,9 @@ public class WelcomeActivity extends BaseActivity implements StaticEntityInterfa
 
     }
 
+    /**
+     * 从网络解析
+     */
     public void jsonFromNet() {
         // OkhttpUtils 解析欢迎页背景图片
         //  http://blog.csdn.net/lmj623565791/article/details/49734867

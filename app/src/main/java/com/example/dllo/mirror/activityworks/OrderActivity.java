@@ -49,14 +49,12 @@ public class OrderActivity extends BaseActivity implements View.OnClickListener,
     protected void initView() {
         etAddressee = bindView(R.id.order_tv_addressee);
         tvAddress = bindView(R.id.order_tv_address);
-
         ivGlasses = bindView(R.id.order_glasses_image);
         tvGlassesName = bindView(R.id.order_glasses_name);
         tvGlassesContent = bindView(R.id.order_glasses_content);
         tvPrice = bindView(R.id.order_glasses_price);
         btnOrder = bindView(R.id.order_btn_order);
         btnback = bindView(R.id.order_btn_back);
-
     }
 
     @Override
@@ -66,10 +64,11 @@ public class OrderActivity extends BaseActivity implements View.OnClickListener,
         setMyHandler();
 
     }
-private void setBtnListener(){
-    tvAddress.setOnClickListener(this);
-    btnback.setOnClickListener(this);
-}
+
+    private void setBtnListener() {
+        tvAddress.setOnClickListener(this);
+        btnback.setOnClickListener(this);
+    }
 
 
     private void setMyHandler() {

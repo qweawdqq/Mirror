@@ -36,7 +36,6 @@ public class ShareFragmentAdapter extends RecyclerView.Adapter<ShareFragmentAdap
     public void addData(ShareFragmentBean bean, Context context) {
         this.bean = bean;
         this.context = context;
-        Log.d("sj", bean.toString());
         notifyDataSetChanged();  // 通知适配器  数据是实时更新的
 
     }

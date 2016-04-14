@@ -53,7 +53,9 @@ public class SignActivity extends BaseActivity implements ToNextListener, Static
     }
 
 
-    //editview 的到的文字
+    /**
+     * 得到editText的文字的方法
+     */
     private void getPhoneNum() {
         if (phoneNum != null && phoneNum.getText().length() == 11) {
             String getPhoneNum = phoneNum.getText().toString();

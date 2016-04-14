@@ -7,18 +7,17 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.text.GetChars;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.dllo.mirror.R;
 import com.example.dllo.mirror.adapterworks.HomeFragmentAdapter;
 import com.example.dllo.mirror.allviewworks.VerticalViewPager;
-import com.example.dllo.mirror.animationworks.MirrorScaleAtion;
+import com.example.dllo.mirror.animationworks.MirrorScaleAction;
 import com.example.dllo.mirror.baseworks.BaseActivity;
-import com.example.dllo.mirror.baseworks.BitMapTools;
 import com.example.dllo.mirror.bean.MenuFragmentBean;
 
 
@@ -36,18 +35,17 @@ import com.example.dllo.mirror.net.OkHttpNetHelper;
 import com.example.dllo.mirror.normalstatic.StaticEntityInterface;
 import com.google.gson.Gson;
 import com.squareup.okhttp.FormEncodingBuilder;
-import com.zhy.autolayout.AutoLinearLayout;
-import com.zhy.autolayout.AutoRelativeLayout;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ */
 public class MainActivity extends BaseActivity implements View.OnClickListener, StaticEntityInterface {
     private ImageView mirror;
     private TextView land;
-    private MirrorScaleAtion action;
-    //
+    private MirrorScaleAction action;
     private VerticalViewPager viewPager;
     private HomeFragmentAdapter adapter;
     private Handler handler;
@@ -72,15 +70,24 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     protected void initData() {
         setAllonClick();
 
-
-        // 接收从MenuFragment中传过来的 点击 菜单行布局 的 position, 让viewPager滑动到相对应的位置
-        Intent intent = getIntent();
-        pos = intent.getIntExtra("position", 0);
-        setMyHandler(pos);
+        getMyIntent();
         getNetStatus();
         adapter = new HomeFragmentAdapter(getSupportFragmentManager());
     }
 
+    /**
+     * 接收从MenuFragment中传过来的 点击 菜单行布局 的 position, 让viewPager滑动到相对应的位置
+     */
+    private void getMyIntent() {
+        Intent intent = getIntent();
+        pos = intent.getIntExtra("position", 0);
+        setMyHandler(pos);
+    }
+
+
+    /**
+     * 得到网络状态  并进行断网时与联网时 对应的操作
+     */
     private void getNetStatus() {
         netStauts = NetConnectionStatus.getNetContectStatus(this);
         if (netStauts) {
@@ -95,12 +102,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     }
 
 
+    /**
+     * 初始化Handler
+     * @param pos  指定viewpager 滑动到对应的位置
+     */
     private void setMyHandler(final int pos) {
         handler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 ArrayList<Fragment> list = (ArrayList<Fragment>) msg.obj;
-                Log.e("传过来东西了吗", "" + list.size());
                 adapter.addData(list);
                 viewPager.setAdapter(adapter);
                 viewPager.setCurrentItem(pos);
@@ -109,8 +119,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         });
     }
 
+    /**
+     * 设置所有的点击事件
+     */
     private void setAllonClick() {
-        action = new MirrorScaleAtion(this, null);
+        action = new MirrorScaleAction(this, null);
         mirror.setOnClickListener(this);
         land.setOnClickListener(this);
     }
@@ -131,6 +144,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     }
 
+    /**
+     * 请求网络数据
+     */
     public void getNetData() {
 
         // 获取网络数据
@@ -158,6 +174,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         });
     }
 
+    /**
+     * 解析数据
+     * @param s  从网络或者数据库的得到的string
+     */
     private void jsonData(String s) {
         bean = new Gson().fromJson(s.toString(), MenuFragmentBean.class);
         List<MenuFragmentBean.DataBean.ListBean> list = bean.getData().getList();
@@ -165,6 +185,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     }
 
 
+    /**
+     * 发送消息
+     * @param list   菜单集合
+     */
     private void sendMessage(List<MenuFragmentBean.DataBean.ListBean> list) {
         ArrayList<Fragment> fragment = new ArrayList<Fragment>();
         for (int i = 0; i < list.size(); i++) {

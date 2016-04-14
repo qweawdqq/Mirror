@@ -57,6 +57,10 @@ public class VideoActivity extends BaseActivity implements View.OnClickListener,
 
     }
 
+    /**
+     * 得到视频播放的数据
+     * @return
+     */
     private ArrayList<Bean.DataBean.WearVideoBean> getImgArrayList() {
         ArrayList<Bean.DataBean.WearVideoBean> vbs = new ArrayList<Bean.DataBean.WearVideoBean>();
         for (int i = 0; i < videoBeans.size(); i++) {
@@ -67,6 +71,10 @@ public class VideoActivity extends BaseActivity implements View.OnClickListener,
         return vbs;
     }
 
+    /**
+     * 得到视频播放的Url
+     * @return
+     */
     private String getVideoUrl() {
         Bean.DataBean.WearVideoBean videoBean = new Bean.DataBean.WearVideoBean();
         for (int i = 0; i < videoBeans.size(); i++) {
@@ -77,12 +85,19 @@ public class VideoActivity extends BaseActivity implements View.OnClickListener,
         return videoBean.getData();
     }
 
+    /**
+     * 得到视频的背景图片
+     * @return
+     */
     private String getVideoImg() {
         String img = videoBeans.get(1).getData();
         Log.e("-------", img);
         return img;
     }
 
+    /**
+     * 得到传过来的Bundle
+     */
     private void getIntentBundle() {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -94,6 +109,11 @@ public class VideoActivity extends BaseActivity implements View.OnClickListener,
         btn_back.setOnClickListener(this);
     }
 
+    /**
+     * 设置视频播放
+     * @param videoUrl   视频网址
+     * @param videoImg   视频图片
+     */
     private void setMyVideoView(String videoUrl, String videoImg) {
         View view = LayoutInflater.from(this).inflate(R.layout.video_recycle_video, null);
         jCVideoPlayer = (JCVideoPlayer) view.findViewById(R.id.videocontroller1);
@@ -114,7 +134,10 @@ public class VideoActivity extends BaseActivity implements View.OnClickListener,
         adapter.setHeaderView(view);
     }
 
-    //停止播放的方法
+
+    /**
+     * 停止视频播放
+     */
     private void stopVideoview() {
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -127,6 +150,9 @@ public class VideoActivity extends BaseActivity implements View.OnClickListener,
         });
     }
 
+    /**
+     * 设置recycleView
+     */
     private void setRecyclerView() {
         ArrayList<Bean.DataBean.WearVideoBean> list = getImgArrayList();
 

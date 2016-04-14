@@ -12,19 +12,19 @@ import com.example.dllo.mirror.interfaceworks.MirrorScaleLinister;
  * Created by jialiang on 16/3/29.
  * 设置Mirror的缩放动画
  */
-public class MirrorScaleAtion extends ScaleAnimation implements MirrorScaleLinister {
+public class MirrorScaleAction extends ScaleAnimation implements MirrorScaleLinister {
     private View view;
-    private MirrorScaleAtion ation;
+    private MirrorScaleAction ation;
     private boolean isAnimRun = true;
 
 
-    public MirrorScaleAtion(Context context, AttributeSet attrs) {
+    public MirrorScaleAction(Context context, AttributeSet attrs) {
         super(context, attrs);
-        ation = new MirrorScaleAtion(1f, 0.6f, 1f, 0.6f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        ation = new MirrorScaleAction(1f, 0.6f, 1f, 0.6f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         setAtion();
     }
 
-    public MirrorScaleAtion(float fromX, float toX, float fromY, float toY, int pivotXType, float pivotXValue, int pivotYType, float pivotYValue) {
+    public MirrorScaleAction(float fromX, float toX, float fromY, float toY, int pivotXType, float pivotXValue, int pivotYType, float pivotYValue) {
         super(fromX, toX, fromY, toY, pivotXType, pivotXValue, pivotYType, pivotYValue);
     }
 
@@ -58,7 +58,9 @@ public class MirrorScaleAtion extends ScaleAnimation implements MirrorScaleLinis
         });
     }
 
-//设置mirror的动画
+    /**
+     * 设置mirror的动画
+     */
     @Override
     public void setMirrorScaleLinister() {
         if (isAnimRun){
