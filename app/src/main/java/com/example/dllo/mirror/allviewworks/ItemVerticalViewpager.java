@@ -3,12 +3,21 @@ package com.example.dllo.mirror.allviewworks;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+
+import com.example.dllo.mirror.R;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+
+import java.util.ArrayList;
 
 
 /**
@@ -18,7 +27,7 @@ import android.widget.RelativeLayout;
  * 在滑动的时候他就会自动更新了
  */
 public class ItemVerticalViewpager extends ViewPager {
-    private int[] title;//背景图片的集合
+    private ArrayList<String> title;//背景图片的集合
     private RelativeLayout.LayoutParams params;
     private float down_y, move_y, set_y;//按下时Y的坐标,滑动时Y坐标,固定值Y得坐标
     private ImageView back_iv;//需要修改的图片
@@ -55,7 +64,7 @@ public class ItemVerticalViewpager extends ViewPager {
                                         set_y = xy;
                                     }
                                 }
-                                if (getCurrentItem() == title.length - 1 && (down_y - event.getY()) > 0) {
+                                if (getCurrentItem() == title.size() - 1 && (down_y - event.getY()) > 0) {
                                     move_y = down_y - event.getY();
                                     float xy = set_y > move_y ? set_y : move_y;
                                     heigh_x = (int) ((int) xy * 0.5);
@@ -78,7 +87,7 @@ public class ItemVerticalViewpager extends ViewPager {
                                         }
                                     });
                                 }
-                                if (getCurrentItem() == title.length - 1 && (down_y - event.getY()) > 0) {
+                                if (getCurrentItem() == title.size() - 1 && (down_y - event.getY()) > 0) {
                                     ValueAnimator animator = ValueAnimator.ofInt(heigh_x, 0);
                                     animator.setTarget(this);
                                     animator.setDuration(400).start();
@@ -108,13 +117,26 @@ public class ItemVerticalViewpager extends ViewPager {
             @Override
             public void onPageScrollStateChanged(int state) {
                 if (state == 2) {
-                    back_iv.setBackgroundResource(title[getCurrentItem()]);
+                    setMyImageLoader(title.get(getCurrentItem()));
                 }
             }
         });
 
     }
 
+    private void setMyImageLoader(String Uri){
+        //显示图片的配置
+        DisplayImageOptions options = new DisplayImageOptions.Builder()
+                .showImageOnLoading(R.mipmap.ic_launcher)   //加载过程中的图片
+                .showImageOnFail(R.mipmap.ic_launcher) //加载失败的图片
+                .cacheInMemory(true)//是否放到内存缓存中
+                .cacheOnDisk(true)//是否放到硬盘缓存中
+                .imageScaleType(ImageScaleType.EXACTLY_STRETCHED)
+                .bitmapConfig(Bitmap.Config.RGB_565)//图片的类型
+                .build();//创建
+
+        ImageLoader.getInstance().displayImage(Uri,back_iv,options);
+    }
 
     /**
      * 对外获得需要修改的图片窗口   以及图片资源集合
@@ -122,7 +144,7 @@ public class ItemVerticalViewpager extends ViewPager {
      * @param iv
      * @param title
      */
-    public void setMyBackGound(ImageView iv, int[] title) {
+    public void setMyBackGound(ImageView iv, ArrayList<String> title) {
         this.back_iv = iv;
         this.title = title;
     }

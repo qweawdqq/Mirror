@@ -2,6 +2,7 @@ package com.example.dllo.mirror.fragmentworks;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -67,7 +68,7 @@ public class ShareFragment extends BaseFragment implements StaticEntityInterface
         FormEncodingBuilder builder = new FormEncodingBuilder();
         builder.add(TOKEN, "");
         builder.add(DEVICE_TYPE, "2");
-        builder.add(STORY_ID, "");
+        builder.add(STORY_ID, "2");
         builder.add(VERSION, "1.0.1");
 
         OkHttpNetHelper helper = new OkHttpNetHelper();
@@ -97,6 +98,7 @@ public class ShareFragment extends BaseFragment implements StaticEntityInterface
     private void setRecyclerFromNet() {
         adapter = new ShareFragmentAdapter();
         adapter.addData(data, getContext());
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
     }
 
