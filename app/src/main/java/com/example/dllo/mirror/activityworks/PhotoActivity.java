@@ -32,7 +32,7 @@ import java.lang.ref.WeakReference;
  */
 public class PhotoActivity extends BaseActivity implements View.OnClickListener {
     private ImageView imageView;
-//    private Bitmap bitmap;
+
 
     @Override
     protected int initLayout() {
@@ -54,7 +54,11 @@ public class PhotoActivity extends BaseActivity implements View.OnClickListener 
         imageView.setOnClickListener(this);
     }
 
-    //    设置imageloader
+
+    /**
+     * 设置imageloader
+     * @param url   图片请求的网址
+     */
     private void setImageLoader(String url) {
         //显示图片的配置
         DisplayImageOptions options = new DisplayImageOptions.Builder()
@@ -69,31 +73,20 @@ public class PhotoActivity extends BaseActivity implements View.OnClickListener 
 
     }
 
-    //设置imageview
+
+    /**
+     * 设置图片显示
+     * @param url   图片请求的网址
+     * @param options   imageLoader 的配置
+     */
     private void setImageView(String url, DisplayImageOptions options) {
         ImageLoader.getInstance().loadImage(url, options, new SimpleImageLoadingListener() {
             @Override
             public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
                 super.onLoadingComplete(imageUri, view, loadedImage);
-//                BitmapDrawable bd = new BitmapDrawable(Resources.getSystem(),loadedImage);
-
-
-//                获得屏幕宽高
-//                WindowManager manager = getWindowManager();
-//                DisplayMetrics outMetrics = new DisplayMetrics();
-//                manager.getDefaultDisplay().getMetrics(outMetrics);
-//                double allWidth = outMetrics.widthPixels;
-//
-//                double x = loadedImage.getWidth();
-//                double y = loadedImage.getHeight();
-//                double height = y / x * allWidth;
-
-
-//                bitmap = setImageCrop(loadedImage);
-//                imageView.getLayoutParams().height = (int) height;
-
-                WeakReference<Bitmap> weak = new WeakReference<Bitmap>(loadedImage);
+                WeakReference<Bitmap> weak =new WeakReference<Bitmap>(loadedImage);
                 imageView.setImageBitmap(weak.get());
+                // TODO: 16/4/14  bitmap转化为drawable
 //                BitmapDrawable bd = new BitmapDrawable(Resources.getSystem(),weak.get());
 //                holder.imageView.setBackground(bd);
             }
@@ -101,7 +94,11 @@ public class PhotoActivity extends BaseActivity implements View.OnClickListener 
     }
 
 
-    //剪切bitmap
+    /**
+     * 剪切bitmap
+     * @param bitmap
+     * @return   一个剪切好的Bitmap
+     */
     private Bitmap setImageCrop(Bitmap bitmap) {
         int w = bitmap.getWidth(); // 得到图片的宽，高
         int h = bitmap.getHeight();
@@ -114,22 +111,21 @@ public class PhotoActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-//        WeakReference<Bitmap> weak = new WeakReference<Bitmap>(bitmap);
         this.finishAfterTransition();
-//        imageView.setImageBitmap(weak.get());
-
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
         clearCache();
         System.gc();
 
     }
 
-    //释放图片资源
+
+    /**
+     * 释放图片资源
+     */
     private void clearCache() {
         imageView.setImageBitmap(null);
         imageView = null;

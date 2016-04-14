@@ -4,13 +4,12 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
-
 import com.example.dllo.mirror.baseworks.BaseApplication;
-
 import java.util.List;
 
 /**
- * Created by dllo on 16/4/13.
+ * 此数据库仅用于 网络断开时候的数据加载
+ * Created by jialiang on 16/4/13.
  */
 public class DbHelper {
     private static final String TAG = DbHelper.class.getSimpleName();
@@ -87,11 +86,11 @@ public class DbHelper {
 
 
     public HomeData getNote(String key) {
-        try{
+        try {
             HomeData data = (HomeData) userDao.queryBuilder()
                     .where(HomeDataDao.Properties.Key.eq(key)).uniqueOrThrow();
             return data;
-        }catch (Exception o){
+        } catch (Exception o) {
             Toast.makeText(appContext, "网络状态异常", Toast.LENGTH_SHORT).show();
         }
 
@@ -156,7 +155,11 @@ public class DbHelper {
         userDao.delete(user);
     }
 
-    //    删除某一个数据
+
+    /**
+     * 根据对象删除某一条的数据
+     * @param data  传入的对象
+     */
     public void deleteData(String data) {
 //        Log.e("删除了哪一个啊?", data);
 //        List<HomeData> sc = userDao.loadAll();
@@ -167,7 +170,10 @@ public class DbHelper {
 //        }
     }
 
-    //    添加某一个数据
+    /**
+     * 添加一条数据
+     * @param homeData
+     */
     public void addData(HomeData homeData) {
         for (int i = 0; i < loadAllNote().size(); i++) {
             if (loadAllNote().get(i).getKey().equals(homeData.getKey())) {

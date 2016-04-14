@@ -47,8 +47,6 @@ public class ListFragmentAdapter extends RecyclerView.Adapter<ListFragmentAdapte
 
         private TextView tv_name, tv_goods_price, tv_discount_price, tv_produce_area, tv_brand, tv_rmb;
         private ImageView iv;
-//        private int position;  // 用于监听事件
-//        private LinearLayout linearLayout;
 
         //  缓存类 构造方法
         public ListViewHolder(View itemView) {

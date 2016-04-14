@@ -34,7 +34,6 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
     private AddressActivityAdapter adapter;
     private Handler handler;
     private AllAddressBean bean;
-    private Intent intent;
     private DelReceiver delReceiver;
     private ChangeReceiver changeReceiver;
     private FinishReceiver finishReceiver;
@@ -46,21 +45,15 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     protected void initView() {
-
-
         ivBack = bindView(R.id.address_btn_back);
         tvAdd = bindView(R.id.address_tv_toAdd);
         listView = bindView(R.id.address_listview);
-
         ivBack.setOnClickListener(this);
         tvAdd.setOnClickListener(this);
-
-
     }
 
     @Override
     protected void initData() {
-
         addAddress();
 
         delReceiver = new DelReceiver();

@@ -22,13 +22,7 @@ public class MenuFragmentAdapter extends BaseAdapter {
     public MenuFragmentAdapter(MenuFragmentBean bean, int atItem) {
         this.bean = bean;
         this.atItem = atItem;
-//        this.s = s;
-        Log.i("atItem", atItem + "");
-//        Log.i("atItem", s + "");
     }
-//    public MenuFragmentAdapter(MenuFragmentBean bean) {
-//        this.bean = bean;
-//    }
 
     @Override
     public int getCount() {

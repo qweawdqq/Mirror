@@ -89,7 +89,6 @@ public class EveryGlassesFrontRecyclerViewAdapter extends RecyclerView.Adapter<R
     class FirstViewHolder extends RecyclerView.ViewHolder {
 
         private TextView tvCity, tvFrom, tvEnglishFrom, tvContent;
-        private ImageView iv;
 
         //  缓存类 构造方法
         public FirstViewHolder(View itemView) {

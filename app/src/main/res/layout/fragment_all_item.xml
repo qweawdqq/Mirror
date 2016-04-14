@@ -1,78 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_all_item_line"
     android:layout_width="281dp"
     android:layout_height="417dp"
-
-
-    android:orientation="vertical"
-    android:id="@+id/fragment_all_item_line">
-
+    android:orientation="vertical">
 
 
     <LinearLayout
-        android:layout_width="270dp"
+        android:layout_width="@dimen/fragment_all_item_line_width"
         android:layout_height="match_parent"
         android:background="@android:color/white"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/fragment_all_item_iv"
-            android:layout_width="270dp"
-            android:layout_height="297dp"
-          />
+            android:layout_width="@dimen/fragment_all_item_line_iv_width"
+            android:layout_height="@dimen/fragment_all_item_line_iv_height" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginLeft="@dimen/fragment_all_item_line_rl_marginleft"
+            android:layout_marginTop="@dimen/fragment_all_item_line_rl_margintop"
             android:orientation="horizontal">
 
-            <!-- TODO 测试文字 -->
             <TextView
                 android:id="@+id/fragment_all_item_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:text="@string/test_fragment_list_item_brand"
-                android:textColor="#000"
-                android:textSize="15sp" />
+                android:textColor="@color/fragment_all_item_textcolor"
+                android:textSize="@dimen/textsizeoffifteen" />
 
             <TextView
                 android:id="@+id/fragment_all_item_goods_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="16dp"
+                android:layout_marginRight="@dimen/fragment_all_item_line_rl_tvtwo_marginright"
                 android:text="@string/test_fragment_list_item_price"
-                android:textColor="#000"
-                android:textSize="15sp" />
+                android:textColor="@color/fragment_all_item_textcolor"
+                android:textSize="@dimen/textsizeoffifteen" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="@dimen/fragment_all_item_line_rltwo_marginleft"
             android:orientation="horizontal">
 
-            <!-- TODO 测试文字 -->
             <TextView
                 android:id="@+id/fragment_all_item_city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/test_fragment_list_item_city"
-                android:textColor="#333"
-                android:textSize="12dp" />
+                android:textColor="@color/fragment_all_item_texttwocolor"
+                android:textSize="@dimen/textsizeoftwelf" />
 
             <TextView
                 android:id="@+id/fragment_all_item_discount_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="16dp"
+                android:layout_marginRight="@dimen/fragment_all_item_line_rltwo_tvtwo_marginright"
                 android:text="@string/test_fragment_list_item_price"
-                android:textColor="#000"
-                android:textSize="15sp"
+                android:textColor="@color/fragment_all_item_textcolor"
+                android:textSize="@dimen/textsizeoffifteen"
                 android:visibility="invisible" />
 
             <TextView
@@ -80,25 +74,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@id/fragment_all_item_discount_price"
-                android:textColor="#000"
-                android:visibility="invisible"/>
+                android:textColor="@color/fragment_all_item_textcolor"
+                android:visibility="invisible" />
         </RelativeLayout>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginLeft="@dimen/fragment_all_item_line_iv_marginleft"
+            android:layout_marginTop="@dimen/fragment_all_item_line_iv_margintop"
             android:src="@mipmap/iv_black_line" />
 
         <TextView
             android:id="@+id/fragment_all_item_brand"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginLeft="@dimen/fragment_all_item_line_tv_marginlfet"
+            android:layout_marginTop="@dimen/fragment_all_item_line_tv_marginright"
             android:text="@string/test_fragment_list_item_glasses_name"
-            android:textColor="#000"
-            android:textSize="15sp" />
+            android:textColor="@color/fragment_all_item_textcolor"
+            android:textSize="@dimen/textsizeoffifteen" />
     </LinearLayout>
 </LinearLayout>

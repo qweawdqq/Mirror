@@ -75,12 +75,7 @@ public class EveryGlassesBackRecyclerViewAdapter extends RecyclerView.Adapter<Ev
 
 
     class EveryGlassesBackRecyclerViewHolder extends RecyclerView.ViewHolder {
-
-        //        private TextView tv;
         private ImageView iv;
-//        private int position;  // 用于监听事件
-//        private LinearLayout linearLayout;
-
         //  缓存类 构造方法
         public EveryGlassesBackRecyclerViewHolder(View itemView) {
             super(itemView);

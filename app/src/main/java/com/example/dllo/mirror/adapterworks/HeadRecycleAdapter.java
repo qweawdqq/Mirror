@@ -3,7 +3,9 @@ package com.example.dllo.mirror.adapterworks;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageStats;
 import android.graphics.Bitmap;
+import android.os.StatFs;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
@@ -24,6 +26,7 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
 import java.lang.ref.WeakReference;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
 /**
@@ -87,11 +90,9 @@ public class HeadRecycleAdapter extends RecyclerView.Adapter<HeadRecycleAdapter.
 
     @Override
     public HeadRecycleAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if (mHeaderView != null && viewType == TYPE_HEADER){
-            Log.e("创建","创建");
-
+        if (mHeaderView != null && viewType == TYPE_HEADER) {
             return new MyViewHolder(mHeaderView);
-    }
+        }
         if (mFootView != null && viewType == TYPE_FOOT) {
             return new MyViewHolder(mFootView);
         }
@@ -133,41 +134,13 @@ public class HeadRecycleAdapter extends RecyclerView.Adapter<HeadRecycleAdapter.
                 double bitmap_heigh = loadedImage.getHeight();
                 double heigh = bitmap_heigh / bitmap_width * width;
                 holder.img.getLayoutParams().width = (int) (width);
-                holder.img.getLayoutParams().height = (int) heigh-120;
+                holder.img.getLayoutParams().height = (int) heigh - 120;
                 WeakReference<Bitmap> weakReference = new WeakReference<Bitmap>(loadedImage);
                 holder.img.setImageBitmap(weakReference.get());
             }
         });
 
     }
-
-
-
-
-    //    放大bitmap 使其充满屏幕
-//    private Bitmap getMyBitmap(Bitmap bitmap, ImageView im) {
-////    得到屏幕的宽度
-//        WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-//        DisplayMetrics outMetrics = new DisplayMetrics();
-//        manager.getDefaultDisplay().getMetrics(outMetrics);
-//        double width = outMetrics.widthPixels;
-//        double bitmap_width = bitmap.getWidth();
-//        double bitmap_heigh = bitmap.getHeight();
-//        double myHeigh = bitmap_heigh / bitmap_width * width;
-//        im.getLayoutParams().height = (int) myHeigh;
-//
-//
-//        return imageCrop(bitmap);
-//    }
-
-    //剪切bitmap
-//    private Bitmap imageCrop(Bitmap bitmap) {
-//        int w = bitmap.getWidth();
-//        int h = bitmap.getHeight();
-//        Bitmap myBitmap = Bitmap.createBitmap(bitmap, 60, 60, w - 60, h - 60, null, false);
-//        WeakReference<Bitmap> weak = new WeakReference<Bitmap>(myBitmap);
-//        return weak.get();
-//    }
 
     public int getRealPosition(int position) {
         if (mHeaderView != null) return position - 1;

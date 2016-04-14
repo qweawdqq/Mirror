@@ -100,7 +100,6 @@ public class AddressActivityAdapter extends BaseAdapter implements StaticEntityI
                 }
             });
 
-            // TODO 孙健
             // 删除按钮
             delLayout = (RelativeLayout) itemView.findViewById(R.id.address_item_btn_delete);
             delLayout.setOnClickListener(new View.OnClickListener() {

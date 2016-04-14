@@ -21,7 +21,6 @@ public class  HomeFragmentAdapter extends FragmentPagerAdapter {
 
     public void addData(List<Fragment> mFragments){
         this.mFragments = mFragments;
-        Log.e("adapter===", mFragments.size() + "");
         notifyDataSetChanged();
     }
 

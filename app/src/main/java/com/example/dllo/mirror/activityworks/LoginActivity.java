@@ -86,19 +86,16 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 platform1.setPlatformActionListener(new PlatformActionListener() {
                     @Override
                     public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
-                        Log.i("android!", platform.getDb().getUserName() + "---onComplete---" + platform.getDb().getUserIcon());
 
                     }
 
                     @Override
                     public void onError(Platform platform, int i, Throwable throwable) {
-                        Log.i("android", "---onError---");
 
                     }
 
                     @Override
                     public void onCancel(Platform platform, int i) {
-                        Log.i("android", "---onCancel---");
 
                     }
                 });

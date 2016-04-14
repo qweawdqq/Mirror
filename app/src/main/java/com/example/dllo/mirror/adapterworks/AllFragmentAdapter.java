@@ -31,10 +31,9 @@ public class AllFragmentAdapter extends RecyclerView.Adapter<AllFragmentAdapter.
     /**
      * 自定义 添加数据方法
      */
-    public void addData(DailyCommandBean bean,Context context) {
+    public void addData(DailyCommandBean bean, Context context) {
         this.bean = bean;
         this.context = context;
-        Log.d("111111", bean.toString());
         notifyDataSetChanged();  // 通知适配器  数据是实时更新的
 
     }

@@ -48,24 +48,19 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
 
     private ObservableScrollView scrollViewFront = null;
     private ObservableScrollView scrollViewBack = null;
-
     private RecyclerView recyclerViewFront, recyclerViewBack;
     private EveryGlassesBackRecyclerViewAdapter backAdapter;
     private EveryGlassesFrontRecyclerViewAdapter frontAdapter;
-
     private RelativeLayout colorChanceRelativeLayout;
     private LinearLayout colorChanceLinearLayout;
-
-    // 按钮
     private ImageView ivBack, ivBuy, ivShare;
     private TextView tvToPic;
     private RelativeLayout buttonLayout;
     private boolean btnBL = false;
-
     private TextView tvEnglishTitle, tvName, tvContent, tvPrice, tvNameBeforerecyclerview;
     private ImageView ivBackground;
 
-    // 用于接收recyclerview子布局的位置 的id   跳转到哪个二级页面
+    // 用于接收recyclerView子布局的位置 的id   跳转到哪个二级页面
     private int id;
     private Bean bean;// 单个页面的数据类
 
@@ -91,9 +86,6 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
         tvNameBeforerecyclerview = bindView(R.id.everyglasses_name_beforerecyclerview);
         ivBackground = bindView(R.id.everyglasses_background_iv);
 
-//        Animation animation = AnimationUtils.loadAnimation(this, R.anim.translate_create);
-//        buttonLayout.setAnimation(animation);
-
         // 属性动画  刚进入页面时就隐藏到屏幕左边
         ObjectAnimator.ofFloat(buttonLayout, "translationX", 0, -2000).setDuration(100).start();
 
@@ -101,8 +93,6 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
         scrollViewFront = bindView(R.id.everyglasses_scrollView_front);
         scrollViewFront.setScrollViewListener(this);
         scrollViewBack = bindView(R.id.everyglasses_scrollView_back);
-//        scrollViewBack.setScrollViewListener(this);
-
         recyclerViewBack = bindView(R.id.everyglasses_recyclerviewBack);
         recyclerViewFront = bindView(R.id.everyglasses_recyclerviewFront);
 
@@ -142,15 +132,12 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
 
 
         String id = getIntent().getStringExtra("id");
-//        Log.i("8888888888888888", "id    " + id);
-
         OkHttpNetHelper httpNetHelper = new OkHttpNetHelper();
-
         FormEncodingBuilder builder = new FormEncodingBuilder();
         // 解析数据
-        builder.add("token", "");
-        builder.add("device_type", "3");
-        builder.add("goods_id", id);
+        builder.add(TOKEN, "");
+        builder.add(DEVICE_TYPE, "3");
+        builder.add(GOODS_INFO_GOODS_ID, id);
         builder.add(GOODS_LIST_VERSION, "1.0.1");
 
         httpNetHelper.getPostDataFromNet(builder, GOODS_INFO, new NetListener() {
@@ -159,22 +146,15 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
 
                 Gson gson = new Gson();
                 Bean myBean = gson.fromJson(s.toString(), Bean.class);
-
-//                Log.i("8888888888888888", s);
-//                Log.i("8888888888888888", bean.toString());
-
                 Message msg = Message.obtain();
                 msg.obj = myBean;
-
-
                 handler.sendMessage(msg);
-
 
             }
 
             @Override
             public void getFail(String s) {
-//                Log.i("8888888888888888", "解析失败");
+
             }
         });
 
@@ -182,15 +162,12 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
         handler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-
                 bean = (Bean) msg.obj;
-
                 tvEnglishTitle.setText(bean.getData().getGoods_name());
                 tvName.setText(bean.getData().getBrand());
                 tvContent.setText(bean.getData().getInfo_des());
                 tvPrice.setText(bean.getData().getGoods_price());
                 tvNameBeforerecyclerview.setText(bean.getData().getBrand());
-
                 ImageLoader.getInstance().displayImage(bean.getData().getGoods_img(), ivBackground, options);
 
                 // 添加数据的方法  输入的是一个集合
@@ -207,6 +184,12 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
     }
 
 
+    /**
+     * 滚动监听 的方法
+     * @param scrollView
+     * @param y         移动后y的位置
+     * @param oldy      移动前y的位置
+     */
     @Override
     public void onScrollChanged(ObservableScrollView scrollView, int x, int y,
                                 int oldx, int oldy) {
@@ -255,14 +238,9 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
 
     }
 
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-//        EventBus.getDefault().unregister(this);
-    }
-
-
+    /**
+     * 跳转到Video页面方法
+     */
     private void toVideoActivity() {
         if (bean != null) {
             Log.e("size", bean.getData().getWear_video().size() + "");
@@ -287,7 +265,6 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
                  ToNextActivity.toNextActivity(TO_ORDER_ACTIVITY,this,false,null);
                 break;
             case R.id.everyglasses_share:
-                Log.d("share", "share");
 
                 ShareSDK.initSDK(this);
                 OnekeyShare oks = new OnekeyShare();

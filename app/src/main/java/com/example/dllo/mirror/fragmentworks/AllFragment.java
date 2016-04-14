@@ -42,7 +42,8 @@ public class AllFragment extends BaseFragment implements StaticEntityInterface {
     private Bundle bundle, bundle1;
     private int atItem;// 是从MainActivity 中传过来的现在的ViewPager所在的位置
     private LinearLayout allFragment_bg;
-private boolean netStauts;
+    private boolean netStauts;
+
     @Override
     protected int initLayout() {
         return R.layout.fragment_all;
@@ -71,11 +72,10 @@ private boolean netStauts;
     }
 
 
-
-    private void jsonFromNetStauts(){
-        if (netStauts){
+    private void jsonFromNetStauts() {
+        if (netStauts) {
             jsonFromNet();
-        }else {
+        } else {
             HomeData homeData = DbHelper.getInstance(getActivity()).getNote(bean.getTitle());
             String value = homeData.getValue();
             data = new Gson().fromJson(value, DailyCommandBean.class);
@@ -83,7 +83,7 @@ private boolean netStauts;
         }
     }
 
-    private void setRecyclerView(){
+    private void setRecyclerView() {
         allFragment_bg.setBackground(BitMapTools.readBitMap(getActivity(), R.mipmap.background));
         // recyclerView管理者   横向
         LinearLayoutManager lm = new LinearLayoutManager(getActivity());
@@ -91,7 +91,8 @@ private boolean netStauts;
         recyclerView.setLayoutManager(lm);
 
     }
-    private void jsonFromNet(){
+
+    private void jsonFromNet() {
         // 通过标题的Type 参数判断,解析网络数据
         if (bean.getType().equals("6")) {
             FormEncodingBuilder builder = new FormEncodingBuilder();
@@ -122,7 +123,8 @@ private boolean netStauts;
         }
 
     }
-    private void setRecyclerFromNet(){
+
+    private void setRecyclerFromNet() {
         allFragmentAdapter = new AllFragmentAdapter();
         allFragmentAdapter.addData(data, getContext());
         recyclerView.setAdapter(allFragmentAdapter);
@@ -136,7 +138,7 @@ private boolean netStauts;
         DbHelper.getInstance(getActivity()).addData(hd);
     }
 
-    private void setOnClick(){
+    private void setOnClick() {
         allLine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
