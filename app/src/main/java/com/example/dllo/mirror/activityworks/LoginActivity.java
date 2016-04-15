@@ -29,6 +29,8 @@ import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.sina.weibo.SinaWeibo;
+import cn.sharesdk.tencent.qzone.QZone;
+import cn.sharesdk.wechat.friends.Wechat;
 
 /**
  * Created by jialiang on 16/3/30.
@@ -103,6 +105,29 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 platform1.showUser(null);
                 break;
             case R.id.login_img_weixin:
+                ShareSDK.initSDK(this);
+                Platform platform2 = ShareSDK.getPlatform(Wechat.NAME);
+                if (platform2.isAuthValid()){
+                    platform2.removeAccount();
+                }
+                platform2.setPlatformActionListener(new PlatformActionListener() {
+                    @Override
+                    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+
+                    }
+
+                    @Override
+                    public void onError(Platform platform, int i, Throwable throwable) {
+
+                    }
+
+                    @Override
+                    public void onCancel(Platform platform, int i) {
+
+                    }
+                });
+                platform2.SSOSetting(false);
+                platform2.showUser(null);
                 break;
 
         }

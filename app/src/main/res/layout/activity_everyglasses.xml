@@ -27,14 +27,6 @@
                 android:layout_height="wrap_content"
                 android:background="@color/activity_everyglasses_title_backgroundColor">
 
-                <ImageView
-                    android:id="@+id/everyglasses_share"
-                    android:layout_width="@dimen/activity_everyglasses_button_share_width"
-                    android:layout_height="@dimen/activity_everyglasses_button_share_height"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="@dimen/activity_everyglasses_button_share_marginRight"
-                    android:layout_marginTop="@dimen/activity_everyglasses_button_share_marginTop"
-                    android:src="@mipmap/iv_share" />
 
                 <RelativeLayout
                     android:id="@+id/everyglasses_top_layout"
@@ -209,6 +201,22 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/activity_everyglasses_button_share_height"
+                android:layout_marginTop="@dimen/activity_everyglasses_button_share_marginTop">
+
+                <ImageView
+                    android:id="@+id/everyglasses_share"
+                    android:layout_width="@dimen/activity_everyglasses_button_share_width"
+                    android:layout_height="@dimen/activity_everyglasses_button_share_height"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/activity_everyglasses_button_share_marginRight"
+
+                    android:src="@mipmap/iv_share" />
+            </RelativeLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
