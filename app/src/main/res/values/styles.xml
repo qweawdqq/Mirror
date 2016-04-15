@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 
 
@@ -13,38 +14,46 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
-<style name="auto_view_width_two">
-    <item name="android:layout_width">wrap_content</item>
-    <item name="android:layout_height">wrap_content</item>
-</style>
+
+    <style name="auto_view_width_two">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
     <style name="auto_view_match">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
     </style>
+
     <style name="phone_num_white_bgd">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@mipmap/img_phone_num</item>
     </style>
+
     <style name="phone_num_white_address">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@mipmap/img_address</item>
     </style>
+
     <style name="phone_num_red_bgd">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@mipmap/iv_creat_num</item>
     </style>
+
     <style name="auto_view_wrap">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
     <style name="img_title_line_down">
         <item name="android:background">@android:color/white</item>
         <item name="android:layout_height">1px</item>
         <item name="android:layout_width">wrap_content</item>
     </style>
+
     <style name="img_title_line_up">
         <item name="android:background">@android:color/white</item>
         <item name="android:layout_height">4px</item>
@@ -70,10 +79,12 @@
         <item name="android:inputType">number</item>
         <item name="android:textSize">14sp</item>
     </style>
+
     <style name="push_alias">
         <item name="android:hint">@string/alias_hint</item>
         <item name="android:textSize">14sp</item>
     </style>
+
     <style name="push_tag">
         <item name="android:hint">@string/tag_hint</item>
         <item name="android:textSize">14sp</item>
