@@ -264,7 +264,7 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
                 break;
             case R.id.everyglasses_button_buy:
                 Bundle bundle = new Bundle();
-                bundle.putString("img", bean.getData().getGoods_img());
+                bundle.putString("img", bean.getData().getGoods_pic());
                 bundle.putString("price", bean.getData().getGoods_price());
                 bundle.putString("name", bean.getData().getGoods_name());
                 bundle.putString("goods_id", bean.getData().getGoods_id());
