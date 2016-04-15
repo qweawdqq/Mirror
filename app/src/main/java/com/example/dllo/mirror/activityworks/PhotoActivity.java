@@ -111,15 +111,14 @@ public class PhotoActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        this.finishAfterTransition();
+        PhotoActivity.this.finishAfterTransition();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        clearCache();
-        System.gc();
-
+//        clearCache();
+//        System.gc();
     }
 
 
