@@ -11,6 +11,7 @@ import android.text.GetChars;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.dllo.mirror.R;
@@ -18,6 +19,7 @@ import com.example.dllo.mirror.adapterworks.HomeFragmentAdapter;
 import com.example.dllo.mirror.allviewworks.VerticalViewPager;
 import com.example.dllo.mirror.animationworks.MirrorScaleAction;
 import com.example.dllo.mirror.baseworks.BaseActivity;
+import com.example.dllo.mirror.baseworks.BitMapTools;
 import com.example.dllo.mirror.bean.MenuFragmentBean;
 
 
@@ -35,6 +37,8 @@ import com.example.dllo.mirror.net.OkHttpNetHelper;
 import com.example.dllo.mirror.normalstatic.StaticEntityInterface;
 import com.google.gson.Gson;
 import com.squareup.okhttp.FormEncodingBuilder;
+import com.zhy.autolayout.AutoLinearLayout;
+import com.zhy.autolayout.AutoRelativeLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +56,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private MenuFragmentBean bean;
     private int pos;
     private boolean netStauts;
-
+private AutoRelativeLayout layout;
 
     @Override
     protected int initLayout() {
@@ -64,6 +68,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         mirror = bindView(R.id.main_iv_mirror);
         land = bindView(R.id.main_iv_land);
         viewPager = bindView(R.id.fragment_home_viewpager);
+        layout = bindView(R.id.main_layout);
     }
 
     @Override
@@ -124,6 +129,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
      * 设置所有的点击事件
      */
     private void setAllonClick() {
+        layout.setBackground(BitMapTools.readBitMap(MainActivity.this, R.mipmap.background));
         action = new MirrorScaleAction(this, null);
         mirror.setOnClickListener(this);
         land.setOnClickListener(this);
@@ -140,8 +146,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             case R.id.main_iv_land:
                 Intent intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
-//                Intent intent = new Intent(this,ShareContentActivity.class);
-//                startActivity(intent);
                 break;
         }
 

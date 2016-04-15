@@ -102,7 +102,9 @@
                     style="@style/auto_view_wrap"
                     android:layout_marginRight="@dimen/landing_mar_top_image"
                     android:background="@color/nothing"
-                    android:src="@mipmap/img_weibo" />
+                    android:src="@mipmap/img_weibo"
+
+                    />
 
                 <ImageButton
                     android:id="@+id/login_img_weixin"
