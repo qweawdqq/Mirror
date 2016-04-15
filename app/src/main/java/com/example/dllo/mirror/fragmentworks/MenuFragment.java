@@ -98,13 +98,14 @@ public class MenuFragment extends BaseFragment implements StaticEntityInterface,
         Bundle bundle = getArguments();
         i = bundle.getInt("toMenuFragment");
         Log.i("值", i + "");
-        if (i == 4) {
-            ivLine.setVisibility(View.VISIBLE);
-            tvTitle.setAlpha(1);
-        } else if (i == 5) {
-            ivLine.setVisibility(View.VISIBLE);
-            tvTitle.setAlpha(1);
-        }
+        //// TODO: 16/4/15 是否删除待定 
+//        if (i == 4) {
+//            ivLine.setVisibility(View.VISIBLE);
+//            tvTitle.setAlpha(1);
+//        } else if (i == 5) {
+//            ivLine.setVisibility(View.VISIBLE);
+//            tvTitle.setAlpha(1);
+//        }
     }
 
     private void jsonFromNet() {
