@@ -98,7 +98,10 @@ public class ShareFragment extends BaseFragment implements StaticEntityInterface
     private void setRecyclerFromNet() {
         adapter = new ShareFragmentAdapter();
         adapter.addData(data, getContext());
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        // 设置横向的recyclerView
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adapter);
     }
 

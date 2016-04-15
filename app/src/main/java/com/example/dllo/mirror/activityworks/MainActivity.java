@@ -104,7 +104,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     /**
      * 初始化Handler
-     * @param pos  指定viewpager 滑动到对应的位置
+     *
+     * @param pos 指定viewpager 滑动到对应的位置
      */
     private void setMyHandler(final int pos) {
         handler = new Handler(new Handler.Callback() {
@@ -139,6 +140,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             case R.id.main_iv_land:
                 Intent intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
+//                Intent intent = new Intent(this,ShareContentActivity.class);
+//                startActivity(intent);
                 break;
         }
 
@@ -176,7 +179,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     /**
      * 解析数据
-     * @param s  从网络或者数据库的得到的string
+     *
+     * @param s 从网络或者数据库的得到的string
      */
     private void jsonData(String s) {
         bean = new Gson().fromJson(s.toString(), MenuFragmentBean.class);
@@ -187,7 +191,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     /**
      * 发送消息
-     * @param list   菜单集合
+     *
+     * @param list 菜单集合
      */
     private void sendMessage(List<MenuFragmentBean.DataBean.ListBean> list) {
         ArrayList<Fragment> fragment = new ArrayList<Fragment>();
@@ -195,9 +200,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             Bundle bundle = new Bundle();
             bundle.putParcelable("title", list.get(i));
             bundle.putInt("titleAtWhatItem", i);
-//                    bundle.putString("titleNetData", bean.toString());
             String type = list.get(i).getType();
-            // 根据type判断加载不同的fragment, 6 是 全部分类, 3 是两种眼镜的种类的列表, 4 是购物车
+            // 根据type判断加载不同的fragment, 6 是 全部分类, 3 是两种眼镜的种类的列表, 2, 是 专题分享的type,  4 是购物车
             switch (type) {
                 case "6":
                     AllFragment af = new AllFragment();

@@ -77,6 +77,7 @@
         <activity android:name=".activityworks.AddressActivity"></activity>
         <activity android:name=".activityworks.AddAddressActivity"></activity>
         <activity android:name=".activityworks.ChangeAddressActivity"></activity>
+        <activity android:name=".activityworks.ShareContentActivity" />
 
         <meta-data
             android:name="design_width"

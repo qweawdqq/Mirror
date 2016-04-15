@@ -186,9 +186,10 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
 
     /**
      * 滚动监听 的方法
+     *
      * @param scrollView
-     * @param y         移动后y的位置
-     * @param oldy      移动前y的位置
+     * @param y          移动后y的位置
+     * @param oldy       移动前y的位置
      */
     @Override
     public void onScrollChanged(ObservableScrollView scrollView, int x, int y,
@@ -262,7 +263,14 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
                 toVideoActivity();
                 break;
             case R.id.everyglasses_button_buy:
-                 ToNextActivity.toNextActivity(TO_ORDER_ACTIVITY,this,false,null);
+                Bundle bundle = new Bundle();
+                bundle.putString("img", bean.getData().getGoods_img());
+                bundle.putString("price", bean.getData().getGoods_price());
+                bundle.putString("name", bean.getData().getGoods_name());
+                bundle.putString("goods_id", bean.getData().getGoods_id());
+//                OrderActivity orderActivity = new OrderActivity();
+
+                ToNextActivity.toNextActivity(TO_ORDER_ACTIVITY, this, false, bundle);
                 break;
             case R.id.everyglasses_share:
 

@@ -39,6 +39,7 @@ public class OrderActivity extends BaseActivity implements View.OnClickListener,
     private Handler handler;
     private int pos;
     private ImageButton btnback;
+    private String name,price,goods_id,img;
 
     @Override
     protected int initLayout() {
@@ -62,7 +63,7 @@ public class OrderActivity extends BaseActivity implements View.OnClickListener,
         setBtnListener();
         addAddress();
         setMyHandler();
-
+        getBundleValue();
     }
 
     private void setBtnListener() {
@@ -145,6 +146,15 @@ public class OrderActivity extends BaseActivity implements View.OnClickListener,
             public void getFail(String s) {
             }
         });
+    }
+
+    private void getBundleValue(){
+        Intent intent = getIntent();
+        name = intent.getStringExtra("name");
+        price = intent.getStringExtra("price");
+        goods_id = intent.getStringExtra("goods_id");
+        img = intent.getStringExtra("img");
+        Log.d("呵呵",goods_id);
     }
 
 }
