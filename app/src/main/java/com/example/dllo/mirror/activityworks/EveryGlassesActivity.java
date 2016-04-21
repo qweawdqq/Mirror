@@ -67,6 +67,8 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
     private Handler handler;
     private DisplayImageOptions options;  //显示图片的配置
 
+
+
     @Override
     protected int initLayout() {
         return R.layout.activity_everyglasses;
@@ -117,6 +119,7 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
 
         FullyGridLayoutManager backManager = new FullyGridLayoutManager(this, 1);
         recyclerViewBack.setLayoutManager(backManager);
+
         FullyGridLayoutManager frontManager = new FullyGridLayoutManager(this, 1);
         recyclerViewFront.setLayoutManager(frontManager);
 
@@ -127,7 +130,6 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
                 .cacheInMemory(true)//是否放到内存缓存中
                 .cacheOnDisk(true)//是否放到硬盘缓存中
                 .imageScaleType(ImageScaleType.EXACTLY_STRETCHED)
-                .bitmapConfig(Bitmap.Config.RGB_565)//图片的类型
                 .build();//创建
 
 
@@ -180,6 +182,8 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
                 return false;
             }
         });
+
+
 
     }
 
@@ -238,6 +242,9 @@ public class EveryGlassesActivity extends BaseActivity implements ScrollViewList
         }
 
     }
+
+
+
 
     /**
      * 跳转到Video页面方法
