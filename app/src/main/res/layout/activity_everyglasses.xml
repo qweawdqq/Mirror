@@ -216,8 +216,7 @@
 
                     android:src="@mipmap/iv_share" />
             </RelativeLayout>
-
-
+            
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/activity_everyglasses_front_top_layout_height" />
